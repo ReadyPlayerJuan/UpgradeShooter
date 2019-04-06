@@ -1,0 +1,28 @@
+#version 430
+
+in vec2 textureCoords;
+
+out vec4 out_Color;
+
+uniform sampler2D colorTexture;
+
+uniform vec3[25] allColors;
+
+const float maxColors = 5;
+const float maxRegions = 5;
+
+void main(void) {
+    //vec3[5][5] allColors = {colorSet1, colorSet2, colorSet3, colorSet4, colorSet5};
+
+    vec4 read = texture(colorTexture, textureCoords);
+    int colorSetIndex = int(read.g * maxRegions);
+    int colorIndex;
+
+
+    colorIndex = max(0, int(read.r * (maxColors + 1.0)) - 1);
+
+    vec3 color = allColors[colorSetIndex * int(maxColors) + colorIndex];
+    out_Color = vec4(color, 1.0); //read.a);
+
+	//out_Color = vec4(1.0 - texture(colorTexture, textureCoords).rgb, 1.0);
+}
