@@ -2,12 +2,15 @@ package main.game.entities;
 
 import main.game.boards.Board;
 import main.game.boards.Camera;
+import main.game.boards.Wall;
 import main.game.entities.hitboxes.BodyHitbox;
 import main.game.entities.hitboxes.DamagerHitbox;
 import main.game.entities.hitboxes.EntityRenderer;
 import main.game.enums.Team;
 
 import java.util.LinkedList;
+
+import static java.lang.Math.*;
 
 public class EntityManager {
     public static EntityManager current = null;
@@ -59,7 +62,11 @@ public class EntityManager {
     }
 
     private void collideTerrain(Board board) {
-
+        for(Wall wall: board.getWalls()) {
+            for(Entity entity: playerEntities) {
+                wall.collide(entity);
+            }
+        }
     }
 
     public void render(Camera camera) {

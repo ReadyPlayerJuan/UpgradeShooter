@@ -20,7 +20,7 @@ import java.util.LinkedList;
 public class EntityRenderer {
     private static final EntityShader entityShader = new EntityShader();
 
-    private final int MAX_SPRITES = 10000;
+    private final int MAX_SPRITES = 100000;
     private final int SPRITE_DATA_LENGTH = 5; //number of floats per sprite
 
     private final FloatBuffer spriteDataBuffer = BufferUtils.createFloatBuffer(MAX_SPRITES * SPRITE_DATA_LENGTH);
@@ -28,7 +28,7 @@ public class EntityRenderer {
     private int spriteDataPointer = 0;
     private int vao, vbo;
 
-    private LinkedList<Sprite> testSprites;
+    //private LinkedList<Sprite> testSprites;
 
     private HashMap<SpriteTexture, LinkedList<Sprite>> sprites = new HashMap<>();
 
@@ -49,17 +49,19 @@ public class EntityRenderer {
         GL30.glBindVertexArray(0);
 
 
-        testSprites = new LinkedList<>();
-        int numX = 100;
-        int numY = 75;
+        /*testSprites = new LinkedList<>();
+        int numTotal = (int)(MAX_SPRITES * 0.95);
         int screenWidth = Settings.get(SettingType.RESOLUTION_WIDTH);
         int screenHeight = Settings.get(SettingType.RESOLUTION_HEIGHT);
+        float ratio = (float)screenWidth / screenHeight;
+        int numX = (int)Math.sqrt(numTotal * ratio);
+        int numY = (int)(numX / ratio);
+        System.out.println(numX + " " + numY + " " + numX*numY);
         for(double x = -screenWidth/2; x < screenWidth/2; x += (double)screenWidth / numX) {
             for(double y = -screenHeight/2; y < screenHeight/2; y += (double)screenHeight / numY) {
-                System.out.println(x + " " + y);
-                testSprites.add(new Sprite(SpriteData.PLAYER, x, y, 0, 10, (int)(Math.random() * 4)));
+                testSprites.add(new Sprite(SpriteData.PLAYER, x, y, 0, 20, (int)(Math.random() * 4)));
             }
-        }
+        }*/
     }
 
     public void registerSprite(Sprite sprite) {
@@ -76,15 +78,15 @@ public class EntityRenderer {
 
     public void render(Camera camera, LinkedList<Entity> playerEntities, LinkedList<Entity> enemyEntities) {
         sprites.clear();
-        for(Entity e: playerEntities) {
+        for (Entity e : playerEntities) {
             e.registerSprites(this);
         }
-        for(Entity e: enemyEntities) {
+        for (Entity e : enemyEntities) {
             e.registerSprites(this);
         }
-        for(Sprite s: testSprites) {
+        /*for (Sprite s : testSprites) {
             registerSprite(s);
-        }
+        }*/
 
         entityShader.start();
         entityShader.setCameraAndViewSize(camera);

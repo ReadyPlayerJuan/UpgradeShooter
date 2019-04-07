@@ -61,4 +61,8 @@ public abstract class Board {
             }
         }*/
     }
+
+    public Wall[] getWalls() {
+        return walls;
+    }
 }

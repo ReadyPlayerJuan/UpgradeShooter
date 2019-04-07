@@ -10,6 +10,7 @@ public abstract class Entity {
     protected Team team;
     protected double x, y;
     protected double xVel, yVel;
+    protected double nextX, nextY;
     protected BodyHitbox[] bodyHitboxes = new BodyHitbox[0];
     protected DamagerHitbox[] damagerHitboxes = new DamagerHitbox[0];
 
@@ -50,12 +51,22 @@ public abstract class Entity {
         return yVel;
     }
 
-    public double getNextX(double delta) {
-        return x + delta * xVel;
+    public void setVelocity(double xVel, double yVel) {
+        this.xVel = xVel;
+        this.yVel = yVel;
     }
 
-    public double getNextY(double delta) {
-        return y + delta * yVel;
+    public double getNextX() {
+        return nextX;
+    }
+
+    public double getNextY() {
+        return nextY;
+    }
+
+    public void setNextPosition(double nextX, double nextY) {
+        this.nextX = nextX;
+        this.nextY = nextY;
     }
 
     public double getTerrainCollisionRadius() {

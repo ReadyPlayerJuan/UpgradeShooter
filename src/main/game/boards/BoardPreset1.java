@@ -12,8 +12,12 @@ public class BoardPreset1 extends Board {
         super(parentView);
 
         walls = new Wall[] {
-            new Wall(10, 10, 100, 100),
-            new Wall(100, 100, 150, 300),
+            new Wall(0, 100, 200, 100),
+            new Wall(200, 100, 250, -150),
+            new Wall(250, -150, 50, -50),
+            new Wall(50, -50, -50, -250),
+            new Wall(-50, -250, -200, 0),
+            new Wall(-200, 0, 0, 100),
         };
 
 
