@@ -1,8 +1,7 @@
 package main.game.entities.hitboxes;
 
 import main.game.entities.Entity;
-import main.game.enums.HitboxType;
-import main.game.enums.Team;
+import main.game.Team;
 
 public abstract class BodyHitbox extends Hitbox {
 

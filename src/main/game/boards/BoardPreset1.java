@@ -20,6 +20,7 @@ public class BoardPreset1 extends Board {
             new Wall(-200, 0, 0, 100),
         };
 
+        slotWalls();
 
 
 

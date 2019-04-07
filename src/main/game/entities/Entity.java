@@ -1,12 +1,12 @@
 package main.game.entities;
 
-import main.game.boards.Camera;
+import main.game.boards.Slottable;
 import main.game.entities.hitboxes.BodyHitbox;
 import main.game.entities.hitboxes.DamagerHitbox;
 import main.game.entities.hitboxes.EntityRenderer;
-import main.game.enums.Team;
+import main.game.Team;
 
-public abstract class Entity {
+public abstract class Entity extends Slottable {
     protected Team team;
     protected double x, y;
     protected double xVel, yVel;

@@ -11,7 +11,9 @@ import java.nio.IntBuffer;
 
 public abstract class Board {
     private static final WallShader wallShader = new WallShader();
-    //private static final double CELL_SIZE = 100.0;
+    public static final double CELL_SIZE = 100.0;
+
+    protected CellSlotter<Wall> slottedWalls;
 
     protected GameView parentView;
 
@@ -22,6 +24,7 @@ public abstract class Board {
 
     public Board(GameView parentVew) {
         this.parentView = parentVew;
+        slottedWalls = new CellSlotter<>();
     }
 
     public void render(Camera camera) {
@@ -36,6 +39,15 @@ public abstract class Board {
 
         GL20.glDisableVertexAttribArray(0);
         GL30.glBindVertexArray(0);
+    }
+
+    protected void slotWalls() {
+        for(Wall wall: walls) {
+            wall.updateSlotPositions(Board.CELL_SIZE);
+        }
+
+        slottedWalls.clear();
+        slottedWalls.addAll(walls);
     }
 
     public void update(double delta) {
@@ -64,5 +76,9 @@ public abstract class Board {
 
     public Wall[] getWalls() {
         return walls;
+    }
+
+    public CellSlotter<Wall> getSlottedWalls() {
+        return slottedWalls;
     }
 }

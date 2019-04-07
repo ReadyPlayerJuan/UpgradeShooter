@@ -2,7 +2,7 @@ package main.game.entities;
 
 import main.game.entities.hitboxes.BodyHitbox;
 import main.game.entities.hitboxes.EntityRenderer;
-import main.game.enums.Team;
+import main.game.Team;
 import main.input.ControlMapping;
 import main.input.InputManager;
 import rendering.WindowManager;
@@ -94,5 +94,13 @@ public class Player extends Entity {
     @Override
     public boolean isAlive() {
         return health > 0;
+    }
+
+    @Override
+    public void updateSlotPositions(double slotSize) {
+        slotMinX = (int)floor((x - radius) / slotSize);
+        slotMaxX = (int)floor((x + radius) / slotSize);
+        slotMinY = (int)floor((y - radius) / slotSize);
+        slotMaxY = (int)floor((y + radius) / slotSize);
     }
 }

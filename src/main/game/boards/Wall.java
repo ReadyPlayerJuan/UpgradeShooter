@@ -1,11 +1,10 @@
 package main.game.boards;
 
 import main.game.entities.Entity;
-import main.game.entities.hitboxes.Hitbox;
 
-import static java.lang.Math.sqrt;
+import static java.lang.Math.*;
 
-public class Wall {
+public class Wall extends Slottable {
     private double x1, y1, x2, y2;
     private double length;
     private double normalX, normalY, inLineX, inLineY, determinant;
@@ -17,6 +16,14 @@ public class Wall {
         this.x2 = x2;
         this.y2 = y2;
         calculateMatrices();
+    }
+
+    @Override
+    public void updateSlotPositions(double slotSize) {
+        slotMinX = (int)floor(min(x1, x2) / slotSize);
+        slotMaxX = (int)floor(max(x1, x2) / slotSize);
+        slotMinY = (int)floor(min(y1, y2) / slotSize);
+        slotMaxY = (int)floor(max(y1, y2) / slotSize);
     }
 
     private void calculateMatrices() {

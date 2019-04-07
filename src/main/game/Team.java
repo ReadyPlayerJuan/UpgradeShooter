@@ -1,4 +1,4 @@
-package main.game.enums;
+package main.game;
 
 public enum Team {
     PLAYER (1),

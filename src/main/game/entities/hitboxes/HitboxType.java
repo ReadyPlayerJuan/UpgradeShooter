@@ -1,4 +1,4 @@
-package main.game.enums;
+package main.game.entities.hitboxes;
 
 public enum HitboxType {
     BODY,

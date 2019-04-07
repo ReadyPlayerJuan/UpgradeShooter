@@ -1,16 +1,12 @@
 package main.game.entities;
 
-import main.game.boards.Board;
-import main.game.boards.Camera;
-import main.game.boards.Wall;
+import main.game.boards.*;
 import main.game.entities.hitboxes.BodyHitbox;
 import main.game.entities.hitboxes.DamagerHitbox;
 import main.game.entities.hitboxes.EntityRenderer;
-import main.game.enums.Team;
+import main.game.Team;
 
 import java.util.LinkedList;
-
-import static java.lang.Math.*;
 
 public class EntityManager {
     public static EntityManager current = null;
@@ -21,6 +17,9 @@ public class EntityManager {
     private LinkedList<BodyHitbox> playerBodyHitboxes, enemyBodyHitboxes;
     private LinkedList<DamagerHitbox> playerDamagerHitboxes, enemyDamagerHitboxes;
 
+    private CellSlotter<Entity> slottedPlayerEntities;
+    private CellEventManager<Wall, Entity> terrainCollisionEventManager;
+
     public EntityManager() {
         setCurrent();
 
@@ -28,12 +27,20 @@ public class EntityManager {
 
         playerEntities = new LinkedList<>();
         enemyEntities = new LinkedList<>();
+        slottedPlayerEntities = new CellSlotter<>();
         //neutralEntities = new LinkedList<>();
 
         playerBodyHitboxes = new LinkedList<>();
         enemyBodyHitboxes = new LinkedList<>();
         playerDamagerHitboxes = new LinkedList<>();
         enemyDamagerHitboxes = new LinkedList<>();
+
+        terrainCollisionEventManager = new CellEventManager<>() {
+            @Override
+            public void event(Wall item1, Entity item2) {
+                item1.collide(item2);
+            }
+        };
     }
 
     public void updateEntities(double delta, Board board) {
@@ -62,11 +69,19 @@ public class EntityManager {
     }
 
     private void collideTerrain(Board board) {
-        for(Wall wall: board.getWalls()) {
+        for(Entity entity: playerEntities) {
+            entity.updateSlotPositions(Board.CELL_SIZE);
+        }
+        slottedPlayerEntities.clear();
+        slottedPlayerEntities.addAll(playerEntities);
+
+        terrainCollisionEventManager.callEvents(board.getSlottedWalls(), slottedPlayerEntities);
+
+        /*for(Wall wall: board.getWalls()) {
             for(Entity entity: playerEntities) {
                 wall.collide(entity);
             }
-        }
+        }*/
     }
 
     public void render(Camera camera) {
