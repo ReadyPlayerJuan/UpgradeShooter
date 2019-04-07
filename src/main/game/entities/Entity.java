@@ -3,6 +3,7 @@ package main.game.entities;
 import main.game.boards.Camera;
 import main.game.entities.hitboxes.BodyHitbox;
 import main.game.entities.hitboxes.DamagerHitbox;
+import main.game.entities.hitboxes.EntityRenderer;
 import main.game.enums.Team;
 
 public abstract class Entity {
@@ -21,7 +22,7 @@ public abstract class Entity {
 
     public abstract void updatePre(double delta);
     public abstract void updatePost(double delta);
-    public abstract void draw(Camera camera);
+    public abstract void registerSprites(EntityRenderer renderer);
 
     public abstract boolean isAlive();
 

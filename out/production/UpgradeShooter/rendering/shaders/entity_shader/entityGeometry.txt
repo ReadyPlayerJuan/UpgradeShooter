@@ -1,0 +1,40 @@
+#version 430
+
+layout(points) in;
+layout(triangle_strip, max_vertices = 4) out;
+
+in float pass_scale[];
+in float pass_rotation[];
+in float pass_imageIndex[];
+
+out vec2 texCoords;
+
+uniform vec2 cameraPosition;
+uniform vec2 viewSize;
+uniform int numRows;
+
+void vertex(vec2 offset) {
+    float imageOffX = int(pass_imageIndex[0]) % numRows;
+    float imageOffY = int(pass_imageIndex[0]) / numRows;
+    texCoords = vec2((offset.x * 0.5 + 0.5 + imageOffX) / numRows, (offset.y * -0.5 + 0.5 + imageOffY) / numRows);
+
+    float rotation = pass_rotation[0];
+    vec2 offPos = pass_scale[0] * vec2(offset.x * cos(rotation) - offset.y * sin(rotation), offset.x * sin(rotation) + offset.y * cos(rotation));
+    gl_Position = vec4((gl_in[0].gl_Position.xy - cameraPosition + offPos) / (viewSize/2.0), 0, 1);
+}
+
+void main(void) {
+    vertex(vec2(1.0, -1.0));
+    EmitVertex();
+
+    vertex(vec2(-1.0, -1.0));
+    EmitVertex();
+
+    vertex(vec2(1.0, 1.0));
+    EmitVertex();
+
+    vertex(vec2(-1.0, 1.0));
+    EmitVertex();
+
+    EndPrimitive();
+}

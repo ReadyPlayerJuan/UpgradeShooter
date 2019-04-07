@@ -24,7 +24,7 @@ public class FrameBuffer {
 
     private float[] quadPositions = {-1, -1, 1, -1, -1, 1, 1, 1};
     private float[] quadTextureCoords = {0, 1, 1, 1, 0, 0, 1, 0};
-    private RawModel quad;
+    //private RawModel quad;
 
     public FrameBuffer(int width, int height) {
         this.width = width;
@@ -36,7 +36,7 @@ public class FrameBuffer {
             else
                 quadPositions[i] *= height/2;
         }*/
-        quad = Loader.loadToVAO(quadPositions, quadTextureCoords);
+        //quad = Loader.loadToVAO(quadPositions, quadTextureCoords);
 
 
         //texture

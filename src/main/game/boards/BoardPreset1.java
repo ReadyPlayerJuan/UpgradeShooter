@@ -13,7 +13,11 @@ public class BoardPreset1 extends Board {
 
         walls = new Wall[] {
             new Wall(10, 10, 100, 100),
+            new Wall(100, 100, 150, 300),
         };
+
+
+
 
         vao = GL30.glGenVertexArrays();
         GL30.glBindVertexArray(vao);
@@ -48,12 +52,12 @@ public class BoardPreset1 extends Board {
             vertices[vertexBufferIndex++] = (float)wall.getY2()+10;
             vertices[vertexBufferIndex++] = (float)0.0;
 
-            indices[indexBufferIndex++] = i*6;
-            indices[indexBufferIndex++] = i*6 + 1;
-            indices[indexBufferIndex++] = i*6 + 2;
-            indices[indexBufferIndex++] = i*6 + 2;
-            indices[indexBufferIndex++] = i*6 + 1;
-            indices[indexBufferIndex++] = i*6 + 3;
+            indices[indexBufferIndex++] = i*4;
+            indices[indexBufferIndex++] = i*4 + 1;
+            indices[indexBufferIndex++] = i*4 + 2;
+            indices[indexBufferIndex++] = i*4 + 2;
+            indices[indexBufferIndex++] = i*4 + 1;
+            indices[indexBufferIndex++] = i*4 + 3;
         }
         vertexBuffer.put(vertices);
         vertexBuffer.flip();

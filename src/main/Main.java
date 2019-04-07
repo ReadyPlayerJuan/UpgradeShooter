@@ -7,6 +7,8 @@ import rendering.WindowManager;
 
 import org.lwjgl.opengl.GL;
 import org.lwjgl.opengl.GL11;
+import rendering.textures.SpriteTexture;
+import rendering.textures.TextureManager;
 
 import static org.lwjgl.glfw.GLFW.*;
 import static org.lwjgl.opengl.GL11.*;
@@ -17,6 +19,8 @@ public class Main {
         Settings.loadSettings();
         WindowManager.createWindow();
         initGL();
+
+        TextureManager.loadAllTextures();
 
         InputManager.init(WindowManager.window);
         WindowManager.init();
@@ -40,6 +44,7 @@ public class Main {
 
         WindowManager.destroyWindow();
         WindowManager.cleanUp();
+        TextureManager.cleanUp();
         Loader.cleanUp();
         mainView.cleanUp();
     }

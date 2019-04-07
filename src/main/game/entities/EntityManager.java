@@ -4,6 +4,7 @@ import main.game.boards.Board;
 import main.game.boards.Camera;
 import main.game.entities.hitboxes.BodyHitbox;
 import main.game.entities.hitboxes.DamagerHitbox;
+import main.game.entities.hitboxes.EntityRenderer;
 import main.game.enums.Team;
 
 import java.util.LinkedList;
@@ -11,12 +12,16 @@ import java.util.LinkedList;
 public class EntityManager {
     public static EntityManager current = null;
 
+    private EntityRenderer entityRenderer;
+
     private LinkedList<Entity> playerEntities, enemyEntities;//, neutralEntities;
     private LinkedList<BodyHitbox> playerBodyHitboxes, enemyBodyHitboxes;
     private LinkedList<DamagerHitbox> playerDamagerHitboxes, enemyDamagerHitboxes;
 
     public EntityManager() {
         setCurrent();
+
+        entityRenderer = new EntityRenderer();
 
         playerEntities = new LinkedList<>();
         enemyEntities = new LinkedList<>();
@@ -57,13 +62,8 @@ public class EntityManager {
 
     }
 
-    public void drawEntities(Camera camera) {
-        for(Entity e: playerEntities) {
-            e.draw(camera);
-        }
-        for(Entity e: enemyEntities) {
-            e.draw(camera);
-        }
+    public void render(Camera camera) {
+        entityRenderer.render(camera, playerEntities, enemyEntities);
     }
 
     public void addEntity(Entity e) {

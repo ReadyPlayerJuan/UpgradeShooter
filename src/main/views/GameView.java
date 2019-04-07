@@ -39,7 +39,7 @@ public class GameView extends View {
         GL11.glClear(GL11.GL_COLOR_BUFFER_BIT);
 
         board.render(camera);
-        entityManager.drawEntities(camera);
+        entityManager.render(camera);
 
         layerFrameBuffer.unbindFrameBuffer();
 

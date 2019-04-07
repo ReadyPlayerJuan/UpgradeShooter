@@ -6,39 +6,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.lwjgl.BufferUtils;
-import org.lwjgl.opengl.GL11;
-import org.lwjgl.opengl.GL15;
-import org.lwjgl.opengl.GL20;
-import org.lwjgl.opengl.GL30;
+import org.lwjgl.opengl.*;
 
 public class Loader {
     private static List<Integer> vaos = new ArrayList<Integer>();
     private static List<Integer> vbos = new ArrayList<Integer>();
-    private static List<Integer> textures = new ArrayList<Integer>();
 
-    public static RawModel loadToVAO(float[] positions, float[] textureCoords, float[] normals, int[] indices) {
-        int vaoID = createVAO();
-        bindIndicesBuffer(indices);
-        storeDataInAttributeList(0, 3, positions);
-        storeDataInAttributeList(1, 2, textureCoords);
-        storeDataInAttributeList(2, 3, normals);
-        unbindVAO();
-        return new RawModel(vaoID, indices.length);
-    }
-
-    public static RawModel loadToVAO(float[] positions, int dimensions) {
-        int vaoID = createVAO();
-        storeDataInAttributeList(0, dimensions, positions);
-        unbindVAO();
-        return new RawModel(vaoID, positions.length / dimensions);
-    }
-
-    public static RawModel loadToVAO(float[] positions, float[] textureCoords) {
+    public static int loadToVAO(float[] positions, float[] textureCoords) {
         int vaoID = createVAO();
         storeDataInAttributeList(0, 2, positions);
         storeDataInAttributeList(1, 2, textureCoords);
         unbindVAO();
-        return new RawModel(vaoID, positions.length / 2);
+        return vaoID;
     }
 
     private static int createVAO() {
@@ -59,6 +38,15 @@ public class Loader {
         GL15.glBufferData(GL15.GL_ARRAY_BUFFER, floatCount * 4, GL15.GL_STREAM_DRAW);
         GL15.glBindBuffer(GL15.GL_ARRAY_BUFFER, 0);
         return vbo;
+    }
+
+    public void addInstancedAttribute(int vao, int vbo, int attribute, int dataSize, int instancedDataLength, int offset) {
+        GL15.glBindBuffer(GL15.GL_ARRAY_BUFFER, vbo);
+        GL30.glBindVertexArray(vao);
+        GL20.glVertexAttribPointer(attribute, dataSize, GL11.GL_FLOAT, false, instancedDataLength * 4, offset * 4);
+        GL33.glVertexAttribDivisor(attribute, 1);
+        GL15.glBindBuffer(GL15.GL_ARRAY_BUFFER, 0);
+        GL30.glBindVertexArray(0);
     }
 
     public static void updateVbo(int vbo, float[] data, FloatBuffer buffer) {
@@ -112,10 +100,6 @@ public class Loader {
 
         for(int vbo: vbos) {
             GL15.glDeleteBuffers(vbo);
-        }
-
-        for(int texture: textures) {
-            GL11.glDeleteTextures(texture);
         }
     }
 }

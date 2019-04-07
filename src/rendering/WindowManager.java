@@ -6,7 +6,6 @@ import main.Settings;
 import org.lwjgl.glfw.*;
 import org.lwjgl.system.*;
 import rendering.fonts.TrueTypeFont;
-import rendering.shaders.layered_color.LayeredColorShader;
 
 import java.nio.*;
 

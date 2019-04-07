@@ -1,17 +1,15 @@
 package main.game.boards;
 
 import main.views.GameView;
-import org.lwjgl.BufferUtils;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL20;
 import org.lwjgl.opengl.GL30;
-import rendering.Renderable;
 import rendering.shaders.wall_shader.WallShader;
 
 import java.nio.FloatBuffer;
 import java.nio.IntBuffer;
 
-public abstract class Board implements Renderable {
+public abstract class Board {
     private static final WallShader wallShader = new WallShader();
     //private static final double CELL_SIZE = 100.0;
 
@@ -26,14 +24,12 @@ public abstract class Board implements Renderable {
         this.parentView = parentVew;
     }
 
-    @Override
     public void render(Camera camera) {
         GL30.glBindVertexArray(vao);
         GL20.glEnableVertexAttribArray(0);
 
         wallShader.start();
-        wallShader.setCamera(camera);
-        wallShader.setViewSize(parentView.getWidth(), parentView.getHeight());
+        wallShader.setCameraAndViewSize(camera);
         wallShader.setColor(0, 0, 0);
         GL11.glDrawElements(GL11.GL_TRIANGLES, indexBuffer);
         wallShader.stop();
