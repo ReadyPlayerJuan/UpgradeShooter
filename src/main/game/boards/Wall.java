@@ -42,7 +42,7 @@ public class Wall extends Slottable {
         invMat22 = inLineX / determinant;
     }
 
-    public void collide(Entity entity) {
+    public boolean collide(Entity entity) {
         double x = entity.getX();
         double y = entity.getY();
         double xVel = entity.getXVel();
@@ -74,6 +74,8 @@ public class Wall extends Slottable {
             double newXVel = inLineVel * inLineX;
             double newYVel = inLineVel * inLineY;
             entity.setVelocity(newXVel, newYVel);
+
+            return true;
         } else {
             //no wall collision, check for endpoint collision
 
@@ -91,8 +93,12 @@ public class Wall extends Slottable {
                 double newNextX = x1 - newDistanceToPoint * pointNormalX;
                 double newNextY = y1 - newDistanceToPoint * pointNormalY;
                 entity.setNextPosition(newNextX, newNextY);
+
+                return true;
             }
         }
+
+        return false;
     }
 
     public double getX1() {

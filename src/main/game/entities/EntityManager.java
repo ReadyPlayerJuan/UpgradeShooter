@@ -13,6 +13,8 @@ public class EntityManager {
 
     private EntityRenderer entityRenderer;
 
+    private LinkedList<Entity> newEntities;
+
     private LinkedList<Entity> playerEntities, enemyEntities;//, neutralEntities;
     private LinkedList<BodyHitbox> playerBodyHitboxes, enemyBodyHitboxes;
     private LinkedList<DamagerHitbox> playerDamagerHitboxes, enemyDamagerHitboxes;
@@ -24,6 +26,8 @@ public class EntityManager {
         setCurrent();
 
         entityRenderer = new EntityRenderer();
+
+        newEntities = new LinkedList<>();
 
         playerEntities = new LinkedList<>();
         enemyEntities = new LinkedList<>();
@@ -38,7 +42,9 @@ public class EntityManager {
         terrainCollisionEventManager = new CellEventManager<>() {
             @Override
             public void event(Wall item1, Entity item2) {
-                item1.collide(item2);
+                if(item1.collide(item2)) {
+                    item2.eventTerrainCollision(0);
+                }
             }
         };
     }
@@ -56,12 +62,22 @@ public class EntityManager {
         collideEntities();
         collideTerrain(board);
 
-        for(Entity e: playerEntities) {
+        for(int i = 0; i < playerEntities.size(); i++) {
+            Entity e = playerEntities.get(i);
             e.updatePost(delta);
+            if(!e.isAlive()) {
+                playerEntities.remove(i--);
+            }
         }
-        for(Entity e: enemyEntities) {
+        for(int i = 0; i < enemyEntities.size(); i++) {
+            Entity e = enemyEntities.get(i);
             e.updatePost(delta);
+            if(!e.isAlive()) {
+                enemyEntities.remove(i--);
+            }
         }
+
+        addNewEntities();
     }
 
     private void collideEntities() {
@@ -69,11 +85,8 @@ public class EntityManager {
     }
 
     private void collideTerrain(Board board) {
-        for(Entity entity: playerEntities) {
-            entity.updateSlotPositions(Board.CELL_SIZE);
-        }
         slottedPlayerEntities.clear();
-        slottedPlayerEntities.addAll(playerEntities);
+        slottedPlayerEntities.addAndUpdateAll(playerEntities, Board.CELL_SIZE);
 
         terrainCollisionEventManager.callEvents(board.getSlottedWalls(), slottedPlayerEntities);
 
@@ -89,25 +102,35 @@ public class EntityManager {
     }
 
     public void addEntity(Entity e) {
-        switch(e.getTeam()) {
-            case PLAYER:
-                playerEntities.add(e); break;
-            case ENEMY:
-                enemyEntities.add(e); break;
-        }
+        newEntities.add(e);
+    }
 
-        for(BodyHitbox h: e.getBodyHitboxes()) {
-            if(h.getTeam() == Team.PLAYER) {
-                playerBodyHitboxes.add(h);
-            } else if(h.getTeam() == Team.ENEMY) {
-                enemyBodyHitboxes.add(h);
+    private void addNewEntities() {
+        while(newEntities.size() > 0) {
+            Entity e = newEntities.remove(0);
+
+            switch (e.getTeam()) {
+                case PLAYER:
+                    playerEntities.add(e);
+                    break;
+                case ENEMY:
+                    enemyEntities.add(e);
+                    break;
             }
-        }
-        for(DamagerHitbox h: e.getDamagerHitboxes()) {
-            if(h.getTeam() == Team.PLAYER) {
-                playerDamagerHitboxes.add(h);
-            } else if(h.getTeam() == Team.ENEMY) {
-                enemyDamagerHitboxes.add(h);
+
+            for (BodyHitbox h : e.getBodyHitboxes()) {
+                if (h.getTeam() == Team.PLAYER) {
+                    playerBodyHitboxes.add(h);
+                } else if (h.getTeam() == Team.ENEMY) {
+                    enemyBodyHitboxes.add(h);
+                }
+            }
+            for (DamagerHitbox h : e.getDamagerHitboxes()) {
+                if (h.getTeam() == Team.PLAYER) {
+                    playerDamagerHitboxes.add(h);
+                } else if (h.getTeam() == Team.ENEMY) {
+                    enemyDamagerHitboxes.add(h);
+                }
             }
         }
     }

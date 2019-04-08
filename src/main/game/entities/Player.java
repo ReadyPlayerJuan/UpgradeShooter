@@ -3,6 +3,7 @@ package main.game.entities;
 import main.game.entities.hitboxes.BodyHitbox;
 import main.game.entities.hitboxes.EntityRenderer;
 import main.game.Team;
+import main.game.entities.projectiles.TestProjectile;
 import main.input.ControlMapping;
 import main.input.InputManager;
 import rendering.WindowManager;
@@ -28,7 +29,7 @@ public class Player extends Entity {
 
         terrainCollisionRadius = radius;
 
-        sprite = new Sprite(SpriteData.PLAYER, 0, 0, radius);
+        sprite = new Sprite(SpriteData.PLAYER, x, y, radius);
 
         hitbox = new BodyHitbox(this, team, radius) {
             @Override
@@ -40,6 +41,7 @@ public class Player extends Entity {
         };
 
         bodyHitboxes = new BodyHitbox[] {hitbox};
+        registerEntityAndHitboxes();
     }
 
     @Override
@@ -73,6 +75,12 @@ public class Player extends Entity {
             yVel = signum(yVel) * min(maxSpeed, abs(yVel));
         }
 
+
+        if(Math.floor(WindowManager.getTime() - delta) < Math.floor(WindowManager.getTime())) {
+            new TestProjectile(this, null, SpriteData.PLAYER, x, y, 1, 100, 0, 10, 0);
+        }
+
+
         nextX = x + xVel * delta;
         nextY = y + yVel * delta;
     }
@@ -89,6 +97,11 @@ public class Player extends Entity {
     @Override
     public void registerSprites(EntityRenderer renderer) {
         renderer.registerSprite(sprite);
+    }
+
+    @Override
+    public void eventTerrainCollision(double angle) {
+
     }
 
     @Override

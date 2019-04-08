@@ -13,17 +13,21 @@ public abstract class Entity extends Slottable {
     protected double nextX, nextY;
     protected BodyHitbox[] bodyHitboxes = new BodyHitbox[0];
     protected DamagerHitbox[] damagerHitboxes = new DamagerHitbox[0];
-
     protected double terrainCollisionRadius = -1;
 
     public Entity(Team team) {
         this.team = team;
+    }
+
+    protected void registerEntityAndHitboxes() {
         EntityManager.current.addEntity(this);
     }
 
     public abstract void updatePre(double delta);
     public abstract void updatePost(double delta);
     public abstract void registerSprites(EntityRenderer renderer);
+
+    public abstract void eventTerrainCollision(double angle);
 
     public abstract boolean isAlive();
 

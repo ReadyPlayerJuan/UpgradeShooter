@@ -18,22 +18,37 @@ public class CellSlotter<T> {
 
     public void addAll(Collection<T> items) {
         for(T s: items) {
-            add(s);
+            add((Slottable)s);
         }
     }
 
     public void addAll(T[] items) {
         for(T s: items) {
-            add(s);
+            add((Slottable)s);
         }
     }
 
-    public void add(T item) {
-        Slottable s = (Slottable)item;
-        int slotMinX = s.getSlotMinX();
-        int slotMaxX = s.getSlotMaxX();
-        int slotMinY = s.getSlotMinY();
-        int slotMaxY = s.getSlotMaxY();
+    public void addAndUpdateAll(Collection<T> items, double cellSize) {
+        for(T s: items) {
+            Slottable slottable = (Slottable)s;
+            slottable.updateSlotPositions(cellSize);
+            add(slottable);
+        }
+    }
+
+    public void addAndUpdateAll(T[] items, double cellSize) {
+        for(T s: items) {
+            Slottable slottable = (Slottable)s;
+            slottable.updateSlotPositions(cellSize);
+            add(slottable);
+        }
+    }
+
+    public void add(Slottable item) {
+        int slotMinX = item.getSlotMinX();
+        int slotMaxX = item.getSlotMaxX();
+        int slotMinY = item.getSlotMinY();
+        int slotMaxY = item.getSlotMaxY();
 
         if(slotMinX < minX)
             minX = slotMinX;
@@ -58,7 +73,7 @@ public class CellSlotter<T> {
                     column.put(y, cell);
                 }
 
-                cell.add(s);
+                cell.add(item);
             }
         }
     }

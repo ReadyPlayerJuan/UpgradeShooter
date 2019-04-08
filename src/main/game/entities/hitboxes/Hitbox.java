@@ -1,9 +1,12 @@
 package main.game.entities.hitboxes;
 
+import main.game.boards.Slottable;
 import main.game.entities.Entity;
 import main.game.Team;
 
-public abstract class Hitbox {
+import static java.lang.Math.floor;
+
+public abstract class Hitbox extends Slottable {
     protected Entity owner;
     protected Team team;
     protected HitboxType type;
@@ -54,5 +57,13 @@ public abstract class Hitbox {
 
     public HitboxType getType() {
         return type;
+    }
+
+    @Override
+    public void updateSlotPositions(double slotSize) {
+        slotMinX = (int)floor((x - radius) / slotSize);
+        slotMaxX = (int)floor((x + radius) / slotSize);
+        slotMinY = (int)floor((y - radius) / slotSize);
+        slotMaxY = (int)floor((y + radius) / slotSize);
     }
 }
