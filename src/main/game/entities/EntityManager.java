@@ -16,11 +16,15 @@ public class EntityManager {
     private LinkedList<Entity> newEntities;
 
     private LinkedList<Entity> playerEntities, enemyEntities;//, neutralEntities;
-    private LinkedList<BodyHitbox> playerBodyHitboxes, enemyBodyHitboxes;
-    private LinkedList<DamagerHitbox> playerDamagerHitboxes, enemyDamagerHitboxes;
+    //private LinkedList<BodyHitbox> playerBodyHitboxes, enemyBodyHitboxes;
+    //private LinkedList<DamagerHitbox> playerDamagerHitboxes, enemyDamagerHitboxes;
 
-    private CellSlotter<Entity> slottedPlayerEntities;
+    private CellSlotter<Entity> slottedPlayerEntities, slottedEnemyEntities;
+    private CellSlotter<BodyHitbox> slottedPlayerBodyHitboxes, slottedEnemyBodyHitboxes;
+    private CellSlotter<DamagerHitbox> slottedPlayerDamagerHitboxes, slottedEnemyDamagerHitboxes;
+
     private CellEventManager<Wall, Entity> terrainCollisionEventManager;
+    private CellEventManager<BodyHitbox, DamagerHitbox> hitboxCollisionEventManager;
 
     public EntityManager() {
         setCurrent();
@@ -31,19 +35,37 @@ public class EntityManager {
 
         playerEntities = new LinkedList<>();
         enemyEntities = new LinkedList<>();
+
         slottedPlayerEntities = new CellSlotter<>();
+        slottedEnemyEntities = new CellSlotter<>();
         //neutralEntities = new LinkedList<>();
 
-        playerBodyHitboxes = new LinkedList<>();
-        enemyBodyHitboxes = new LinkedList<>();
-        playerDamagerHitboxes = new LinkedList<>();
-        enemyDamagerHitboxes = new LinkedList<>();
+        //playerBodyHitboxes = new LinkedList<>();
+        //enemyBodyHitboxes = new LinkedList<>();
+        //playerDamagerHitboxes = new LinkedList<>();
+        //enemyDamagerHitboxes = new LinkedList<>();
+
+        slottedPlayerBodyHitboxes = new CellSlotter<>();
+        slottedEnemyBodyHitboxes = new CellSlotter<>();
+        slottedPlayerDamagerHitboxes = new CellSlotter<>();
+        slottedEnemyDamagerHitboxes = new CellSlotter<>();
+
 
         terrainCollisionEventManager = new CellEventManager<>() {
             @Override
             public void event(Wall item1, Entity item2) {
                 if(item1.collide(item2)) {
                     item2.eventTerrainCollision(0);
+                }
+            }
+        };
+        hitboxCollisionEventManager = new CellEventManager<>() {
+            @Override
+            public void event(BodyHitbox item1, DamagerHitbox item2) {
+                //System.out.println("checking collision between " + item1 + " and " + item2);
+                if(item1.getOwner().isAlive() && item2.getOwner().isAlive() && item2.overlapping(item1)) {
+                    item2.damage(item1);
+                    //System.out.println("collide");
                 }
             }
         };
@@ -87,8 +109,32 @@ public class EntityManager {
     private void collideTerrain(Board board) {
         slottedPlayerEntities.clear();
         slottedPlayerEntities.addAndUpdateAll(playerEntities, Board.CELL_SIZE);
+        slottedEnemyEntities.clear();
+        slottedEnemyEntities.addAndUpdateAll(enemyEntities, Board.CELL_SIZE);
 
         terrainCollisionEventManager.callEvents(board.getSlottedWalls(), slottedPlayerEntities);
+        terrainCollisionEventManager.callEvents(board.getSlottedWalls(), slottedEnemyEntities);
+
+        slottedPlayerBodyHitboxes.clear();
+        slottedEnemyBodyHitboxes.clear();
+        slottedPlayerDamagerHitboxes.clear();
+        slottedEnemyDamagerHitboxes.clear();
+        //slottedPlayerBodyHitboxes.addAndUpdateAll(playerBodyHitboxes, Board.CELL_SIZE);
+        //slottedEnemyBodyHitboxes.addAndUpdateAll(enemyBodyHitboxes, Board.CELL_SIZE);
+        //slottedPlayerDamagerHitboxes.addAndUpdateAll(playerDamagerHitboxes, Board.CELL_SIZE);
+        //slottedEnemyDamagerHitboxes.addAndUpdateAll(enemyDamagerHitboxes, Board.CELL_SIZE);
+
+        for(Entity e: playerEntities) {
+            slottedPlayerBodyHitboxes.addAndUpdateAll(e.getBodyHitboxes(), Board.CELL_SIZE);
+            slottedPlayerDamagerHitboxes.addAndUpdateAll(e.getDamagerHitboxes(), Board.CELL_SIZE);
+        }
+        for(Entity e: enemyEntities) {
+            slottedEnemyBodyHitboxes.addAndUpdateAll(e.getBodyHitboxes(), Board.CELL_SIZE);
+            slottedEnemyDamagerHitboxes.addAndUpdateAll(e.getDamagerHitboxes(), Board.CELL_SIZE);
+        }
+
+        //hitboxCollisionEventManager.callEvents(slottedPlayerBodyHitboxes, slottedEnemyDamagerHitboxes);
+        hitboxCollisionEventManager.callEvents(slottedEnemyBodyHitboxes, slottedPlayerDamagerHitboxes);
 
         /*for(Wall wall: board.getWalls()) {
             for(Entity entity: playerEntities) {
@@ -118,20 +164,20 @@ public class EntityManager {
                     break;
             }
 
-            for (BodyHitbox h : e.getBodyHitboxes()) {
+            /*for(BodyHitbox h : e.getBodyHitboxes()) {
                 if (h.getTeam() == Team.PLAYER) {
                     playerBodyHitboxes.add(h);
                 } else if (h.getTeam() == Team.ENEMY) {
                     enemyBodyHitboxes.add(h);
                 }
             }
-            for (DamagerHitbox h : e.getDamagerHitboxes()) {
+            for(DamagerHitbox h : e.getDamagerHitboxes()) {
                 if (h.getTeam() == Team.PLAYER) {
                     playerDamagerHitboxes.add(h);
                 } else if (h.getTeam() == Team.ENEMY) {
                     enemyDamagerHitboxes.add(h);
                 }
-            }
+            }*/
         }
     }
 

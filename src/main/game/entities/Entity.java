@@ -19,6 +19,12 @@ public abstract class Entity extends Slottable {
         this.team = team;
     }
 
+    public Entity(Team team, double x, double y) {
+        this.team = team;
+        this.x = x;
+        this.y = y;
+    }
+
     protected void registerEntityAndHitboxes() {
         EntityManager.current.addEntity(this);
     }
@@ -79,5 +85,9 @@ public abstract class Entity extends Slottable {
 
     public Team getTeam() {
         return team;
+    }
+
+    public String toString() {
+        return team.toString() + " " + this.hashCode();
     }
 }

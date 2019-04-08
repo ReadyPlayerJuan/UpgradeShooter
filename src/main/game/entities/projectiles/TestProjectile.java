@@ -48,6 +48,7 @@ public class TestProjectile extends Projectile {
         hitbox = new DamagerHitbox(this, team, radius) {
             @Override
             public void damage(BodyHitbox other) {
+                alive = false;
                 other.takeDamage(damage, knockback, 0);
             }
         };
@@ -70,6 +71,8 @@ public class TestProjectile extends Projectile {
         y = nextY;
 
         sprite.setPosition(x, y);
+
+        hitbox.setPosition(x, y);
     }
 
     @Override

@@ -59,6 +59,10 @@ public abstract class Hitbox extends Slottable {
         return type;
     }
 
+    public Entity getOwner() {
+        return owner;
+    }
+
     @Override
     public void updateSlotPositions(double slotSize) {
         slotMinX = (int)floor((x - radius) / slotSize);

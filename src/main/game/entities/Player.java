@@ -16,13 +16,13 @@ import static java.lang.Math.*;
 
 public class Player extends Entity {
     private Sprite sprite;
+    private BodyHitbox hitbox;
+
     private final double maxHealth = 1;
     private double health = maxHealth;
     private double radius = 20;
     private double accel = 2000;
     private double maxSpeed = 300;
-
-    private BodyHitbox hitbox;
 
     public Player() {
         super(Team.PLAYER);
@@ -76,8 +76,8 @@ public class Player extends Entity {
         }
 
 
-        if(Math.floor(WindowManager.getTime() - delta) < Math.floor(WindowManager.getTime())) {
-            new TestProjectile(this, null, SpriteData.PLAYER, x, y, 1, 100, 0, 10, 0);
+        if(Math.floor(WindowManager.getTime()*1 - delta) < Math.floor(WindowManager.getTime()*1)) {
+            new TestProjectile(this, null, SpriteData.PLAYER, x, y, 1, 300, 0, 10, 0);
         }
 
 
@@ -92,6 +92,8 @@ public class Player extends Entity {
         sprite.setRotation(sprite.getRotation() + 0.01);
         sprite.setImageIndex((int)(WindowManager.getTime() * 1.0) % 4);
         sprite.setPosition(x, y);
+
+        hitbox.setPosition(x, y);
     }
 
     @Override

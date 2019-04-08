@@ -5,6 +5,7 @@ import main.game.boards.BoardPreset1;
 import main.game.boards.Camera;
 import main.game.entities.EntityManager;
 import main.game.entities.Player;
+import main.game.entities.enemies.Dummy;
 import org.lwjgl.opengl.GL11;
 import rendering.FrameBuffer;
 
@@ -25,6 +26,11 @@ public class GameView extends View {
         camera = new Camera(board, width, height);
 
         new Player();
+        new Dummy(100, 100);
+        new Dummy(100, 150);
+        new Dummy(100, 200);
+        new Dummy(100, 250);
+        new Dummy(100, 300);
     }
 
     public void updateSelf(double delta) {
