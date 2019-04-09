@@ -3,8 +3,8 @@ package main.game.entities;
 import main.game.boards.*;
 import main.game.entities.hitboxes.BodyHitbox;
 import main.game.entities.hitboxes.DamagerHitbox;
-import main.game.entities.hitboxes.EntityRenderer;
-import main.game.Team;
+import main.util.EfficiencyMetricType;
+import main.util.EfficiencyMetrics;
 
 import java.util.LinkedList;
 
@@ -16,8 +16,6 @@ public class EntityManager {
     private LinkedList<Entity> newEntities;
 
     private LinkedList<Entity> playerEntities, enemyEntities;//, neutralEntities;
-    //private LinkedList<BodyHitbox> playerBodyHitboxes, enemyBodyHitboxes;
-    //private LinkedList<DamagerHitbox> playerDamagerHitboxes, enemyDamagerHitboxes;
 
     private CellSlotter<Entity> slottedPlayerEntities, slottedEnemyEntities;
     private CellSlotter<BodyHitbox> slottedPlayerBodyHitboxes, slottedEnemyBodyHitboxes;
@@ -39,11 +37,6 @@ public class EntityManager {
         slottedPlayerEntities = new CellSlotter<>();
         slottedEnemyEntities = new CellSlotter<>();
         //neutralEntities = new LinkedList<>();
-
-        //playerBodyHitboxes = new LinkedList<>();
-        //enemyBodyHitboxes = new LinkedList<>();
-        //playerDamagerHitboxes = new LinkedList<>();
-        //enemyDamagerHitboxes = new LinkedList<>();
 
         slottedPlayerBodyHitboxes = new CellSlotter<>();
         slottedEnemyBodyHitboxes = new CellSlotter<>();
@@ -81,8 +74,10 @@ public class EntityManager {
             e.updatePre(delta);
         }
 
+        EfficiencyMetrics.startTimer(EfficiencyMetricType.COLLISION);
         collideEntities();
         collideTerrain(board);
+        EfficiencyMetrics.stopTimer(EfficiencyMetricType.COLLISION);
 
         for(int i = 0; i < playerEntities.size(); i++) {
             Entity e = playerEntities.get(i);
@@ -103,26 +98,10 @@ public class EntityManager {
     }
 
     private void collideEntities() {
-
-    }
-
-    private void collideTerrain(Board board) {
-        slottedPlayerEntities.clear();
-        slottedPlayerEntities.addAndUpdateAll(playerEntities, Board.CELL_SIZE);
-        slottedEnemyEntities.clear();
-        slottedEnemyEntities.addAndUpdateAll(enemyEntities, Board.CELL_SIZE);
-
-        terrainCollisionEventManager.callEvents(board.getSlottedWalls(), slottedPlayerEntities);
-        terrainCollisionEventManager.callEvents(board.getSlottedWalls(), slottedEnemyEntities);
-
         slottedPlayerBodyHitboxes.clear();
         slottedEnemyBodyHitboxes.clear();
         slottedPlayerDamagerHitboxes.clear();
         slottedEnemyDamagerHitboxes.clear();
-        //slottedPlayerBodyHitboxes.addAndUpdateAll(playerBodyHitboxes, Board.CELL_SIZE);
-        //slottedEnemyBodyHitboxes.addAndUpdateAll(enemyBodyHitboxes, Board.CELL_SIZE);
-        //slottedPlayerDamagerHitboxes.addAndUpdateAll(playerDamagerHitboxes, Board.CELL_SIZE);
-        //slottedEnemyDamagerHitboxes.addAndUpdateAll(enemyDamagerHitboxes, Board.CELL_SIZE);
 
         for(Entity e: playerEntities) {
             slottedPlayerBodyHitboxes.addAndUpdateAll(e.getBodyHitboxes(), Board.CELL_SIZE);
@@ -135,12 +114,16 @@ public class EntityManager {
 
         //hitboxCollisionEventManager.callEvents(slottedPlayerBodyHitboxes, slottedEnemyDamagerHitboxes);
         hitboxCollisionEventManager.callEvents(slottedEnemyBodyHitboxes, slottedPlayerDamagerHitboxes);
+    }
 
-        /*for(Wall wall: board.getWalls()) {
-            for(Entity entity: playerEntities) {
-                wall.collide(entity);
-            }
-        }*/
+    private void collideTerrain(Board board) {
+        slottedPlayerEntities.clear();
+        slottedPlayerEntities.addAndUpdateAll(playerEntities, Board.CELL_SIZE);
+        slottedEnemyEntities.clear();
+        slottedEnemyEntities.addAndUpdateAll(enemyEntities, Board.CELL_SIZE);
+
+        terrainCollisionEventManager.callEvents(board.getSlottedWalls(), slottedPlayerEntities);
+        terrainCollisionEventManager.callEvents(board.getSlottedWalls(), slottedEnemyEntities);
     }
 
     public void render(Camera camera) {
@@ -163,21 +146,6 @@ public class EntityManager {
                     enemyEntities.add(e);
                     break;
             }
-
-            /*for(BodyHitbox h : e.getBodyHitboxes()) {
-                if (h.getTeam() == Team.PLAYER) {
-                    playerBodyHitboxes.add(h);
-                } else if (h.getTeam() == Team.ENEMY) {
-                    enemyBodyHitboxes.add(h);
-                }
-            }
-            for(DamagerHitbox h : e.getDamagerHitboxes()) {
-                if (h.getTeam() == Team.PLAYER) {
-                    playerDamagerHitboxes.add(h);
-                } else if (h.getTeam() == Team.ENEMY) {
-                    enemyDamagerHitboxes.add(h);
-                }
-            }*/
         }
     }
 

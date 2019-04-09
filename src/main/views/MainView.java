@@ -1,5 +1,7 @@
 package main.views;
 
+import main.util.EfficiencyMetricType;
+import main.util.EfficiencyMetrics;
 import rendering.FrameBuffer;
 import rendering.WindowManager;
 

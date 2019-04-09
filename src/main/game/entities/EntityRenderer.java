@@ -1,18 +1,14 @@
-package main.game.entities.hitboxes;
+package main.game.entities;
 
-import main.SettingType;
-import main.Settings;
 import main.game.boards.Camera;
 import main.game.entities.Entity;
+import main.util.EfficiencyMetrics;
 import org.lwjgl.BufferUtils;
 import org.lwjgl.opengl.*;
-import rendering.Loader;
 import rendering.shaders.entity_shader.EntityShader;
 import rendering.textures.Sprite;
-import rendering.textures.SpriteData;
 import rendering.textures.SpriteTexture;
 
-import java.nio.ByteOrder;
 import java.nio.FloatBuffer;
 import java.util.HashMap;
 import java.util.LinkedList;

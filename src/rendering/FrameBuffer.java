@@ -4,14 +4,9 @@ import static org.lwjgl.opengl.EXTFramebufferObject.*;
 import static org.lwjgl.opengl.GL11.*;
 import static org.lwjgl.opengl.GL30.*;
 
-import main.SettingType;
-import main.Settings;
+import main.util.SettingType;
+import main.util.Settings;
 import org.lwjgl.BufferUtils;
-import org.lwjgl.opengl.GL11;
-import org.lwjgl.opengl.GL13;
-import org.lwjgl.opengl.GL20;
-import org.lwjgl.opengl.GL30;
-import rendering.shaders.ShaderProgram;
 
 import java.nio.ByteBuffer;
 

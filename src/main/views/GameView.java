@@ -6,6 +6,8 @@ import main.game.boards.Camera;
 import main.game.entities.EntityManager;
 import main.game.entities.Player;
 import main.game.entities.enemies.Dummy;
+import main.util.EfficiencyMetricType;
+import main.util.EfficiencyMetrics;
 import org.lwjgl.opengl.GL11;
 import rendering.FrameBuffer;
 
@@ -35,7 +37,11 @@ public class GameView extends View {
 
     public void updateSelf(double delta) {
         board.update(delta);
+
+        EfficiencyMetrics.startTimer(EfficiencyMetricType.UPDATE_ENTITIES);
         entityManager.updateEntities(delta, board);
+        EfficiencyMetrics.stopTimer(EfficiencyMetricType.UPDATE_ENTITIES);
+
         camera.update(delta);
     }
 
@@ -44,8 +50,13 @@ public class GameView extends View {
         GL11.glClearColor(1, 1, 1, 1);
         GL11.glClear(GL11.GL_COLOR_BUFFER_BIT);
 
+        EfficiencyMetrics.startTimer(EfficiencyMetricType.DRAW_WALLS);
         board.render(camera);
+        EfficiencyMetrics.stopTimer(EfficiencyMetricType.DRAW_WALLS);
+
+        EfficiencyMetrics.startTimer(EfficiencyMetricType.DRAW_ENTITIES);
         entityManager.render(camera);
+        EfficiencyMetrics.stopTimer(EfficiencyMetricType.DRAW_ENTITIES);
 
         layerFrameBuffer.unbindFrameBuffer();
 

@@ -3,7 +3,7 @@ package main.game.entities.projectiles;
 import main.game.entities.Entity;
 import main.game.entities.hitboxes.BodyHitbox;
 import main.game.entities.hitboxes.DamagerHitbox;
-import main.game.entities.hitboxes.EntityRenderer;
+import main.game.entities.EntityRenderer;
 import main.game.weapons.Weapon;
 import rendering.textures.Sprite;
 import rendering.textures.SpriteData;

@@ -1,13 +1,12 @@
-package main;
-
-import main.SettingType;
+package main.util;
 
 public class Settings {
     public static int[] current;
     private static final int[] defaults = {
-            1400, //RESOLUTION_WIDTH
-            900, //RESOLUTION_HEIGHT
-            0, //IS_FULLSCREEN
+            1400,   //RESOLUTION_WIDTH
+            900,    //RESOLUTION_HEIGHT
+            0,      //IS_FULLSCREEN
+            1,      //USE_EFFICIENCY_METRICS
     };
 
     public static int get(SettingType s) {

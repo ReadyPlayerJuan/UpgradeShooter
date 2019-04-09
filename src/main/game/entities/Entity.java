@@ -3,7 +3,6 @@ package main.game.entities;
 import main.game.boards.Slottable;
 import main.game.entities.hitboxes.BodyHitbox;
 import main.game.entities.hitboxes.DamagerHitbox;
-import main.game.entities.hitboxes.EntityRenderer;
 import main.game.Team;
 
 public abstract class Entity extends Slottable {

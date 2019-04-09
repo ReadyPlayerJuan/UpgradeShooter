@@ -1,7 +1,7 @@
 package rendering;
 
-import main.SettingType;
-import main.Settings;
+import main.util.SettingType;
+import main.util.Settings;
 
 import org.lwjgl.glfw.*;
 import org.lwjgl.system.*;
@@ -91,7 +91,6 @@ public class WindowManager {
             fps = frameCount;
             frameCount = 0;
             lastFpsUpdateTime = lastFrameTime;
-            System.out.println(fps);
         }
         lastFrameTime = currentFrameTime;
     }

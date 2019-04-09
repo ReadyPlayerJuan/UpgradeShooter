@@ -1,7 +1,6 @@
 package main.game.entities;
 
 import main.game.entities.hitboxes.BodyHitbox;
-import main.game.entities.hitboxes.EntityRenderer;
 import main.game.Team;
 import main.game.entities.projectiles.TestProjectile;
 import main.input.ControlMapping;
