@@ -116,7 +116,6 @@ public abstract class View {
     }
 
     public void cleanUp() {
-        mainFrameBuffer.cleanUp();
         for(View v: subViews) {
             v.cleanUp();
         }

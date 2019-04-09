@@ -1,11 +1,11 @@
 package main.game.boards;
 
 import main.views.GameView;
-import org.lwjgl.BufferUtils;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL15;
 import org.lwjgl.opengl.GL20;
 import org.lwjgl.opengl.GL30;
+import rendering.Graphics;
 
 public class BoardPreset1 extends Board {
     public BoardPreset1(GameView parentView) {
@@ -23,19 +23,15 @@ public class BoardPreset1 extends Board {
         slotWalls();
 
 
-
-        vao = GL30.glGenVertexArrays();
+        vao = Graphics.createVao();
+        vertexVbo = Graphics.createVbo();
         GL30.glBindVertexArray(vao);
-        vertexVbo = GL15.glGenBuffers();
         GL15.glBindBuffer(GL15.GL_ARRAY_BUFFER, vertexVbo);
         GL15.glBufferData(GL15.GL_ARRAY_BUFFER, walls.length * 8 * 4, GL15.GL_STREAM_DRAW);
         GL20.glVertexAttribPointer(0, 3, GL11.GL_FLOAT, false, 0, 0);
         GL15.glBindBuffer(GL15.GL_ARRAY_BUFFER, 0);
         GL30.glBindVertexArray(0);
 
-
-        vertexBuffer = BufferUtils.createFloatBuffer(walls.length * 12);
-        indexBuffer = BufferUtils.createIntBuffer(walls.length * 6);
 
         float[] vertices = new float[walls.length * 12];
         int[] indices = new int[walls.length * 6];
@@ -64,11 +60,8 @@ public class BoardPreset1 extends Board {
             indices[indexBufferIndex++] = i*4 + 1;
             indices[indexBufferIndex++] = i*4 + 3;
         }
-        vertexBuffer.put(vertices);
-        vertexBuffer.flip();
-
-        indexBuffer.put(indices);
-        indexBuffer.flip();
+        vertexBuffer = Graphics.storeDataInFloatBuffer(vertices);
+        indexBuffer = Graphics.storeDataInIntBuffer(indices);
 
 
         GL15.glBindBuffer(GL15.GL_ARRAY_BUFFER, vertexVbo);

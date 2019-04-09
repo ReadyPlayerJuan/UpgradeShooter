@@ -6,7 +6,7 @@ import main.util.EfficiencyMetrics;
 import main.util.SettingType;
 import main.util.Settings;
 import main.views.MainView;
-import rendering.Loader;
+import rendering.Graphics;
 import rendering.WindowManager;
 
 import org.lwjgl.opengl.GL;
@@ -23,6 +23,7 @@ public class Main {
         WindowManager.createWindow();
         initGL();
 
+        Graphics.initShaders();
         EfficiencyMetrics.init();
         TextureManager.loadAllTextures();
 
@@ -57,7 +58,7 @@ public class Main {
         WindowManager.destroyWindow();
         WindowManager.cleanUp();
         TextureManager.cleanUp();
-        Loader.cleanUp();
+        Graphics.cleanUp();
         mainView.cleanUp();
     }
 

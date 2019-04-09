@@ -55,10 +55,8 @@ public class EntityManager {
         hitboxCollisionEventManager = new CellEventManager<>() {
             @Override
             public void event(BodyHitbox item1, DamagerHitbox item2) {
-                //System.out.println("checking collision between " + item1 + " and " + item2);
                 if(item1.getOwner().isAlive() && item2.getOwner().isAlive() && item2.overlapping(item1)) {
                     item2.damage(item1);
-                    //System.out.println("collide");
                 }
             }
         };

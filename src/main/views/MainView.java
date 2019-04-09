@@ -5,6 +5,8 @@ import main.util.EfficiencyMetrics;
 import rendering.FrameBuffer;
 import rendering.WindowManager;
 
+import java.awt.*;
+
 import static org.lwjgl.opengl.GL11.*;
 
 public class MainView extends View {
@@ -38,8 +40,12 @@ public class MainView extends View {
         //gameView.drawMainView(width/2, height/2, width, height);
         gameView.getMainFrameBuffer().draw(width/2, height/2);
 
-        glColor3f(1f, 0f, 1f);
-        WindowManager.debugFont.drawText("FPS " + WindowManager.getFps(), 0, height-24);
+        /*glColor3f(1f, 0f, 1f);
+        WindowManager.debugFont.drawText("FPS " + WindowManager.getFps(), 0, height-WindowManager.debugFontSize);
+        for(int i = 0; i < EfficiencyMetrics.processData.size(); i++) {
+            String data = EfficiencyMetrics.processData.get(i);
+            WindowManager.debugFont.drawText(data, 0, height-WindowManager.debugFontSize*(i*4 + 2));
+        }*/
 
         mainFrameBuffer.unbindFrameBuffer();
 

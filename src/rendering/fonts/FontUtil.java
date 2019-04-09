@@ -29,7 +29,6 @@ public class FontUtil {
     }
 
     public ByteBuffer getFontAsByteBuffer() {
-
         BufferedImage bufferedImage = this.generateBufferedImage();
 
         this.drawFontChars(bufferedImage);

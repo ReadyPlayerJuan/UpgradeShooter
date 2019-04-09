@@ -69,5 +69,9 @@ public class GameView extends View {
 
     public void cleanUp() {
         super.cleanUp();
+
+        layerFrameBuffer.cleanUp();
+        //entityManager.cleanUp();
+        //board.cleanUp();
     }
 }

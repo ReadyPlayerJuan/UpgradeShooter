@@ -25,15 +25,6 @@ public class FrameBuffer {
         this.width = width;
         this.height = height;
 
-        /*for(int i = 0; i < 8; i++) {
-            if(i % 2 == 0)
-                quadPositions[i] *= width/2;
-            else
-                quadPositions[i] *= height/2;
-        }*/
-        //quad = Loader.loadToVAO(quadPositions, quadTextureCoords);
-
-
         //texture
         glEnable(GL_TEXTURE_2D);
         textureID = glGenTextures();
@@ -60,6 +51,8 @@ public class FrameBuffer {
             System.exit(0);//throw new Exception("" + result);
         }
         glBindFramebufferEXT(GL_FRAMEBUFFER, 0);
+
+        Graphics.addFrameBuffer(this);
     }
 
     public void draw(double x, double y, double w, double h) {

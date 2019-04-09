@@ -23,12 +23,13 @@ public class WindowManager {
 
     public static long window;
 
+    public static final int debugFontSize = 18;
     public static TrueTypeFont debugFont;
 
     public static void init() {
 
         try {
-            debugFont = new TrueTypeFont("monofonto.ttf", 24);
+            debugFont = new TrueTypeFont("monofonto.ttf", debugFontSize);
             debugFont.drawFontTexture(0, 0);
         } catch (Throwable e) {
             System.out.println(e.getMessage());

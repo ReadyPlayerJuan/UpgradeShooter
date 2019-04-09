@@ -6,11 +6,12 @@ import static org.lwjgl.opengl.GL11.*;
 import static org.lwjgl.opengl.GL11.GL_LINEAR;
 
 public class TrueTypeFont {
-
     private FontUtil fontUtil;
     private int fontTextureId;
+    private float fontSize;
 
     public TrueTypeFont(String ttfFilename, float fontSize) throws Throwable {
+        this.fontSize = fontSize;
         fontUtil = new FontUtil(ttfFilename, fontSize);
         generateTexture(fontUtil.getFontAsByteBuffer());
     }
@@ -56,9 +57,14 @@ public class TrueTypeFont {
         glBindTexture(GL_TEXTURE_2D, this.fontTextureId);
         glBegin(GL_QUADS);
         int xTmp = xPosition;
+        int yTmp = yPosition;
         for (char c : text.toCharArray()) {
             if(c == ' ') {
                 xTmp += fontUtil.getCharWidth(c);
+                continue;
+            } else if(c == '\n') {
+                xTmp = xPosition;
+                yTmp -= fontSize;
                 continue;
             }
 
@@ -70,16 +76,16 @@ public class TrueTypeFont {
             float y = 1f / fontUtil.getFontImageHeight() * fontUtil.getCharY(c);
 
             glTexCoord2f(x, y);
-            glVertex2f(xTmp, yPosition + height);
+            glVertex2f(xTmp, yTmp + height);
 
             glTexCoord2f(x + w, y);
-            glVertex2f(xTmp + width, yPosition + height);
+            glVertex2f(xTmp + width, yTmp + height);
 
             glTexCoord2f(x + w, y + h);
-            glVertex2f(xTmp + width, yPosition);
+            glVertex2f(xTmp + width, yTmp);
 
             glTexCoord2f(x, y + h);
-            glVertex2f(xTmp, yPosition);
+            glVertex2f(xTmp, yTmp);
 
             xTmp += width;
         }

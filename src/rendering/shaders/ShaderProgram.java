@@ -7,6 +7,7 @@ import java.io.IOException;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL20;
 import org.lwjgl.opengl.GL32;
+import rendering.Graphics;
 
 public abstract class ShaderProgram {
     private int programID;
@@ -26,6 +27,8 @@ public abstract class ShaderProgram {
         GL20.glLinkProgram(programID);
         GL20.glValidateProgram(programID);
         getAllUniformLocations();
+
+        Graphics.addShader(this);
     }
 
     public ShaderProgram(String vertexFile, String geometryFile, String fragmentFile) {
@@ -40,6 +43,8 @@ public abstract class ShaderProgram {
         GL20.glLinkProgram(programID);
         GL20.glValidateProgram(programID);
         getAllUniformLocations();
+
+        Graphics.addShader(this);
     }
 
     protected abstract void getAllUniformLocations();

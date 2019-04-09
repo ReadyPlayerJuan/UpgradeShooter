@@ -1,11 +1,9 @@
 package main.game.entities;
 
 import main.game.boards.Camera;
-import main.game.entities.Entity;
-import main.util.EfficiencyMetrics;
 import org.lwjgl.BufferUtils;
 import org.lwjgl.opengl.*;
-import rendering.shaders.entity_shader.EntityShader;
+import rendering.Graphics;
 import rendering.textures.Sprite;
 import rendering.textures.SpriteTexture;
 
@@ -14,8 +12,6 @@ import java.util.HashMap;
 import java.util.LinkedList;
 
 public class EntityRenderer {
-    private static final EntityShader entityShader = new EntityShader();
-
     private final int MAX_SPRITES = 100000;
     private final int SPRITE_DATA_LENGTH = 5; //number of floats per sprite
 
@@ -29,10 +25,10 @@ public class EntityRenderer {
     private HashMap<SpriteTexture, LinkedList<Sprite>> sprites = new HashMap<>();
 
     public EntityRenderer() {
-        vao = GL30.glGenVertexArrays();
+        vao = Graphics.createVao();
         GL30.glBindVertexArray(vao);
 
-        vbo = GL15.glGenBuffers();
+        vbo = Graphics.createVbo();
         GL15.glBindBuffer(GL15.GL_ARRAY_BUFFER, vbo);
         GL15.glBufferData(GL15.GL_ARRAY_BUFFER, MAX_SPRITES * SPRITE_DATA_LENGTH * 4, GL15.GL_STREAM_DRAW);
 
@@ -84,8 +80,8 @@ public class EntityRenderer {
             registerSprite(s);
         }*/
 
-        entityShader.start();
-        entityShader.setCameraAndViewSize(camera);
+        Graphics.entityShader.start();
+        Graphics.entityShader.setCameraAndViewSize(camera);
 
         GL30.glBindVertexArray(vao);
         GL20.glEnableVertexAttribArray(0);
@@ -103,7 +99,7 @@ public class EntityRenderer {
 
             GL13.glActiveTexture(GL13.GL_TEXTURE0);
             GL11.glBindTexture(GL11.GL_TEXTURE_2D, texture.getTextureID());
-            entityShader.setNumTextureRows(texture.getNumRows());
+            Graphics.entityShader.setNumTextureRows(texture.getNumRows());
 
             GL11.glDrawArrays(GL11.GL_POINTS, 0, spriteList.size());
         }
@@ -114,7 +110,7 @@ public class EntityRenderer {
         GL20.glDisableVertexAttribArray(3);
         GL30.glBindVertexArray(0);
 
-        entityShader.stop();
+        Graphics.entityShader.stop();
     }
 
     private void loadSpriteData(LinkedList<Sprite> spriteList) {

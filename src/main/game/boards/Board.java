@@ -4,13 +4,12 @@ import main.views.GameView;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL20;
 import org.lwjgl.opengl.GL30;
-import rendering.shaders.wall_shader.WallShader;
+import rendering.Graphics;
 
 import java.nio.FloatBuffer;
 import java.nio.IntBuffer;
 
 public abstract class Board {
-    private static final WallShader wallShader = new WallShader();
     public static final double CELL_SIZE = 100.0;
 
     protected CellSlotter<Wall> slottedWalls;
@@ -31,11 +30,11 @@ public abstract class Board {
         GL30.glBindVertexArray(vao);
         GL20.glEnableVertexAttribArray(0);
 
-        wallShader.start();
-        wallShader.setCameraAndViewSize(camera);
-        wallShader.setColor(0, 0, 0);
+        Graphics.wallShader.start();
+        Graphics.wallShader.setCameraAndViewSize(camera);
+        Graphics.wallShader.setColor(0, 0, 0);
         GL11.glDrawElements(GL11.GL_TRIANGLES, indexBuffer);
-        wallShader.stop();
+        Graphics.wallShader.stop();
 
         GL20.glDisableVertexAttribArray(0);
         GL30.glBindVertexArray(0);
