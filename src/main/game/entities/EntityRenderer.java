@@ -101,7 +101,16 @@ public class EntityRenderer {
             GL11.glBindTexture(GL11.GL_TEXTURE_2D, texture.getTextureID());
             Graphics.entityShader.setNumTextureRows(texture.getNumRows());
 
+            if(texture.hasTransparency()) {
+                GL11.glEnable(GL11.GL_BLEND);
+                GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
+            }
+
             GL11.glDrawArrays(GL11.GL_POINTS, 0, spriteList.size());
+
+            if(texture.hasTransparency()) {
+                GL11.glDisable(GL11.GL_BLEND);
+            }
         }
 
         GL20.glDisableVertexAttribArray(0);

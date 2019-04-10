@@ -5,9 +5,10 @@ import java.util.*;
 import static org.lwjgl.glfw.GLFW.glfwGetTime;
 
 public class EfficiencyMetrics {
-    private static final boolean PRINT_RESULTS_TO_CONSOLE = false;
-    private static final int FRAMES_PER_MESSAGE_PRINT = 30;
-    private static final int[] RECORD_FRAME_COUNTS = new int[] {60, 300, 900};
+    private static final boolean    PRINT_RESULTS_TO_CONSOLE = false;
+    private static final int        FRAMES_PER_MESSAGE_PRINT = 60;//30;
+    private static final int[]      RECORD_FRAME_COUNTS = new int[] {60, 300, 900};
+    private static final int        GAME_START_SKIP_FRAMES = 180;
     private static int maxFrameCounts = 0;
 
     private static ArrayList<EfficiencyMetricType> processTypes = new ArrayList<>();
@@ -17,6 +18,7 @@ public class EfficiencyMetrics {
 
     private static ArrayList<Double> recentFrameTimes = new ArrayList<>();
 
+    private static int skipFrames = 0;
     private static int frameCount = 0;
     private static double lastTime = 0;
 
@@ -26,22 +28,22 @@ public class EfficiencyMetrics {
             stopTimer(type);
         }
 
-        for(Integer i: RECORD_FRAME_COUNTS) {
+        skipFrames = GAME_START_SKIP_FRAMES;
+
+        for(Integer i: RECORD_FRAME_COUNTS)
             if(i > maxFrameCounts)
                 maxFrameCounts = i;
-        }
     }
 
     private static int getProcessIndex(EfficiencyMetricType processType) {
-        for(int i = 0; i < processTypes.size(); i++) {
+        for(int i = 0; i < processTypes.size(); i++)
             if(processTypes.get(i).equals(processType))
                 return i;
-        }
         return -1;
     }
 
     public static void startTimer(EfficiencyMetricType processType) {
-        if(Settings.get(SettingType.USE_EFFICIENCY_METRICS) == 1) {
+        if(Settings.get(SettingType.USE_EFFICIENCY_METRICS) == 1 && skipFrames == 0) {
             int processIndex = getProcessIndex(processType);
 
             if(processIndex == -1) {
@@ -58,7 +60,7 @@ public class EfficiencyMetrics {
     }
 
     public static void stopTimer(EfficiencyMetricType processType) {
-        if(Settings.get(SettingType.USE_EFFICIENCY_METRICS) == 1) {
+        if(Settings.get(SettingType.USE_EFFICIENCY_METRICS) == 1 && skipFrames == 0) {
             int processIndex = getProcessIndex(processType);
 
             double startTime = processTimers.get(processIndex);
@@ -73,13 +75,13 @@ public class EfficiencyMetrics {
     }
 
     public static void frameStart() {
-        if(Settings.get(SettingType.USE_EFFICIENCY_METRICS) == 1) {
+        if(Settings.get(SettingType.USE_EFFICIENCY_METRICS) == 1 && skipFrames == 0) {
             lastTime = glfwGetTime();
         }
     }
 
     public static void frameEnd() {
-        if(Settings.get(SettingType.USE_EFFICIENCY_METRICS) == 1) {
+        if(Settings.get(SettingType.USE_EFFICIENCY_METRICS) == 1 && skipFrames == 0) {
             recentFrameTimes.add(glfwGetTime() - lastTime);
             if(recentFrameTimes.size() > maxFrameCounts) {
                 recentFrameTimes.remove(0);
@@ -94,6 +96,8 @@ public class EfficiencyMetrics {
                     printData();
             }
         }
+
+        skipFrames = Math.max(0, skipFrames-1);
     }
 
     private static void calculateData() {

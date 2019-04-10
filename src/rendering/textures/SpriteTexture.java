@@ -5,10 +5,12 @@ import org.lwjgl.opengl.GL30;
 public class SpriteTexture {
     private int textureID;
     private int numRows;
+    private boolean hasTransparency;
 
-    public SpriteTexture(int textureID, int numRows) {
+    public SpriteTexture(int textureID, int numRows, boolean hasTransparency) {
         this.textureID = textureID;
         this.numRows = numRows;
+        this.hasTransparency = hasTransparency;
     }
 
     public int getTextureID() {
@@ -17,6 +19,10 @@ public class SpriteTexture {
 
     public int getNumRows() {
         return numRows;
+    }
+
+    public boolean hasTransparency() {
+        return hasTransparency;
     }
 
     public void destroy() {

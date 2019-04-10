@@ -60,7 +60,6 @@ public class FrameBuffer {
         glBindTexture(GL_TEXTURE_2D, getTexture());
 
         glBegin(GL_QUADS);
-        glColor4f(1, 1, 1, 1);
         glTexCoord2f(0, 0); glVertex2d(x - w*0.5, y - h*0.5);
         glTexCoord2f(1, 0); glVertex2d(x + w*0.5, y - h*0.5);
         glTexCoord2f(1, 1); glVertex2d(x + w*0.5, y + h*0.5);

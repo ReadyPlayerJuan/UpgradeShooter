@@ -1,20 +1,22 @@
 package rendering.textures;
 
 public enum SpriteData {
-    PLAYER ("test_sprite_1", 2);
+    PLAYER ("test_sprite_1", 2, true);
 
 
     private String fileName;
     private int numRows;
+    private boolean hasTransparency;
     private SpriteTexture texture = null;
 
-    SpriteData(String fileName, int numRows) {
+    SpriteData(String fileName, int numRows, boolean hasTransparency) {
         this.fileName = fileName;
         this.numRows = numRows;
+        this.hasTransparency = hasTransparency;
     }
 
     public void load() {
-        texture = TextureManager.loadTexture(fileName, numRows);
+        texture = TextureManager.loadTexture(fileName, numRows, hasTransparency);
     }
 
     /*public void cleanUp() {

@@ -20,7 +20,7 @@ public class TextureManager {
         SpriteData.loadAll();
     }
 
-    public static SpriteTexture loadTexture(String fileName, int numRows) {
+    public static SpriteTexture loadTexture(String fileName, int numRows, boolean hasTransparency) {
         int texID = glGenTextures();
         glBindTexture(GL_TEXTURE_2D, texID);
 
@@ -52,7 +52,7 @@ public class TextureManager {
 
         glBindTexture(GL_TEXTURE_2D, 0);
 
-        SpriteTexture spriteTexture = new SpriteTexture(texID, numRows);
+        SpriteTexture spriteTexture = new SpriteTexture(texID, numRows, hasTransparency);
         textures.put(textureNames.size(), spriteTexture);
         textureNames.add(fileName);
         return spriteTexture;

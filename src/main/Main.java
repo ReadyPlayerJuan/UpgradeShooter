@@ -49,20 +49,10 @@ public class Main {
             mainView.draw();
             EfficiencyMetrics.stopTimer(EfficiencyMetricType.DRAW_ALL);
             EfficiencyMetrics.stopTimer(EfficiencyMetricType.ENTIRE_FRAME);
-/*
-            GL.createCapabilities();
-            glMatrixMode(GL_PROJECTION);
-            glLoadIdentity();
-            glViewport(0, 0,
-                    Settings.get(SettingType.RESOLUTION_WIDTH),
-                    Settings.get(SettingType.RESOLUTION_HEIGHT));
-            GL11.glOrtho(0,
-                    Settings.get(SettingType.RESOLUTION_WIDTH),
-                    Settings.get(SettingType.RESOLUTION_HEIGHT), 0, 0, 1);
-            glColor3f(1f, 0f, 1f);
-            WindowManager.debugFont.drawText("FPS " + WindowManager.getFps(), 0, Settings.get(SettingType.RESOLUTION_HEIGHT)-WindowManager.debugFontSize);
-*/
+
+
             glOrtho(-1, 1, -1, 1, 0, 1);
+            glColor4f(1, 1, 1, 1);
             mainView.getMainFrameBuffer().draw(0, 0, 2, 2);
 
             WindowManager.updateWindow();

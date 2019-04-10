@@ -15,6 +15,8 @@ import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.nio.FloatBuffer;
 import java.nio.IntBuffer;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import static org.lwjgl.opengl.GL11.*;
 import static org.lwjgl.stb.STBTruetype.*;
@@ -30,7 +32,6 @@ public final class TrueTypeFont {
     private float lineHeight;
 
     private boolean kerningEnabled = true;
-    private boolean lineBBEnabled;
 
     private final ByteBuffer ttf;
 
@@ -105,6 +106,8 @@ public final class TrueTypeFont {
     public void drawText(String text, float x, float y) {
         float scale = stbtt_ScaleForPixelHeight(info, fontHeight);
 
+        y += (int)(fontHeight * 0.3);
+
         try (MemoryStack stack = stackPush()) {
             IntBuffer pCodePoint = stack.mallocInt(1);
 
@@ -119,18 +122,14 @@ public final class TrueTypeFont {
 
             glEnable(GL_TEXTURE_2D);
             glBindTexture(GL_TEXTURE_2D, texID);
+            glEnable(GL_BLEND);
+            glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
             glBegin(GL_QUADS);
             for (int i = 0, to = text.length(); i < to; ) {
                 i += getCP(text, to, i, pCodePoint);
 
                 int cp = pCodePoint.get(0);
                 if (cp == '\n') {
-                    if (lineBBEnabled) {
-                        glEnd();
-                        renderLineBB(text, lineStart, i - 1, fy.get(0), scale);
-                        glBegin(GL_QUADS);
-                    }
-
                     fy.put(0, lineY = fy.get(0) + (ascent - descent + lineGap) * scale);
                     fx.put(0, 0.0f);
 
@@ -168,32 +167,16 @@ public final class TrueTypeFont {
             }
             glEnd();
             glBindTexture(GL_TEXTURE_2D, 0);
-            if (lineBBEnabled) {
-                renderLineBB(text, lineStart, text.length(), lineY, scale);
-            }
+            glDisable(GL_TEXTURE_2D);
+            glDisable(GL_BLEND);
         }
     }
 
-    private void renderLineBB(String text, int from, int to, float y, float scale) {
-        glDisable(GL_TEXTURE_2D);
-        glPolygonMode(GL_FRONT, GL_LINE);
-        //glColor3f(1.0f, 1.0f, 0.0f);
-
-        float width = getStringWidth(info, text, from, to, fontHeight);
-        y -= descent * scale;
-
-        glBegin(GL_QUADS);
-        glVertex2f(0.0f, y);
-        glVertex2f(width, y);
-        glVertex2f(width, y - fontHeight);
-        glVertex2f(0.0f, y - fontHeight);
-        glEnd();
-
-        glEnable(GL_TEXTURE_2D);
-        glPolygonMode(GL_FRONT, GL_FILL);
+    public float getStringWidth(String text) {
+        return getStringWidth(text, 0, text.length());
     }
 
-    private float getStringWidth(STBTTFontinfo info, String text, int from, int to, int fontHeight) {
+    private float getStringWidth(String text, int from, int to) {
         int width = 0;
 
         try (MemoryStack stack = stackPush()) {
@@ -219,6 +202,15 @@ public final class TrueTypeFont {
         return width * stbtt_ScaleForPixelHeight(info, fontHeight);
     }
 
+    public float getStringHeight(String text) {
+        int lc = 0;
+        Matcher m = Pattern.compile("^.*$", Pattern.MULTILINE).matcher(text);
+        while (m.find()) {
+            lc++;
+        }
+        return fontHeight * lc;
+    }
+
     private static int getCP(String text, int to, int i, IntBuffer cpOut) {
         char c1 = text.charAt(i);
         if (Character.isHighSurrogate(c1) && i + 1 < to) {
@@ -230,6 +222,10 @@ public final class TrueTypeFont {
         }
         cpOut.put(0, c1);
         return 1;
+    }
+
+    public int getFontHeight() {
+        return fontHeight;
     }
 
     public void cleanUp() {

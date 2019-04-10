@@ -24,7 +24,7 @@ public class WindowManager {
 
     public static long window;
 
-    public static final int debugFontSize = 18;
+    public static final int debugFontSize = 20;
     public static TrueTypeFont debugFont;
 
     public static void init() {
