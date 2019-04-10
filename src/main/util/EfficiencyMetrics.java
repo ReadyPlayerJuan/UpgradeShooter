@@ -5,9 +5,9 @@ import java.util.*;
 import static org.lwjgl.glfw.GLFW.glfwGetTime;
 
 public class EfficiencyMetrics {
-    private static final boolean PRINT_RESULTS_TO_CONSOLE = true;
+    private static final boolean PRINT_RESULTS_TO_CONSOLE = false;
     private static final int FRAMES_PER_MESSAGE_PRINT = 30;
-    private static final int[] RECORD_FRAME_COUNTS = new int[] {30, 90, 300};
+    private static final int[] RECORD_FRAME_COUNTS = new int[] {60, 300, 900};
     private static int maxFrameCounts = 0;
 
     private static ArrayList<EfficiencyMetricType> processTypes = new ArrayList<>();

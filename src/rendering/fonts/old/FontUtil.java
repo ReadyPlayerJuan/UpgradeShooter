@@ -1,8 +1,7 @@
-package rendering.fonts;
+package rendering.fonts.old;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.io.File;
 import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.util.HashMap;
@@ -144,7 +143,7 @@ public class FontUtil {
             font = Font.createFont(Font.TRUETYPE_FONT, getClass().getClassLoader().getResourceAsStream(ttfFilename))
                     .deriveFont(fontSize);
         } catch (FontFormatException ex) {
-            throw new Exception("TrueTypeFont is not a TTF!");
+            throw new Exception("TrueTypeFont_OLD is not a TTF!");
         } catch (IOException ex) {
             throw new Exception(ex);
         }

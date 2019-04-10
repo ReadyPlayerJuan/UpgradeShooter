@@ -4,6 +4,7 @@ import main.util.SettingType;
 import main.util.Settings;
 
 import org.lwjgl.glfw.*;
+import org.lwjgl.opengl.GL;
 import org.lwjgl.system.*;
 import rendering.fonts.TrueTypeFont;
 
@@ -29,14 +30,17 @@ public class WindowManager {
     public static void init() {
 
         try {
-            debugFont = new TrueTypeFont("monofonto.ttf", debugFontSize);
-            debugFont.drawFontTexture(0, 0);
+            debugFont = new TrueTypeFont(debugFontSize);
+            //debugFont.drawFontTexture(0, 0);
         } catch (Throwable e) {
             System.out.println(e.getMessage());
         }
     }
 
     public static void createWindow() {
+        int windowWidth = Settings.get(SettingType.RESOLUTION_WIDTH);
+        int windowHeight = Settings.get(SettingType.RESOLUTION_HEIGHT);
+
         GLFWErrorCallback.createPrint(System.err).set();
 
         if (!glfwInit())
@@ -48,9 +52,10 @@ public class WindowManager {
         glfwWindowHint(GLFW_RESIZABLE, GLFW_FALSE); // the window will be resizable
 
         // Create the window
-        window = glfwCreateWindow(Settings.get(SettingType.RESOLUTION_WIDTH), Settings.get(SettingType.RESOLUTION_HEIGHT), "SpaceGame", NULL, NULL);
+        window = glfwCreateWindow(windowWidth, windowHeight, "GAME GAME", NULL, NULL);
         if (window == NULL)
             throw new RuntimeException("Failed to create the GLFW window");
+
 
         // Setup a key callback. It will be called every time a key is pressed, repeated or released.
         /*glfwSetKeyCallback(window, (window, key, scancode, action, mods) -> {
@@ -60,6 +65,7 @@ public class WindowManager {
 
         // Make the OpenGL context current
         glfwMakeContextCurrent(window);
+        GL.createCapabilities();
         // Enable v-sync
         glfwSwapInterval(1);
 
@@ -73,6 +79,10 @@ public class WindowManager {
 
         lastFrameTime = getTime();
         updateFps();
+    }
+
+    public static void pollEvents() {
+        glfwPollEvents();
     }
 
     public static void updateWindow() {
@@ -140,6 +150,7 @@ public class WindowManager {
     }*/
 
     public static void cleanUp() {
+        debugFont.cleanUp();
         //layeredColorShader.cleanUp();
     }
 

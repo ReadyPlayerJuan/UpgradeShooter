@@ -36,6 +36,8 @@ public class Main {
             glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
             glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); // clear the framebuffer
 
+            WindowManager.pollEvents();
+
             EfficiencyMetrics.frameStart();
             InputManager.update(WindowManager.getDelta());
 
@@ -47,7 +49,19 @@ public class Main {
             mainView.draw();
             EfficiencyMetrics.stopTimer(EfficiencyMetricType.DRAW_ALL);
             EfficiencyMetrics.stopTimer(EfficiencyMetricType.ENTIRE_FRAME);
-
+/*
+            GL.createCapabilities();
+            glMatrixMode(GL_PROJECTION);
+            glLoadIdentity();
+            glViewport(0, 0,
+                    Settings.get(SettingType.RESOLUTION_WIDTH),
+                    Settings.get(SettingType.RESOLUTION_HEIGHT));
+            GL11.glOrtho(0,
+                    Settings.get(SettingType.RESOLUTION_WIDTH),
+                    Settings.get(SettingType.RESOLUTION_HEIGHT), 0, 0, 1);
+            glColor3f(1f, 0f, 1f);
+            WindowManager.debugFont.drawText("FPS " + WindowManager.getFps(), 0, Settings.get(SettingType.RESOLUTION_HEIGHT)-WindowManager.debugFontSize);
+*/
             glOrtho(-1, 1, -1, 1, 0, 1);
             mainView.getMainFrameBuffer().draw(0, 0, 2, 2);
 

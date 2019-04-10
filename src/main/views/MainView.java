@@ -19,8 +19,6 @@ public class MainView extends View {
 
         layerFrameBuffer = new FrameBuffer(width, height);
 
-        //mainFrameBuffer.setAutomaticOrtho(false);
-
         gameView = new GameView(width, height);
         addSubView(gameView);
 
@@ -37,25 +35,16 @@ public class MainView extends View {
         glClearColor(0f, 0f, 1f, 1);
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-        //gameView.drawMainView(width/2, height/2, width, height);
         gameView.getMainFrameBuffer().draw(width/2, height/2);
 
-        /*glColor3f(1f, 0f, 1f);
+        glColor3f(1f, 0f, 1f);
         WindowManager.debugFont.drawText("FPS " + WindowManager.getFps(), 0, height-WindowManager.debugFontSize);
         for(int i = 0; i < EfficiencyMetrics.processData.size(); i++) {
             String data = EfficiencyMetrics.processData.get(i);
             WindowManager.debugFont.drawText(data, 0, height-WindowManager.debugFontSize*(i*4 + 2));
-        }*/
+        }
 
         mainFrameBuffer.unbindFrameBuffer();
-
-
-
-        //mainFrameBuffer.bindFrameBuffer();
-
-        //WindowManager.layeredColorShader.drawFrameBuffer(layerFrameBuffer);
-
-        //mainFrameBuffer.unbindFrameBuffer();
     }
 
     public void cleanUp() {
