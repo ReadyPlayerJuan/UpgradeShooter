@@ -10,6 +10,7 @@ import static org.lwjgl.glfw.GLFW.*;
 public class InputManager {
     private static View focusedView = null;
     private static LinkedList<Double[]> pressedActionKeys, heldActionKeys, releasedActionKeys;
+    public static double mouseX, mouseY;
 
     public static void init(long w) {
         pressedActionKeys = new LinkedList<Double[]>();
@@ -18,31 +19,37 @@ public class InputManager {
 
 
         glfwSetKeyCallback(w, (window, key, scancode, action, mods) -> {
-            if(isActionKey(key)) {
-                if (action == GLFW_PRESS) {
-                    //add to pressed keys list
-                    pressedActionKeys.add(new Double[]{(double) key, 0.0});
-                    heldActionKeys.add(new Double[]{(double) key, 0.0});
-                } else if (action == GLFW_RELEASE) {
-                    //remove from pressed keys list
-                    for (int i = 0; i < heldActionKeys.size(); i++) {
-                        if (heldActionKeys.get(i)[0] == key) {
-                            releasedActionKeys.add(heldActionKeys.remove(i));
-                            break;
-                        }
-                    }
-                }
-            }
+            processKey(key, action, mods);
+        });
+        glfwSetMouseButtonCallback(w, (window, button, action, mods) -> {
+            processKey(button+1000, action, mods);
+        });
+        glfwSetCursorPosCallback(w, (window, xpos, ypos) -> {
+            mouseX = xpos;
+            mouseY = ypos;
         });
     }
 
-    private static boolean isActionKey(int key) {
-        return true;
+    private static void processKey(int key, int action, int mods) {
+        if (action == GLFW_PRESS) {
+            //add to pressed keys list
+            pressedActionKeys.add(new Double[]{(double) key, 0.0});
+            heldActionKeys.add(new Double[]{(double) key, 0.0});
+        } else if (action == GLFW_RELEASE) {
+            //remove from pressed keys list
+            for (int i = 0; i < heldActionKeys.size(); i++) {
+                if (heldActionKeys.get(i)[0] == key) {
+                    releasedActionKeys.add(heldActionKeys.remove(i));
+                    break;
+                }
+            }
+        }
     }
 
     public static void update(double delta) {
         for(Double[] d: heldActionKeys) {
             d[1] += delta;
+            //System.out.println(d[0] + " " + d[1]);
         }
 
         pressedActionKeys.clear();

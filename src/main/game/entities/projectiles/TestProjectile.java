@@ -3,7 +3,8 @@ package main.game.entities.projectiles;
 import main.game.entities.Entity;
 import main.game.entities.hitboxes.BodyHitbox;
 import main.game.entities.hitboxes.DamagerHitbox;
-import main.game.entities.EntityRenderer;
+import main.game.weapons.WeaponController;
+import rendering.EntityRenderer;
 import main.game.weapons.Weapon;
 import rendering.textures.Sprite;
 import rendering.textures.SpriteData;
@@ -32,7 +33,7 @@ public class TestProjectile extends Projectile {
     //inherited: protected DamagerHitbox[] damagerHitboxes = new DamagerHitbox[0];
     //inherited: protected double terrainCollisionRadius = -1;
 
-    public TestProjectile(Entity source, Weapon weaponSource, SpriteData spriteData, double x, double y, double damage, double speed, double angle, double radius, double knockback) {
+    public TestProjectile(WeaponController source, Weapon weaponSource, SpriteData spriteData, double x, double y, double damage, double speed, double angle, double radius, double knockback) {
         super(source, weaponSource);
 
         sprite = new Sprite(spriteData, x, y, radius);

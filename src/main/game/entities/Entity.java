@@ -4,6 +4,7 @@ import main.game.boards.Slottable;
 import main.game.entities.hitboxes.BodyHitbox;
 import main.game.entities.hitboxes.DamagerHitbox;
 import main.game.Team;
+import rendering.EntityRenderer;
 
 public abstract class Entity extends Slottable {
     protected Team team;

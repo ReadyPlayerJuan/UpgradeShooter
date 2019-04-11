@@ -3,7 +3,7 @@ package main.game.entities.enemies;
 import main.game.Team;
 import main.game.entities.Entity;
 import main.game.entities.hitboxes.BodyHitbox;
-import main.game.entities.EntityRenderer;
+import rendering.EntityRenderer;
 import rendering.WindowManager;
 import rendering.textures.Sprite;
 import rendering.textures.SpriteData;
@@ -12,7 +12,7 @@ public class Dummy extends Entity {
     private Sprite sprite;
     private BodyHitbox hitbox;
 
-    private final double maxHealth = 3;
+    private final double maxHealth = 30;
     private double health = maxHealth;
     private double radius = 20;
 

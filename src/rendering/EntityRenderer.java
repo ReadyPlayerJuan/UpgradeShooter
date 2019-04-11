@@ -1,6 +1,7 @@
-package main.game.entities;
+package rendering;
 
 import main.game.boards.Camera;
+import main.game.entities.Entity;
 import org.lwjgl.BufferUtils;
 import org.lwjgl.opengl.*;
 import rendering.Graphics;
@@ -12,7 +13,7 @@ import java.util.HashMap;
 import java.util.LinkedList;
 
 public class EntityRenderer {
-    private final int MAX_SPRITES = 100000;
+    private final int MAX_SPRITES = 10000;
     private final int SPRITE_DATA_LENGTH = 5; //number of floats per sprite
 
     private final FloatBuffer spriteDataBuffer = BufferUtils.createFloatBuffer(MAX_SPRITES * SPRITE_DATA_LENGTH);

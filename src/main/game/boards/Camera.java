@@ -1,31 +1,51 @@
 package main.game.boards;
 
+import main.game.entities.Entity;
+
 public class Camera {
     private Board board;
 
     private float zoom;
-    private float centerX, centerY;
+    private double centerX, centerY;
     private int viewWidth, viewHeight;
+
+    private double followSpeed;
+    private Entity following;
 
     public Camera(Board board, int viewWidth, int viewHeight) {
         this.board = board;
         this.viewWidth = viewWidth;
         this.viewHeight = viewHeight;
 
-        centerX = 0.0f;
-        centerY = 0.0f;
+        centerX = 0.0;
+        centerY = 0.0;
         zoom = 1.0f;
     }
 
-    public void update(double delta) {
-
+    public void setPosition(float x, float y) {
+        centerX = x;
+        centerY = y;
     }
 
-    public float getCenterX() {
+    public void update(double delta) {
+        if(following != null) {
+            double targetX = following.getX();
+            double targetY = following.getY();
+            centerX += Math.signum(targetX - centerX) * Math.min(1, delta * followSpeed) * Math.abs(targetX - centerX);
+            centerY += Math.signum(targetY - centerY) * Math.min(1, delta * followSpeed) * Math.abs(targetY - centerY);
+        }
+    }
+
+    public void follow(Entity entity, double followSpeed) {
+        this.following = entity;
+        this.followSpeed = followSpeed;
+    }
+
+    public double getCenterX() {
         return centerX;
     }
 
-    public float getCenterY() {
+    public double getCenterY() {
         return centerY;
     }
 

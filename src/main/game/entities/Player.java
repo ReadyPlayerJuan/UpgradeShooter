@@ -1,10 +1,14 @@
 package main.game.entities;
 
+import main.game.boards.Camera;
 import main.game.entities.hitboxes.BodyHitbox;
 import main.game.Team;
-import main.game.entities.projectiles.TestProjectile;
+import main.game.weapons.Weapon;
+import main.game.weapons.WeaponController;
+import main.game.weapons.guns.Pistol;
 import main.input.ControlMapping;
 import main.input.InputManager;
+import rendering.EntityRenderer;
 import rendering.WindowManager;
 import rendering.textures.Sprite;
 import rendering.textures.SpriteData;
@@ -13,7 +17,7 @@ import java.util.LinkedList;
 
 import static java.lang.Math.*;
 
-public class Player extends Entity {
+public class Player extends Entity implements WeaponController {
     private Sprite sprite;
     private BodyHitbox hitbox;
 
@@ -23,8 +27,15 @@ public class Player extends Entity {
     private double accel = 2000;
     private double maxSpeed = 300;
 
+    private Camera camera;
+    private Weapon weapon;
+    private boolean firingWeapon = false, prevFiringWeapon = false;
+    private double targetX = 0, targetY = 0;
+
     public Player() {
         super(Team.PLAYER);
+
+        weapon = new Pistol();
 
         terrainCollisionRadius = radius;
 
@@ -49,6 +60,8 @@ public class Player extends Entity {
 
         int moveX = 0;
         int moveY = 0;
+        prevFiringWeapon = firingWeapon;
+        firingWeapon = false;
         for(Double[] keys: heldKeys) {
             //System.out.println(keys[0] + " " + keys[1]);
             if(keys[0] == ControlMapping.MOVE_LEFT.keyCode)
@@ -59,6 +72,9 @@ public class Player extends Entity {
                 moveY--;
             if(keys[0] == ControlMapping.MOVE_UP.keyCode)
                 moveY++;
+
+            if(keys[0] == ControlMapping.FIRE_WEAPON.keyCode)
+                firingWeapon = true;
         }
 
         if(moveX == 0) {
@@ -75,11 +91,6 @@ public class Player extends Entity {
         }
 
 
-        if(Math.floor(WindowManager.getTime()*1 - delta) < Math.floor(WindowManager.getTime()*1)) {
-            new TestProjectile(this, null, SpriteData.PLAYER, x, y, 1, 300, 0, 10, 0);
-        }
-
-
         nextX = x + xVel * delta;
         nextY = y + yVel * delta;
     }
@@ -93,6 +104,18 @@ public class Player extends Entity {
         sprite.setPosition(x, y);
 
         hitbox.setPosition(x, y);
+
+
+        targetX = InputManager.mouseX - camera.getViewWidth()/2 + camera.getCenterX() - x;
+        targetY = -InputManager.mouseY + camera.getViewHeight()/2 + camera.getCenterY() - y;
+        weapon.update(delta, this);
+        /*if(Math.floor(WindowManager.getTime()*1 - delta) < Math.floor(WindowManager.getTime()*1)) {
+            new TestProjectile(this, null, SpriteData.PLAYER, x, y, 1, 300, 0, 10, 0);
+        }*/
+    }
+
+    public void setCamera(Camera camera) {
+        this.camera = camera;
     }
 
     @Override
@@ -116,5 +139,25 @@ public class Player extends Entity {
         slotMaxX = (int)floor((x + radius) / slotSize);
         slotMinY = (int)floor((y - radius) / slotSize);
         slotMaxY = (int)floor((y + radius) / slotSize);
+    }
+
+    @Override
+    public double getTargetX() {
+        return targetX;
+    }
+
+    @Override
+    public double getTargetY() {
+        return targetY;
+    }
+
+    @Override
+    public boolean isFiringWeapon() {
+        return firingWeapon;
+    }
+
+    @Override
+    public boolean wasFiringWeapon() {
+        return prevFiringWeapon;
     }
 }

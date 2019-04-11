@@ -27,7 +27,10 @@ public class GameView extends View {
         board = new BoardPreset1(this);
         camera = new Camera(board, width, height);
 
-        new Player();
+        Player p = new Player();
+        p.setCamera(camera);
+        camera.follow(p, 16);
+
         new Dummy(100, 100);
         new Dummy(100, 150);
         new Dummy(100, 200);

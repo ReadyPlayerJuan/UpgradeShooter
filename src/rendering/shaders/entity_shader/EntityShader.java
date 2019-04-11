@@ -40,7 +40,7 @@ public class EntityShader extends ShaderProgram {
     }
 
     public void setCamera(Camera camera) {
-        super.loadVector(location_camera_position, camera.getCenterX() - 0*camera.getViewWidth()/2, camera.getCenterY() - 0*camera.getViewHeight()/2);
+        super.loadVector(location_camera_position, (float)camera.getCenterX(), (float)camera.getCenterY());
     }
 
     public void setNumTextureRows(int numRows) {

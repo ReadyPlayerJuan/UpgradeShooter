@@ -28,7 +28,7 @@ public class WeaponStat {
         return defaultValue;
     }
 
-    public double getUpgradedValue() {
+    public double getFinalValue() {
         return upgradedValue;
     }
 }

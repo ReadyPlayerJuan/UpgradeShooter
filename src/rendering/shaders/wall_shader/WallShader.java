@@ -36,7 +36,7 @@ public class WallShader extends ShaderProgram {
     }
 
     public void setCamera(Camera camera) {
-        super.loadVector(location_camera_position, camera.getCenterX() - camera.getViewWidth()/2, camera.getCenterY() - camera.getViewHeight()/2);
+        super.loadVector(location_camera_position, (float)(camera.getCenterX() - camera.getViewWidth()/2), (float)(camera.getCenterY() - camera.getViewHeight()/2));
     }
 
     @Override

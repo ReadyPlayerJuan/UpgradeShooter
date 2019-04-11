@@ -3,9 +3,10 @@ package main.game.entities.projectiles;
 import main.game.Team;
 import main.game.entities.Entity;
 import main.game.weapons.Weapon;
+import main.game.weapons.WeaponController;
 
 public abstract class Projectile extends Entity {
-    protected Entity source;
+    protected WeaponController source;
     protected Weapon weaponSource;
     //inherited: protected Team team;
     //inherited: protected double x, y;
@@ -15,7 +16,7 @@ public abstract class Projectile extends Entity {
     //inherited: protected DamagerHitbox[] damagerHitboxes = new DamagerHitbox[0];
     //inherited: protected double terrainCollisionRadius = -1;
 
-    public Projectile(Entity source, Weapon weaponSource) {
+    public Projectile(WeaponController source, Weapon weaponSource) {
         super(source.getTeam());
         this.source = source;
         this.weaponSource = weaponSource;

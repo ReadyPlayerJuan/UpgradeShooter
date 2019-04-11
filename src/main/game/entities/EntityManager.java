@@ -5,6 +5,7 @@ import main.game.entities.hitboxes.BodyHitbox;
 import main.game.entities.hitboxes.DamagerHitbox;
 import main.util.EfficiencyMetricType;
 import main.util.EfficiencyMetrics;
+import rendering.EntityRenderer;
 
 import java.util.LinkedList;
 
