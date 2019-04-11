@@ -27,7 +27,7 @@ public class WallShader extends ShaderProgram {
     }
 
     public void setCameraAndViewSize(Camera camera) {
-        setViewSize(camera.getViewWidth(), camera.getViewHeight());
+        setViewSize(camera.getViewWidth() / camera.getZoom(), camera.getViewHeight() / camera.getZoom());
         setCamera(camera);
     }
 
@@ -36,7 +36,9 @@ public class WallShader extends ShaderProgram {
     }
 
     public void setCamera(Camera camera) {
-        super.loadVector(location_camera_position, (float)(camera.getCenterX() - camera.getViewWidth()/2), (float)(camera.getCenterY() - camera.getViewHeight()/2));
+        super.loadVector(location_camera_position,
+                (float)(camera.getCenterX() - (camera.getViewWidth() / camera.getZoom() / 2)),
+                (float)(camera.getCenterY() - (camera.getViewHeight() / camera.getZoom() / 2)));
     }
 
     @Override

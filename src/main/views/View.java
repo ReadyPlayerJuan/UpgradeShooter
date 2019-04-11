@@ -6,39 +6,36 @@ import rendering.FrameBuffer;
 import java.util.LinkedList;
 
 public abstract class View {
-    public int draw_priority = 0;
+    public int priority = 0;
     protected int width, height;
+    protected boolean isFocused = false;
+    protected boolean updateIfUnfocused = false;
+    protected boolean drawIfUnfocused = false;
+
     protected boolean shouldBeDestroyed = false;
     protected boolean shouldSortSubViews = false;
-    protected boolean isFocused = false;
 
     protected FrameBuffer mainFrameBuffer;
-    protected LinkedList<View> subViews;
+    protected View parentView;
+    protected LinkedList<View> subViews = new LinkedList<>();
 
-    public View(int width, int height) {
+    public View(View parentView, int width, int height) {
+        this.parentView = parentView;
         this.width = width;
         this.height = height;
         mainFrameBuffer = new FrameBuffer(width, height);
-        subViews = new LinkedList<View>();
     }
 
     public void update(double delta) {
         updateSubViews(delta);
-        updateSelf(delta);
+        if(isFocused || updateIfUnfocused)
+            updateSelf(delta);
     }
 
     public void draw() {
         drawSubViews();
-        drawSelf();
-    }
-
-    public void setFocused(boolean focused) {
-        if(focused) {
-            isFocused = true;
-            InputManager.setFocusedView(this);
-        } else {
-            isFocused = false;
-        }
+        if(isFocused || drawIfUnfocused)
+            drawSelf();
     }
 
     public void addSubView(View v) {
@@ -65,29 +62,23 @@ public abstract class View {
         }
     }
 
+    protected void setFocusedSubView(View view) {
+        for(View v: subViews) {
+            if(v.equals(view))
+                v.setFocused(true);
+            else
+                v.setFocused(false);
+        }
+    }
+
     public abstract void updateSelf(double delta);
     public abstract void drawSelf();
 
-    /*public void drawMainView(double x, double y, double width, double height) {
-        //mainFrameBuffer.draw(x, y, scale);
-        glEnable(GL_TEXTURE_2D);
-        glBindTexture(GL_TEXTURE_2D, mainFrameBuffer.getTexture());
-
-        glBegin(GL_QUADS);
-        glColor4f(1, 1, 1, 1);
-        glTexCoord2f(0, 0); glVertex2d(x - width*0.5, y - height*0.5);
-        glTexCoord2f(1, 0); glVertex2d(x + width*0.5, y - height*0.5);
-        glTexCoord2f(1, 1); glVertex2d(x + width*0.5, y + height*0.5);
-        glTexCoord2f(0, 1); glVertex2d(x - width*0.5, y + height*0.5);
-        glEnd();
-
-        glBindTexture(GL_TEXTURE_2D, 0);
-        glDisable(GL_TEXTURE_2D);
-    }*/
-
-    /*public void drawMainView(int x, int y) {
-
-    }*/
+    public abstract void processViewAction(String action);
+    protected void sendViewAction(String action) {
+        if(parentView != null)
+            parentView.processViewAction(action);
+    }
 
     public FrameBuffer getMainFrameBuffer() {
         return mainFrameBuffer;
@@ -96,11 +87,23 @@ public abstract class View {
     private void sortSubViews() {
         for(int i = 0; i < subViews.size()-1; i++) {
             for(int j = 0; j < i; j++) {
-                if(subViews.get(j).draw_priority < subViews.get(j+1).draw_priority) {
+                if(subViews.get(j).priority < subViews.get(j+1).priority) {
                     subViews.add(j, subViews.remove(j+1));
                 }
             }
         }
+    }
+
+    public void setFocused(boolean focused) {
+        isFocused = focused;
+    }
+
+    public void setUpdateIfUnfocused(boolean updateIfUnfocused) {
+        this.updateIfUnfocused = updateIfUnfocused;
+    }
+
+    public void setDrawIfUnfocused(boolean drawIfUnfocused) {
+        this.drawIfUnfocused = drawIfUnfocused;
     }
 
     public boolean shouldBeDestroyed() {
@@ -113,6 +116,10 @@ public abstract class View {
 
     public int getHeight() {
         return height;
+    }
+
+    public boolean isFocused() {
+        return isFocused;
     }
 
     public void cleanUp() {

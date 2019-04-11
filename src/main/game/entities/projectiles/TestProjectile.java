@@ -36,7 +36,7 @@ public class TestProjectile extends Projectile {
     public TestProjectile(WeaponController source, Weapon weaponSource, SpriteData spriteData, double x, double y, double damage, double speed, double angle, double radius, double knockback) {
         super(source, weaponSource);
 
-        sprite = new Sprite(spriteData, x, y, radius);
+        sprite = new Sprite(spriteData, (float)x, (float)y, (float)radius);
         this.x = x;
         this.y = y;
         this.damage = damage;
@@ -71,7 +71,7 @@ public class TestProjectile extends Projectile {
         x = nextX;
         y = nextY;
 
-        sprite.setPosition(x, y);
+        sprite.setPosition((float)x, (float)y);
 
         hitbox.setPosition(x, y);
     }

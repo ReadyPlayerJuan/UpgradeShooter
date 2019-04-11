@@ -9,19 +9,14 @@ import main.game.entities.enemies.Dummy;
 import main.util.EfficiencyMetricType;
 import main.util.EfficiencyMetrics;
 import org.lwjgl.opengl.GL11;
-import rendering.FrameBuffer;
 
 public class GameView extends View {
     private EntityManager entityManager;
     private Board board;
     private Camera camera;
 
-    private FrameBuffer layerFrameBuffer;
-
-    public GameView(int width, int height) {
-        super(width, height);
-
-        layerFrameBuffer = new FrameBuffer(width, height);
+    public GameView(View parentView, int width, int height) {
+        super(parentView, width, height);
 
         entityManager = new EntityManager();
         board = new BoardPreset1(this);
@@ -38,6 +33,7 @@ public class GameView extends View {
         new Dummy(100, 300);
     }
 
+    @Override
     public void updateSelf(double delta) {
         board.update(delta);
 
@@ -48,8 +44,9 @@ public class GameView extends View {
         camera.update(delta);
     }
 
+    @Override
     public void drawSelf() {
-        layerFrameBuffer.bindFrameBuffer();
+        mainFrameBuffer.bindFrameBuffer();
         GL11.glClearColor(1, 1, 1, 1);
         GL11.glClear(GL11.GL_COLOR_BUFFER_BIT);
 
@@ -61,20 +58,16 @@ public class GameView extends View {
         entityManager.render(camera);
         EfficiencyMetrics.stopTimer(EfficiencyMetricType.DRAW_ENTITIES);
 
-        layerFrameBuffer.unbindFrameBuffer();
-
-
-
-        mainFrameBuffer.bindFrameBuffer();
-        layerFrameBuffer.draw(width/2, height/2, width * camera.getZoom(), height * camera.getZoom());
         mainFrameBuffer.unbindFrameBuffer();
     }
 
+    @Override
+    public void processViewAction(String action) {
+        sendViewAction(action); //pass action up the chain
+    }
+
+    @Override
     public void cleanUp() {
         super.cleanUp();
-
-        layerFrameBuffer.cleanUp();
-        //entityManager.cleanUp();
-        //board.cleanUp();
     }
 }

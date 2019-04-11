@@ -4,7 +4,6 @@ import main.game.boards.Camera;
 import main.game.entities.Entity;
 import org.lwjgl.BufferUtils;
 import org.lwjgl.opengl.*;
-import rendering.Graphics;
 import rendering.textures.Sprite;
 import rendering.textures.SpriteTexture;
 

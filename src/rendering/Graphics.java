@@ -7,11 +7,15 @@ import java.util.List;
 
 import org.lwjgl.BufferUtils;
 import org.lwjgl.opengl.*;
+import rendering.fonts.TrueTypeFont;
 import rendering.shaders.ShaderProgram;
 import rendering.shaders.entity_shader.EntityShader;
 import rendering.shaders.wall_shader.WallShader;
 
 public class Graphics {
+    public static TrueTypeFont debugFont; private static final int debugFontSize = 20;
+    public static TrueTypeFont titleFont; private static final int titleFontSize = 48;
+
     public static WallShader wallShader;
     public static EntityShader entityShader;
 
@@ -23,6 +27,15 @@ public class Graphics {
     public static void initShaders() {
         wallShader = new WallShader();
         entityShader = new EntityShader();
+    }
+
+    public static void initFonts() {
+        try {
+            debugFont = new TrueTypeFont(debugFontSize);
+            titleFont = new TrueTypeFont(titleFontSize);
+        } catch (Throwable e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     public static int createVao() {
@@ -89,5 +102,8 @@ public class Graphics {
         for(FrameBuffer frameBuffer: frameBuffers) {
             frameBuffer.cleanUp();
         }
+
+        debugFont.cleanUp();
+        titleFont.cleanUp();
     }
 }

@@ -1,7 +1,8 @@
 package rendering.textures;
 
 public enum SpriteData {
-    PLAYER ("test_sprite_1", 2, true);
+    PLAYER ("test_sprite_1", 2, true),
+    BUTTON ("button", 2, true);
 
 
     private String fileName;
@@ -18,13 +19,6 @@ public enum SpriteData {
     public void load() {
         texture = TextureManager.loadTexture(fileName, numRows, hasTransparency);
     }
-
-    /*public void cleanUp() {
-        if(texture != null) {
-            texture.destroy();
-            texture = null;
-        }
-    }*/
 
     public String getFileName() {
         return fileName;
@@ -47,10 +41,4 @@ public enum SpriteData {
             s.load();
         }
     }
-
-    /*public static void cleanUpAll() {
-        for(SpriteData s: SpriteData.values()) {
-            s.cleanUp();
-        }
-    }*/
 }

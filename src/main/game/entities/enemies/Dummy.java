@@ -21,7 +21,7 @@ public class Dummy extends Entity {
 
         terrainCollisionRadius = radius;
 
-        sprite = new Sprite(SpriteData.PLAYER, x, y, radius);
+        sprite = new Sprite(SpriteData.PLAYER, (float)x, (float)y, (float)radius);
 
         hitbox = new BodyHitbox(this, team, radius) {
             @Override
@@ -47,9 +47,9 @@ public class Dummy extends Entity {
     public void updatePost(double delta) {
         x = nextX;
         y = nextY;
-        sprite.setRotation(sprite.getRotation() + 0.01);
+        sprite.setRotation(sprite.getRotation() + 0.01f);
         sprite.setImageIndex((int)(WindowManager.getTime() * 1.0) % 4);
-        sprite.setPosition(x, y);
+        sprite.setPosition((float)x, (float)y);
 
         hitbox.setPosition(x, y);
     }

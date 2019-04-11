@@ -8,7 +8,7 @@ import java.util.LinkedList;
 import static org.lwjgl.glfw.GLFW.*;
 
 public class InputManager {
-    private static View focusedView = null;
+    public static final int LEFT_CLICK = 1000;
     private static LinkedList<Double[]> pressedActionKeys, heldActionKeys, releasedActionKeys;
     public static double mouseX, mouseY;
 
@@ -57,11 +57,12 @@ public class InputManager {
         glfwPollEvents();
     }
 
-    public static void setFocusedView(View v) {
-        if(focusedView != null)
-            focusedView.setFocused(false);
-        focusedView = v;
-        //new focused view sets its own focused flag, otherwise would create an infinite loop
+    public static boolean keyHeld(int key) {
+        for(Double[] d: heldActionKeys) {
+            if(d[0] == key)
+                return true;
+        }
+        return false;
     }
 
     public static LinkedList<Double[]> getPressedActionKeys() {
@@ -74,9 +75,5 @@ public class InputManager {
 
     public static LinkedList<Double[]> getReleasedActionKeys() {
         return releasedActionKeys;
-    }
-
-    public static View getFocusedView() {
-        return focusedView;
     }
 }

@@ -61,8 +61,8 @@ public class TextureManager {
     public static void cleanUp() {
         for(Integer key: textures.keySet()) {
             textures.get(key).destroy();
-            textures.remove(key);
         }
+        textures.clear();
         textureNames.clear();
     }
 }

@@ -6,7 +6,6 @@ import main.util.Settings;
 import org.lwjgl.glfw.*;
 import org.lwjgl.opengl.GL;
 import org.lwjgl.system.*;
-import rendering.fonts.TrueTypeFont;
 
 import java.nio.*;
 
@@ -23,19 +22,6 @@ public class WindowManager {
     private static int fps;
 
     public static long window;
-
-    public static final int debugFontSize = 20;
-    public static TrueTypeFont debugFont;
-
-    public static void init() {
-
-        try {
-            debugFont = new TrueTypeFont(debugFontSize);
-            //debugFont.drawFontTexture(0, 0);
-        } catch (Throwable e) {
-            System.out.println(e.getMessage());
-        }
-    }
 
     public static void createWindow() {
         int windowWidth = Settings.get(SettingType.RESOLUTION_WIDTH);
@@ -135,23 +121,6 @@ public class WindowManager {
                     (vidmode.height() - pHeight.get(0)) / 2
             );
         } // the stack frame is popped automatically
-    }
-
-    /*public static void setRenderTarget(FrameBuffer f) {
-        if(currentRenderTarget != null)
-            currentRenderTarget.unbindFrameBuffer();
-
-        currentRenderTarget = f;
-        if(currentRenderTarget != null) {
-            currentRenderTarget.bindFrameBuffer();
-        } else {
-            //glOrtho()
-        }
-    }*/
-
-    public static void cleanUp() {
-        debugFont.cleanUp();
-        //layeredColorShader.cleanUp();
     }
 
     public static double getDelta() {

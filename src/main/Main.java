@@ -24,11 +24,11 @@ public class Main {
         initGL();
 
         Graphics.initShaders();
+        Graphics.initFonts();
         EfficiencyMetrics.init();
         TextureManager.loadAllTextures();
 
         InputManager.init(WindowManager.window);
-        WindowManager.init();
 
         MainView mainView = new MainView(Settings.get(SettingType.RESOLUTION_WIDTH), Settings.get(SettingType.RESOLUTION_HEIGHT));
 
@@ -60,7 +60,6 @@ public class Main {
         }
 
         WindowManager.destroyWindow();
-        WindowManager.cleanUp();
         TextureManager.cleanUp();
         Graphics.cleanUp();
         mainView.cleanUp();
@@ -82,8 +81,6 @@ public class Main {
 
         glMatrixMode(GL_MODELVIEW);
         glLoadIdentity();
-
-
     }
 
     public static void main(String[] argv) {

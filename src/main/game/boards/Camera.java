@@ -22,9 +22,13 @@ public class Camera {
         zoom = 1.0f;
     }
 
-    public void setPosition(float x, float y) {
+    public void setPosition(double x, double y) {
         centerX = x;
         centerY = y;
+    }
+
+    public void setZoom(float zoom) {
+        this.zoom = zoom;
     }
 
     public void update(double delta) {

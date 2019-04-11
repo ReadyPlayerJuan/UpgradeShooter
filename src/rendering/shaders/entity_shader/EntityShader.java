@@ -31,7 +31,7 @@ public class EntityShader extends ShaderProgram {
     }
 
     public void setCameraAndViewSize(Camera camera) {
-        setViewSize(camera.getViewWidth(), camera.getViewHeight());
+        setViewSize(camera.getViewWidth() / camera.getZoom(), camera.getViewHeight() / camera.getZoom());
         setCamera(camera);
     }
 
