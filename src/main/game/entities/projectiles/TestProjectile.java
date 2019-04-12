@@ -35,8 +35,6 @@ public class TestProjectile extends Projectile {
 
     public TestProjectile(WeaponController source, Weapon weaponSource, SpriteData spriteData, double x, double y, double damage, double speed, double angle, double radius, double knockback) {
         super(source, weaponSource);
-
-        sprite = new Sprite(spriteData, (float)x, (float)y, (float)radius*2, (float)radius*2);
         this.x = x;
         this.y = y;
         this.damage = damage;
@@ -45,6 +43,8 @@ public class TestProjectile extends Projectile {
         this.radius = radius;
         this.knockback = knockback;
         this.terrainCollisionRadius = radius;
+
+        sprite = new Sprite(spriteData).setPosition((float)x, (float)y).setSize((float)radius*2);
 
         hitbox = new DamagerHitbox(this, team, radius) {
             @Override

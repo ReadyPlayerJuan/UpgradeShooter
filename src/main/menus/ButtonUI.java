@@ -2,10 +2,11 @@ package main.menus;
 
 import main.input.InputManager;
 import rendering.textures.NineSliceSprite;
+import rendering.textures.Sprite;
 import rendering.textures.SpriteData;
 
 public abstract class ButtonUI extends UI {
-    private NineSliceSprite sprite;
+    private Sprite sprite;
 
     private int hoverWidth, hoverHeight;
     private boolean hovering, clicked;
@@ -18,9 +19,7 @@ public abstract class ButtonUI extends UI {
         this.hoverWidth = width;
         this.hoverHeight = height;
 
-        sprite = new NineSliceSprite(spriteData);
-        sprite.setSize(width, height);
-        sprite.setCornerSize(cornerSize);
+        sprite = new NineSliceSprite(spriteData).setCornerSize(cornerSize).setSize(width, height);
     }
 
     public abstract void buttonAction();

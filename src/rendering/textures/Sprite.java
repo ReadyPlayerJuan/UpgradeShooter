@@ -11,36 +11,7 @@ public class Sprite {
     protected float rotation;
     protected float width, height;
     protected int imageIndex;
-
-    public Sprite(SpriteData spriteData, float x, float y, float width, float height, float rotation, int imageIndex) {
-        this.texture = spriteData.getTexture();
-        this.x = x;
-        this.y = y;
-        this.width = width;
-        this.height = height;
-        this.rotation = rotation;
-        this.imageIndex = imageIndex;
-    }
-
-    public Sprite(SpriteData spriteData, float x, float y, float width, float height) {
-        this.texture = spriteData.getTexture();
-        this.x = x;
-        this.y = y;
-        this.width = width;
-        this.height = height;
-        this.rotation = 0;
-        this.imageIndex = 0;
-    }
-
-    public Sprite(SpriteData spriteData, float x, float y) {
-        this.texture = spriteData.getTexture();
-        this.x = x;
-        this.y = y;
-        this.width = texture.getWidth();
-        this.height = texture.getHeight();
-        this.rotation = 0;
-        this.imageIndex = 0;
-    }
+    protected float[] tint;
 
     public Sprite(SpriteData spriteData) {
         this.texture = spriteData.getTexture();
@@ -50,11 +21,56 @@ public class Sprite {
         this.height = texture.getHeight();
         this.rotation = 0;
         this.imageIndex = 0;
+        tint = new float[] {1, 1, 1};
     }
 
-    public void setPosition(float x, float y) {
+    public Sprite setPosition(float x, float y) {
         this.x = x;
         this.y = y;
+        return this;
+    }
+
+    public Sprite setRotation(float rotation) {
+        this.rotation = rotation;
+        return this;
+    }
+
+    public Sprite setScale(float scale) {
+        setScale(scale, scale);
+        return this;
+    }
+
+    public Sprite setScale(float scaleX, float scaleY) {
+        this.width = scaleX * texture.getWidth();
+        this.height = scaleY * texture.getHeight();
+        return this;
+    }
+
+    public Sprite setSize(float size) {
+        setSize(size, size);
+        return this;
+    }
+
+    public Sprite setSize(float width, float height) {
+        this.width = width;
+        this.height = height;
+        return this;
+    }
+
+    public Sprite setImageIndex(int imageIndex) {
+        this.imageIndex = imageIndex;
+        return this;
+    }
+
+    public Sprite setTint(float r, float g, float b) {
+        tint[0] = r;
+        tint[1] = g;
+        tint[2] = b;
+        return this;
+    }
+
+    public SpriteTexture getTexture() {
+        return texture;
     }
 
     public float getX() {
@@ -69,25 +85,12 @@ public class Sprite {
         return rotation;
     }
 
-    public void setRotation(float rotation) {
-        this.rotation = rotation;
-    }
-
     public float getScaleX() {
         return width / texture.getWidth();
     }
 
     public float getScaleY() {
         return height / texture.getHeight();
-    }
-
-    public void setScale(float scale) {
-        setScale(scale, scale);
-    }
-
-    public void setScale(float scaleX, float scaleY) {
-        this.width = scaleX * texture.getWidth();
-        this.height = scaleY * texture.getHeight();
     }
 
     public float getWidth() {
@@ -98,25 +101,12 @@ public class Sprite {
         return height;
     }
 
-    public void setSize(float size) {
-        setSize(size, size);
-    }
-
-    public void setSize(float width, float height) {
-        this.width = width;
-        this.height = height;
-    }
-
     public int getImageIndex() {
         return imageIndex;
     }
 
-    public void setImageIndex(int imageIndex) {
-        this.imageIndex = imageIndex;
-    }
-
-    public SpriteTexture getTexture() {
-        return texture;
+    public float[] getTint() {
+        return tint;
     }
 
     public void draw() {
@@ -128,7 +118,7 @@ public class Sprite {
             GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
         }
 
-        glColor3f(1, 1, 1);
+        glColor3f(tint[0], tint[1], tint[2]);
         glBegin(GL_QUADS);
         drawTexCoord(1, 0); drawVertex(width/2, -height/2);
         drawTexCoord(0, 0); drawVertex(-width/2, -height/2);

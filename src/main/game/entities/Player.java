@@ -39,7 +39,7 @@ public class Player extends Entity implements WeaponController {
 
         terrainCollisionRadius = radius;
 
-        sprite = new Sprite(SpriteData.PLAYER, (float)x, (float)y, (float)radius*2, (float)radius*2);
+        sprite = new Sprite(SpriteData.PLAYER).setPosition((float)x, (float)y).setSize((float)radius*2);
 
         hitbox = new BodyHitbox(this, team, radius) {
             @Override

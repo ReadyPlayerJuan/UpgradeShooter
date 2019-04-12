@@ -8,28 +8,26 @@ import static org.lwjgl.opengl.GL11.GL_TEXTURE_2D;
 public class NineSliceSprite extends Sprite {
     private float cornerSize = 0;
 
-    public NineSliceSprite(SpriteData spriteData, float x, float y, float width, float height, float rotation, int imageIndex) {
-        super(spriteData, x, y, width, height, rotation, imageIndex);
-    }
-
-    public NineSliceSprite(SpriteData spriteData, float x, float y, float width, float height) {
-        super(spriteData, x, y, width, height);
-    }
-
-    public NineSliceSprite(SpriteData spriteData, float x, float y) {
-        super(spriteData, x, y);
-    }
-
     public NineSliceSprite(SpriteData spriteData) {
         super(spriteData);
     }
 
-    public void setCornerSize(float cornerSize) {
+    public Sprite setCornerSize(float cornerSize) {
         this.cornerSize = cornerSize;
+        return this;
+    }
+
+    public Sprite setCornerScale(float cornerScale) {
+        this.cornerSize = (texture.getWidth() / 3) * cornerScale;
+        return this;
     }
 
     public float getCornerSize() {
         return cornerSize;
+    }
+
+    public float getCornerScale() {
+        return cornerSize / (texture.getWidth() / 3);
     }
 
     @Override
