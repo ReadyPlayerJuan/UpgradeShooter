@@ -3,7 +3,7 @@
 layout(points) in;
 layout(triangle_strip, max_vertices = 4) out;
 
-in float pass_scale[];
+in vec2 pass_size[];
 in float pass_rotation[];
 in float pass_imageIndex[];
 
@@ -11,15 +11,21 @@ out vec2 texCoords;
 
 uniform vec2 cameraPosition;
 uniform vec2 viewSize;
-uniform int numRows;
+uniform vec2 textureDiv;
 
 void vertex(vec2 offset) {
-    float imageOffX = int(pass_imageIndex[0]) % numRows;
-    float imageOffY = int(pass_imageIndex[0]) / numRows;
-    texCoords = vec2((offset.x * 0.5 + 0.5 + imageOffX) / numRows, (offset.y * -0.5 + 0.5 + imageOffY) / numRows);
+    int numRows = int(textureDiv.x);
+    int numCols = int(textureDiv.y);
+
+    float imageOffX = int(pass_imageIndex[0]) % numCols;
+    float imageOffY = int(pass_imageIndex[0]) / numCols;
+    texCoords = vec2((offset.x * 0.5 + 0.5 + imageOffX) / numCols, (offset.y * -0.5 + 0.5 + imageOffY) / numRows);
 
     float rotation = pass_rotation[0];
-    vec2 offPos = pass_scale[0] * vec2(offset.x * cos(rotation) - offset.y * sin(rotation), offset.x * sin(rotation) + offset.y * cos(rotation));
+    vec2 size = pass_size[0] * 0.5;
+    vec2 offPos = vec2(
+            offset.x * size.x * cos(rotation) - offset.y * size.y * sin(rotation),
+            offset.x * size.x * sin(rotation) + offset.y * size.y * cos(rotation));
     gl_Position = vec4((gl_in[0].gl_Position.xy - cameraPosition + offPos) / (viewSize/2.0), 0, 1);
 }
 

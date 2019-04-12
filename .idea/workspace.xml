@@ -2,46 +2,53 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5201b9fb-f484-41e6-b6d0-d7fe65d39434" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/res/button.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/menus/ButtonUI.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/menus/FrameUI.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/menus/UI.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/views/MainMenuView.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/game/weapons/WeaponUpgradeGrid.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/util/ExpandableGrid.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/UpgradeShooter/main/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/UpgradeShooter/main/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/UpgradeShooter/main/game/boards/Camera.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/UpgradeShooter/main/game/boards/Camera.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/UpgradeShooter/button.png" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/UpgradeShooter/button.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/UpgradeShooter/main/game/boards/Board.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/UpgradeShooter/main/game/boards/Board.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/UpgradeShooter/main/game/boards/CellEventManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/UpgradeShooter/main/game/boards/CellEventManager.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/UpgradeShooter/main/game/boards/CellSlotter.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/UpgradeShooter/main/game/boards/CellSlotter.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/UpgradeShooter/main/game/entities/EntityManager$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/UpgradeShooter/main/game/entities/EntityManager$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/UpgradeShooter/main/game/entities/EntityManager$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/UpgradeShooter/main/game/entities/EntityManager$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/UpgradeShooter/main/game/entities/EntityManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/UpgradeShooter/main/game/entities/EntityManager.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/UpgradeShooter/main/game/entities/Player.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/UpgradeShooter/main/game/entities/Player.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/UpgradeShooter/main/game/entities/enemies/Dummy.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/UpgradeShooter/main/game/entities/enemies/Dummy.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/UpgradeShooter/main/game/entities/projectiles/TestProjectile.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/UpgradeShooter/main/game/entities/projectiles/TestProjectile.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/UpgradeShooter/main/input/InputManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/UpgradeShooter/main/input/InputManager.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/UpgradeShooter/main/views/GameView.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/UpgradeShooter/main/views/GameView.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/UpgradeShooter/main/game/weapons/guns/Pistol.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/UpgradeShooter/main/game/weapons/guns/Pistol.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/UpgradeShooter/main/menus/ButtonUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/UpgradeShooter/main/menus/ButtonUI.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/UpgradeShooter/main/util/Util.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/UpgradeShooter/main/util/Util.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/UpgradeShooter/main/views/MainMenuView$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/UpgradeShooter/main/views/MainMenuView$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/UpgradeShooter/main/views/MainMenuView.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/UpgradeShooter/main/views/MainMenuView.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/UpgradeShooter/main/views/MainView.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/UpgradeShooter/main/views/MainView.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/UpgradeShooter/main/views/View.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/UpgradeShooter/main/views/View.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/UpgradeShooter/rendering/EntityRenderer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/UpgradeShooter/rendering/EntityRenderer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/UpgradeShooter/rendering/Graphics.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/UpgradeShooter/rendering/Graphics.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/UpgradeShooter/rendering/WindowManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/UpgradeShooter/rendering/WindowManager.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/UpgradeShooter/rendering/shaders/entity_shader/EntityShader.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/UpgradeShooter/rendering/shaders/entity_shader/EntityShader.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/UpgradeShooter/rendering/shaders/wall_shader/WallShader.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/UpgradeShooter/rendering/shaders/wall_shader/WallShader.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/UpgradeShooter/rendering/shaders/entity_shader/entityGeometry.txt" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/UpgradeShooter/rendering/shaders/entity_shader/entityGeometry.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/UpgradeShooter/rendering/shaders/entity_shader/entityVertex.txt" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/UpgradeShooter/rendering/shaders/entity_shader/entityVertex.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/UpgradeShooter/rendering/textures/Sprite.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/UpgradeShooter/rendering/textures/Sprite.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/UpgradeShooter/rendering/textures/SpriteData.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/UpgradeShooter/rendering/textures/SpriteData.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/UpgradeShooter/rendering/textures/SpriteTexture.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/UpgradeShooter/rendering/textures/SpriteTexture.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/UpgradeShooter/rendering/textures/TextureManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/UpgradeShooter/rendering/textures/TextureManager.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/game/boards/Camera.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/game/boards/Camera.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/button.png" beforeDir="false" afterPath="$PROJECT_DIR$/res/button.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/game/boards/CellEventManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/game/boards/CellEventManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/game/boards/CellSlotter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/game/boards/CellSlotter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/game/entities/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/game/entities/Player.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/game/entities/enemies/Dummy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/game/entities/enemies/Dummy.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/game/entities/projectiles/TestProjectile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/game/entities/projectiles/TestProjectile.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/input/InputManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/input/InputManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/views/GameView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/views/GameView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/game/weapons/guns/Pistol.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/game/weapons/guns/Pistol.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/menus/ButtonUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/menus/ButtonUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/util/Util.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/util/Util.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/views/MainMenuView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/views/MainMenuView.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/views/MainView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/views/MainView.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/views/View.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/views/View.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/rendering/EntityRenderer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/rendering/EntityRenderer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/rendering/Graphics.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/rendering/Graphics.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/rendering/WindowManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/rendering/WindowManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/rendering/fonts/TextField.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/rendering/fonts/TextField.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/rendering/shaders/entity_shader/EntityShader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/rendering/shaders/entity_shader/EntityShader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/rendering/shaders/wall_shader/WallShader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/rendering/shaders/wall_shader/WallShader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/rendering/shaders/entity_shader/entityGeometry.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/rendering/shaders/entity_shader/entityGeometry.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/rendering/shaders/entity_shader/entityVertex.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/rendering/shaders/entity_shader/entityVertex.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/rendering/textures/Sprite.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/rendering/textures/Sprite.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/rendering/textures/SpriteData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/rendering/textures/SpriteData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/rendering/textures/SpriteTexture.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/rendering/textures/SpriteTexture.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/rendering/textures/TextureManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/rendering/textures/TextureManager.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -54,60 +61,61 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="UI.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/menus/UI.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="464">
-              <caret line="27" column="34" selection-start-line="27" selection-start-column="34" selection-end-line="27" selection-end-column="34" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#2248#2249#0" expanded="true" />
-                <element signature="e#2288#2289#0" expanded="true" />
-                <element signature="e#2323#2324#0" expanded="true" />
-                <element signature="e#2355#2356#0" expanded="true" />
-                <element signature="e#2390#2391#0" expanded="true" />
-                <element signature="e#2422#2423#0" expanded="true" />
-                <element signature="e#2454#2455#0" expanded="true" />
-                <element signature="e#2483#2484#0" expanded="true" />
-                <element signature="e#2515#2516#0" expanded="true" />
-                <element signature="e#2544#2545#0" expanded="true" />
-                <element signature="e#2575#2576#0" expanded="true" />
-                <element signature="e#2603#2604#0" expanded="true" />
-                <element signature="e#2635#2636#0" expanded="true" />
-                <element signature="e#2664#2665#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="FrameUI.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/menus/FrameUI.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="80">
-              <caret line="4" column="59" lean-forward="true" selection-start-line="4" selection-start-column="59" selection-end-line="4" selection-end-column="59" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="ButtonUI.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/menus/ButtonUI.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="280">
-              <caret line="17" column="39" lean-forward="true" selection-start-line="17" selection-start-column="39" selection-end-line="17" selection-end-column="39" />
+            <state relative-caret-position="294">
+              <caret line="19" column="27" selection-start-line="19" selection-start-column="27" selection-end-line="19" selection-end-column="27" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#1426#1427#0" expanded="true" />
-                <element signature="e#1455#1456#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MainView.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/views/MainView.java">
+      <file leaf-file-name="Sprite.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/rendering/textures/Sprite.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="880">
-              <caret line="56" column="43" selection-start-line="56" selection-start-column="43" selection-end-line="56" selection-end-column="43" />
+            <state relative-caret-position="165">
+              <caret line="28" column="27" lean-forward="true" selection-start-line="28" selection-start-column="27" selection-end-line="28" selection-end-column="27" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#1180#1181#0" expanded="true" />
+                <element signature="e#1204#1205#0" expanded="true" />
+                <element signature="e#1231#1232#0" expanded="true" />
+                <element signature="e#1255#1256#0" expanded="true" />
+                <element signature="e#1289#1290#0" expanded="true" />
+                <element signature="e#1320#1321#0" expanded="true" />
+                <element signature="e#1367#1368#0" expanded="true" />
+                <element signature="e#1407#1408#0" expanded="true" />
+                <element signature="e#1438#1439#0" expanded="true" />
+                <element signature="e#1466#1467#0" expanded="true" />
+                <element signature="e#1500#1501#0" expanded="true" />
+                <element signature="e#1529#1530#0" expanded="true" />
+                <element signature="e#1613#1614#0" expanded="true" />
+                <element signature="e#1641#1642#0" expanded="true" />
+                <element signature="e#1593#1594#0" expanded="true" />
+                <element signature="e#1642#1643#0" expanded="true" />
+                <element signature="e#1674#1675#0" expanded="true" />
+                <element signature="e#1724#1725#0" expanded="true" />
+                <element signature="e#1978#1979#0" expanded="true" />
+                <element signature="e#2011#2012#0" expanded="true" />
+                <element signature="e#1830#1831#0" expanded="true" />
+                <element signature="e#1863#1864#0" expanded="true" />
+                <element signature="e#1912#1913#0" expanded="true" />
+                <element signature="e#1956#1957#0" expanded="true" />
+                <element signature="e#1997#1998#0" expanded="true" />
+                <element signature="e#2027#2028#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Player.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/game/entities/Player.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="280">
+              <caret line="41" column="99" selection-start-line="41" selection-start-column="67" selection-end-line="41" selection-end-column="99" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -118,8 +126,8 @@
       <file leaf-file-name="Dummy.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/game/entities/enemies/Dummy.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="53" column="33" lean-forward="true" selection-start-line="53" selection-start-column="33" selection-end-line="53" selection-end-column="33" />
+            <state relative-caret-position="280">
+              <caret line="23" column="99" selection-start-line="23" selection-start-column="99" selection-end-line="23" selection-end-column="99" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -127,15 +135,13 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MainMenuView.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/views/MainMenuView.java">
+      <file leaf-file-name="TestProjectile.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/game/entities/projectiles/TestProjectile.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="273">
-              <caret line="22" column="90" selection-start-line="22" selection-start-column="90" selection-end-line="22" selection-end-column="90" />
+            <state relative-caret-position="-612">
+              <caret line="38" column="92" selection-start-line="38" selection-start-column="92" selection-end-line="38" selection-end-column="92" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#594#595#0" expanded="true" />
-                <element signature="e#666#667#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -144,11 +150,38 @@
       <file leaf-file-name="EntityRenderer.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/rendering/EntityRenderer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="320">
-              <caret line="103" column="43" lean-forward="true" selection-start-line="103" selection-start-column="43" selection-end-line="103" selection-end-column="43" />
+            <state>
+              <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="EntityShader.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/rendering/shaders/entity_shader/EntityShader.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="264">
+              <caret line="46" column="65" lean-forward="true" selection-start-line="46" selection-start-column="65" selection-end-line="46" selection-end-column="65" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="entityGeometry.txt" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/rendering/shaders/entity_shader/entityGeometry.txt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="540">
+              <caret line="27" column="65" selection-start-line="27" selection-start-column="65" selection-end-line="27" selection-end-column="65" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="entityVertex.txt" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/rendering/shaders/entity_shader/entityVertex.txt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="140">
+              <caret line="7" column="19" lean-forward="true" selection-start-line="7" selection-start-column="19" selection-end-line="7" selection-end-column="19" />
             </state>
           </provider>
         </entry>
@@ -176,14 +209,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/rendering/fonts/test/Truetype.java" />
-        <option value="$PROJECT_DIR$/src/rendering/fonts/test/Truetype2.java" />
-        <option value="$PROJECT_DIR$/src/rendering/fonts/test/FontTester2.java" />
-        <option value="$PROJECT_DIR$/src/rendering/fonts/test/FontTester3.java" />
-        <option value="$PROJECT_DIR$/src/rendering/fonts/test/Truetype3.java" />
-        <option value="$PROJECT_DIR$/src/rendering/fonts/Truetype3.java" />
-        <option value="$PROJECT_DIR$/src/rendering/fonts/old/FontUtil.java" />
-        <option value="$PROJECT_DIR$/src/rendering/textures/SpriteTexture.java" />
         <option value="$PROJECT_DIR$/src/main/game/entities/EntityRenderer.java" />
         <option value="$PROJECT_DIR$/src/rendering/fonts/TrueTypeFont.java" />
         <option value="$PROJECT_DIR$/src/rendering/FrameBuffer.java" />
@@ -196,20 +221,15 @@
         <option value="$PROJECT_DIR$/src/main/game/weapons/WeaponController.java" />
         <option value="$PROJECT_DIR$/src/main/game/entities/projectiles/Projectile.java" />
         <option value="$PROJECT_DIR$/src/main/game/weapons/Weapon.java" />
-        <option value="$PROJECT_DIR$/src/main/game/weapons/guns/Pistol.java" />
         <option value="$PROJECT_DIR$/src/main/game/boards/Camera.java" />
-        <option value="$PROJECT_DIR$/src/rendering/shaders/entity_shader/EntityShader.java" />
         <option value="$PROJECT_DIR$/src/rendering/shaders/wall_shader/WallShader.java" />
         <option value="$PROJECT_DIR$/src/main/views/GameState.java" />
         <option value="$PROJECT_DIR$/src/main/views/Node.java" />
         <option value="$PROJECT_DIR$/src/main/menus/TextFieldUI.java" />
         <option value="$PROJECT_DIR$/src/main/menus/TextField.java" />
         <option value="$PROJECT_DIR$/src/rendering/fonts/TextField.java" />
-        <option value="$PROJECT_DIR$/src/main/views/View.java" />
         <option value="$PROJECT_DIR$/src/main/views/GameView.java" />
         <option value="$PROJECT_DIR$/src/main/menus/FrameUI.java" />
-        <option value="$PROJECT_DIR$/src/rendering/EntityRenderer.java" />
-        <option value="$PROJECT_DIR$/src/rendering/textures/SpriteData.java" />
         <option value="$PROJECT_DIR$/src/rendering/shaders/gui_shader/guiVertex.txt" />
         <option value="$PROJECT_DIR$/src/rendering/shaders/gui_shader/guiGeometry.txt" />
         <option value="$PROJECT_DIR$/src/rendering/shaders/gui_shader/GuiShader.java" />
@@ -218,15 +238,28 @@
         <option value="$PROJECT_DIR$/src/rendering/Graphics.java" />
         <option value="$PROJECT_DIR$/src/rendering/WindowManager.java" />
         <option value="$PROJECT_DIR$/src/main/menus/UI.java" />
+        <option value="$PROJECT_DIR$/src/main/Main.java" />
+        <option value="$PROJECT_DIR$/src/main/game/boards/CellSlotter.java" />
+        <option value="$PROJECT_DIR$/src/main/game/boards/CellEventManager.java" />
+        <option value="$PROJECT_DIR$/src/main/util/ExpandableGrid.java" />
+        <option value="$PROJECT_DIR$/src/main/util/Util.java" />
+        <option value="$PROJECT_DIR$/src/main/game/weapons/WeaponUpgradeGrid.java" />
+        <option value="$PROJECT_DIR$/src/main/game/weapons/guns/Pistol.java" />
+        <option value="$PROJECT_DIR$/src/main/views/View.java" />
+        <option value="$PROJECT_DIR$/src/main/views/MainView.java" />
+        <option value="$PROJECT_DIR$/src/rendering/textures/SpriteData.java" />
+        <option value="$PROJECT_DIR$/src/rendering/textures/TextureManager.java" />
+        <option value="$PROJECT_DIR$/src/rendering/textures/SpriteTexture.java" />
+        <option value="$PROJECT_DIR$/src/rendering/shaders/entity_shader/EntityShader.java" />
+        <option value="$PROJECT_DIR$/src/rendering/shaders/entity_shader/entityVertex.txt" />
+        <option value="$PROJECT_DIR$/src/rendering/shaders/entity_shader/entityGeometry.txt" />
+        <option value="$PROJECT_DIR$/src/rendering/textures/Sprite.java" />
+        <option value="$PROJECT_DIR$/src/main/views/MainMenuView.java" />
+        <option value="$PROJECT_DIR$/src/main/menus/ButtonUI.java" />
         <option value="$PROJECT_DIR$/src/main/game/entities/Player.java" />
         <option value="$PROJECT_DIR$/src/main/game/entities/enemies/Dummy.java" />
         <option value="$PROJECT_DIR$/src/main/game/entities/projectiles/TestProjectile.java" />
-        <option value="$PROJECT_DIR$/src/rendering/textures/TextureManager.java" />
-        <option value="$PROJECT_DIR$/src/main/Main.java" />
-        <option value="$PROJECT_DIR$/src/rendering/textures/Sprite.java" />
-        <option value="$PROJECT_DIR$/src/main/menus/ButtonUI.java" />
-        <option value="$PROJECT_DIR$/src/main/views/MainView.java" />
-        <option value="$PROJECT_DIR$/src/main/views/MainMenuView.java" />
+        <option value="$PROJECT_DIR$/src/rendering/EntityRenderer.java" />
       </list>
     </option>
   </component>
@@ -289,6 +322,15 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="game" type="462c0819:PsiDirectoryNode" />
               <item name="entities" type="462c0819:PsiDirectoryNode" />
+              <item name="enemies" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="UpgradeShooter" type="b2602c69:ProjectViewProjectNode" />
+              <item name="UpgradeShooter" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="game" type="462c0819:PsiDirectoryNode" />
+              <item name="entities" type="462c0819:PsiDirectoryNode" />
               <item name="projectiles" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -296,7 +338,17 @@
               <item name="UpgradeShooter" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="input" type="462c0819:PsiDirectoryNode" />
+              <item name="game" type="462c0819:PsiDirectoryNode" />
+              <item name="weapons" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="UpgradeShooter" type="b2602c69:ProjectViewProjectNode" />
+              <item name="UpgradeShooter" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="game" type="462c0819:PsiDirectoryNode" />
+              <item name="weapons" type="462c0819:PsiDirectoryNode" />
+              <item name="guns" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="UpgradeShooter" type="b2602c69:ProjectViewProjectNode" />
@@ -304,6 +356,13 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="menus" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="UpgradeShooter" type="b2602c69:ProjectViewProjectNode" />
+              <item name="UpgradeShooter" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="util" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="UpgradeShooter" type="b2602c69:ProjectViewProjectNode" />
@@ -384,17 +443,6 @@
     </option>
   </component>
   <component name="RunManager" selected="Application.Main">
-    <configuration name="FontTester" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="rendering.fonts.test.FontTester" />
-      <module name="UpgradeShooter" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="rendering.fonts.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-    </configuration>
     <configuration name="FontTester3" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="rendering.fonts.FontTester3" />
       <module name="UpgradeShooter" />
@@ -435,6 +483,17 @@
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="rendering.fonts.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+    </configuration>
+    <configuration name="WeaponUpgradeGrid" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="main.game.weapons.WeaponUpgradeGrid" />
+      <module name="UpgradeShooter" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="main.game.weapons.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -481,19 +540,19 @@
       <listeners />
     </configuration>
     <list>
-      <item itemvalue="Application.FontTester" />
       <item itemvalue="Application.Truetype2" />
       <item itemvalue="Application.TrueTypeFont" />
       <item itemvalue="Application.FontTester3" />
       <item itemvalue="Application.Main" />
+      <item itemvalue="Application.WeaponUpgradeGrid" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="Application.Main" />
+        <item itemvalue="Application.WeaponUpgradeGrid" />
         <item itemvalue="Application.FontTester3" />
         <item itemvalue="Application.TrueTypeFont" />
         <item itemvalue="Application.Truetype2" />
-        <item itemvalue="Application.FontTester" />
       </list>
     </recent_temporary>
   </component>
@@ -551,110 +610,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/rendering/fonts/GLFWUtil.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="214">
-          <caret line="16" column="19" selection-start-line="16" selection-start-column="19" selection-end-line="16" selection-end-column="19" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/rendering/fonts/old/TrueTypeFont_OLD.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="80">
-          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/rendering/fonts/FontTester3.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="334">
-          <caret line="19" column="13" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#3009#3010#0" expanded="true" />
-            <element signature="e#3056#3057#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/rendering/fonts/old/FontUtil.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="3" column="36" selection-start-line="3" selection-start-column="36" selection-end-line="3" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/util/EfficiencyMetricType.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="19" lean-forward="true" selection-start-line="19" selection-end-line="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/rendering/textures/SpriteTexture.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="22" column="4" lean-forward="true" selection-start-line="22" selection-start-column="4" selection-end-line="22" selection-end-column="4" />
-          <folding>
-            <element signature="e#549#550#0" expanded="true" />
-            <element signature="e#587#588#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/rendering/fonts/TrueTypeFont.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-43">
-          <caret line="108" column="18" selection-start-line="108" selection-start-column="18" selection-end-line="108" selection-end-column="18" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#5033#5034#0" expanded="true" />
-            <element signature="e#5071#5072#0" expanded="true" />
-            <element signature="e#6870#6871#0" expanded="true" />
-            <element signature="e#6903#6904#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/util/EfficiencyMetrics.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="18" lean-forward="true" selection-start-column="18" selection-end-column="18" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/input/ControlMapping.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="140">
-          <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/game/entities/EntityManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="40">
-          <caret line="2" column="7" lean-forward="true" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="7" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1909#2218#0" expanded="true" />
-            <element signature="e#2217#2218#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/game/weapons/stats/WeaponStat.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="460">
-          <caret line="29" lean-forward="true" selection-start-line="29" selection-end-line="29" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/game/weapons/WeaponController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="100">
@@ -690,13 +645,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/game/weapons/guns/Pistol.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1384">
-          <caret line="81" column="12" selection-start-line="81" selection-start-column="12" selection-end-line="81" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/game/boards/Board.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="80">
@@ -712,13 +660,6 @@
             <element signature="e#497#498#0" expanded="true" />
             <element signature="e#546#547#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/rendering/shaders/entity_shader/EntityShader.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="273">
-          <caret line="33" column="103" selection-start-line="33" selection-start-column="103" selection-end-line="33" selection-end-column="103" />
         </state>
       </provider>
     </entry>
@@ -753,31 +694,6 @@
           <caret line="14" column="60" lean-forward="true" selection-start-line="14" selection-start-column="60" selection-end-line="14" selection-end-column="60" />
           <folding>
             <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/views/View.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="79" column="12" selection-start-line="79" selection-start-column="12" selection-end-line="79" selection-end-column="12" />
-          <folding>
-            <element signature="e#1822#1823#0" expanded="true" />
-            <element signature="e#1860#1861#0" expanded="true" />
-            <element signature="e#2219#2220#0" expanded="true" />
-            <element signature="e#2254#2255#0" expanded="true" />
-            <element signature="e#2321#2322#0" expanded="true" />
-            <element signature="e#2379#2380#0" expanded="true" />
-            <element signature="e#2442#2443#0" expanded="true" />
-            <element signature="e#2496#2497#0" expanded="true" />
-            <element signature="e#2538#2539#0" expanded="true" />
-            <element signature="e#2578#2579#0" expanded="true" />
-            <element signature="e#2607#2608#0" expanded="true" />
-            <element signature="e#2635#2636#0" expanded="true" />
-            <element signature="e#2665#2666#0" expanded="true" />
-            <element signature="e#2694#2695#0" expanded="true" />
-            <element signature="e#2728#2729#0" expanded="true" />
-            <element signature="e#2760#2761#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -850,20 +766,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/rendering/shaders/entity_shader/entityGeometry.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="15" column="26" lean-forward="true" selection-start-line="15" selection-start-column="26" selection-end-line="22" selection-end-column="99" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/rendering/textures/SpriteData.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="80">
-          <caret line="4" column="31" lean-forward="true" selection-start-line="4" selection-start-column="31" selection-end-line="4" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/input/InputManager.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="100">
@@ -893,54 +795,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/menus/FrameUI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="80">
-          <caret line="4" column="59" lean-forward="true" selection-start-line="4" selection-start-column="59" selection-end-line="4" selection-end-column="59" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/menus/UI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="464">
-          <caret line="27" column="34" selection-start-line="27" selection-start-column="34" selection-end-line="27" selection-end-column="34" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#2248#2249#0" expanded="true" />
-            <element signature="e#2288#2289#0" expanded="true" />
-            <element signature="e#2323#2324#0" expanded="true" />
-            <element signature="e#2355#2356#0" expanded="true" />
-            <element signature="e#2390#2391#0" expanded="true" />
-            <element signature="e#2422#2423#0" expanded="true" />
-            <element signature="e#2454#2455#0" expanded="true" />
-            <element signature="e#2483#2484#0" expanded="true" />
-            <element signature="e#2515#2516#0" expanded="true" />
-            <element signature="e#2544#2545#0" expanded="true" />
-            <element signature="e#2575#2576#0" expanded="true" />
-            <element signature="e#2603#2604#0" expanded="true" />
-            <element signature="e#2635#2636#0" expanded="true" />
-            <element signature="e#2664#2665#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/game/entities/Player.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-95">
-          <caret line="103" column="44" selection-start-line="103" selection-start-column="44" selection-end-line="103" selection-end-column="44" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/rendering/textures/TextureManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="567">
-          <caret line="64" column="25" selection-start-line="64" selection-start-column="25" selection-end-line="64" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/Main.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="444">
@@ -951,20 +805,172 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/game/entities/projectiles/TestProjectile.java">
+    <entry file="file://$PROJECT_DIR$/src/main/game/boards/CellSlotter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1211">
-          <caret line="73" column="44" selection-start-line="73" selection-start-column="44" selection-end-line="73" selection-end-column="44" />
+        <state relative-caret-position="820">
+          <caret line="43" lean-forward="true" selection-start-line="43" selection-end-line="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/game/boards/CellEventManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="13" column="76" lean-forward="true" selection-start-line="13" selection-start-column="76" selection-end-line="13" selection-end-column="76" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk-10.0.1/lib/src.zip!/java.base/jdk/internal/util/Preconditions.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="222">
+          <caret line="63" selection-start-line="63" selection-end-line="63" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk-10.0.1/lib/src.zip!/java.base/java/util/ArrayList.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="222">
+          <caret line="439" selection-start-line="439" selection-end-line="439" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/util/ExpandableGrid.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="441">
+          <caret line="69" column="5" lean-forward="true" selection-start-line="69" selection-start-column="5" selection-end-line="69" selection-end-column="5" />
+          <folding>
+            <element signature="e#260#261#0" expanded="true" />
+            <element signature="e#279#280#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/game/weapons/guns/Pistol.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="307">
+          <caret line="44" lean-forward="true" selection-start-line="44" selection-end-line="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/util/Util.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="320">
+          <caret line="20" column="56" selection-start-line="20" selection-start-column="56" selection-end-line="20" selection-end-column="56" />
+          <folding>
+            <element signature="e#557#558#0" expanded="true" />
+            <element signature="e#592#593#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/views/View.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="164">
+          <caret line="66" column="12" selection-start-line="66" selection-start-column="12" selection-end-line="66" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/game/weapons/WeaponUpgradeGrid.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="84">
+          <caret line="48" column="17" lean-forward="true" selection-start-line="48" selection-start-column="17" selection-end-line="48" selection-end-column="17" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#2170#2171#0" expanded="true" />
+            <element signature="e#2211#2212#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/rendering/textures/TextureManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="520">
+          <caret line="56" column="124" selection-start-line="56" selection-start-column="124" selection-end-line="56" selection-end-column="124" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/rendering/shaders/entity_shader/entityFragment.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="12" lean-forward="true" selection-start-column="12" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/menus/FrameUI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="80">
+          <caret line="4" column="59" lean-forward="true" selection-start-line="4" selection-start-column="59" selection-end-line="4" selection-end-column="59" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/views/MainView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="104">
+          <caret line="48" column="59" lean-forward="true" selection-start-line="48" selection-start-column="59" selection-end-line="48" selection-end-column="59" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/game/entities/enemies/Dummy.java">
+    <entry file="file://$PROJECT_DIR$/src/main/menus/UI.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="53" column="33" lean-forward="true" selection-start-line="53" selection-start-column="33" selection-end-line="53" selection-end-column="33" />
+        <state relative-caret-position="-256">
+          <caret line="27" column="34" selection-start-line="27" selection-start-column="34" selection-end-line="27" selection-end-column="34" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/button.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/rendering/textures/SpriteData.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="15" column="31" lean-forward="true" selection-start-line="15" selection-start-column="31" selection-end-line="15" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/rendering/textures/SpriteTexture.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="260">
+          <caret line="13" column="29" selection-start-line="13" selection-start-column="29" selection-end-line="13" selection-end-column="29" />
+          <folding>
+            <element signature="e#760#761#0" expanded="true" />
+            <element signature="e#790#791#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/views/MainMenuView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="160">
+          <caret line="22" column="78" selection-start-line="22" selection-start-column="78" selection-end-line="22" selection-end-column="78" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/rendering/shaders/entity_shader/entityVertex.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="140">
+          <caret line="7" column="19" lean-forward="true" selection-start-line="7" selection-start-column="19" selection-end-line="7" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/rendering/shaders/entity_shader/entityGeometry.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="540">
+          <caret line="27" column="65" selection-start-line="27" selection-start-column="65" selection-end-line="27" selection-end-column="65" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/menus/ButtonUI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="294">
+          <caret line="19" column="27" selection-start-line="19" selection-start-column="27" selection-end-line="19" selection-end-column="27" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -973,55 +979,84 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/rendering/textures/Sprite.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="464">
-          <caret line="104" column="45" selection-start-line="104" selection-start-column="45" selection-end-line="104" selection-end-column="45" />
+        <state relative-caret-position="165">
+          <caret line="28" column="27" lean-forward="true" selection-start-line="28" selection-start-column="27" selection-end-line="28" selection-end-column="27" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1180#1181#0" expanded="true" />
+            <element signature="e#1204#1205#0" expanded="true" />
+            <element signature="e#1231#1232#0" expanded="true" />
+            <element signature="e#1255#1256#0" expanded="true" />
+            <element signature="e#1289#1290#0" expanded="true" />
+            <element signature="e#1320#1321#0" expanded="true" />
+            <element signature="e#1367#1368#0" expanded="true" />
+            <element signature="e#1407#1408#0" expanded="true" />
+            <element signature="e#1438#1439#0" expanded="true" />
+            <element signature="e#1466#1467#0" expanded="true" />
+            <element signature="e#1500#1501#0" expanded="true" />
+            <element signature="e#1529#1530#0" expanded="true" />
+            <element signature="e#1613#1614#0" expanded="true" />
+            <element signature="e#1641#1642#0" expanded="true" />
+            <element signature="e#1593#1594#0" expanded="true" />
+            <element signature="e#1642#1643#0" expanded="true" />
+            <element signature="e#1674#1675#0" expanded="true" />
+            <element signature="e#1724#1725#0" expanded="true" />
+            <element signature="e#1978#1979#0" expanded="true" />
+            <element signature="e#2011#2012#0" expanded="true" />
+            <element signature="e#1830#1831#0" expanded="true" />
+            <element signature="e#1863#1864#0" expanded="true" />
+            <element signature="e#1912#1913#0" expanded="true" />
+            <element signature="e#1956#1957#0" expanded="true" />
+            <element signature="e#1997#1998#0" expanded="true" />
+            <element signature="e#2027#2028#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/game/entities/Player.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="280">
+          <caret line="41" column="99" selection-start-line="41" selection-start-column="67" selection-end-line="41" selection-end-column="99" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/menus/ButtonUI.java">
+    <entry file="file://$PROJECT_DIR$/src/main/game/entities/enemies/Dummy.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="280">
-          <caret line="17" column="39" lean-forward="true" selection-start-line="17" selection-start-column="39" selection-end-line="17" selection-end-column="39" />
+          <caret line="23" column="99" selection-start-line="23" selection-start-column="99" selection-end-line="23" selection-end-column="99" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1426#1427#0" expanded="true" />
-            <element signature="e#1455#1456#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/game/entities/projectiles/TestProjectile.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-612">
+          <caret line="38" column="92" selection-start-line="38" selection-start-column="92" selection-end-line="38" selection-end-column="92" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/rendering/EntityRenderer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="320">
-          <caret line="103" column="43" lean-forward="true" selection-start-line="103" selection-start-column="43" selection-end-line="103" selection-end-column="43" />
+        <state>
+          <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/views/MainView.java">
+    <entry file="file://$PROJECT_DIR$/src/rendering/shaders/entity_shader/EntityShader.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="880">
-          <caret line="56" column="43" selection-start-line="56" selection-start-column="43" selection-end-line="56" selection-end-column="43" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/views/MainMenuView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="273">
-          <caret line="22" column="90" selection-start-line="22" selection-start-column="90" selection-end-line="22" selection-end-column="90" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#594#595#0" expanded="true" />
-            <element signature="e#666#667#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="264">
+          <caret line="46" column="65" lean-forward="true" selection-start-line="46" selection-start-column="65" selection-end-line="46" selection-end-column="65" />
         </state>
       </provider>
     </entry>

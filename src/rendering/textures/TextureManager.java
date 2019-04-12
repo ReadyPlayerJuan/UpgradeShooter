@@ -20,16 +20,18 @@ public class TextureManager {
         SpriteData.loadAll();
     }
 
-    public static SpriteTexture loadTexture(String fileName, int numRows, boolean hasTransparency) {
+    public static SpriteTexture loadTexture(String fileName, int numRows, int numCols, boolean hasTransparency) {
         int texID = glGenTextures();
         glBindTexture(GL_TEXTURE_2D, texID);
+
+        int imageWidth, imageHeight;
 
         try {
             InputStream in = new FileInputStream(FILE_PREFIX + fileName + FILE_POSTFIX);
             PNGDecoder decoder = new PNGDecoder(in);
 
-            System.out.println("width="+decoder.getWidth());
-            System.out.println("height="+decoder.getHeight());
+            imageWidth = decoder.getWidth();
+            imageHeight = decoder.getHeight();
 
             ByteBuffer buf = ByteBuffer.allocateDirect(4*decoder.getWidth()*decoder.getHeight());
             decoder.decode(buf, decoder.getWidth()*4, PNGDecoder.Format.RGBA);
@@ -52,7 +54,7 @@ public class TextureManager {
 
         glBindTexture(GL_TEXTURE_2D, 0);
 
-        SpriteTexture spriteTexture = new SpriteTexture(texID, numRows, hasTransparency);
+        SpriteTexture spriteTexture = new SpriteTexture(texID,imageWidth / numCols, imageHeight / numRows, numRows, numCols, hasTransparency);
         textures.put(textureNames.size(), spriteTexture);
         textureNames.add(fileName);
         return spriteTexture;

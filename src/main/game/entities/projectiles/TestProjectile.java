@@ -36,7 +36,7 @@ public class TestProjectile extends Projectile {
     public TestProjectile(WeaponController source, Weapon weaponSource, SpriteData spriteData, double x, double y, double damage, double speed, double angle, double radius, double knockback) {
         super(source, weaponSource);
 
-        sprite = new Sprite(spriteData, (float)x, (float)y, (float)radius);
+        sprite = new Sprite(spriteData, (float)x, (float)y, (float)radius*2, (float)radius*2);
         this.x = x;
         this.y = y;
         this.damage = damage;

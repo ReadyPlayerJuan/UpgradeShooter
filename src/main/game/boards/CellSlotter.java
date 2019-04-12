@@ -4,9 +4,9 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.LinkedList;
 
-public class CellSlotter<T> {
+public class CellSlotter<T extends Slottable> {
     private int minX, maxX, minY, maxY;
-    private HashMap<Integer, HashMap<Integer, LinkedList<Slottable>>> cells = new HashMap<>();
+    private HashMap<Integer, HashMap<Integer, LinkedList<T>>> cells = new HashMap<>();
 
     public void clear() {
         cells.clear();
@@ -18,33 +18,31 @@ public class CellSlotter<T> {
 
     public void addAll(Collection<T> items) {
         for(T s: items) {
-            add((Slottable)s);
+            add(s);
         }
     }
 
     public void addAll(T[] items) {
         for(T s: items) {
-            add((Slottable)s);
+            add(s);
         }
     }
 
     public void addAndUpdateAll(Collection<T> items, double cellSize) {
         for(T s: items) {
-            Slottable slottable = (Slottable)s;
-            slottable.updateSlotPositions(cellSize);
-            add(slottable);
+            s.updateSlotPositions(cellSize);
+            add(s);
         }
     }
 
     public void addAndUpdateAll(T[] items, double cellSize) {
         for(T s: items) {
-            Slottable slottable = (Slottable)s;
-            slottable.updateSlotPositions(cellSize);
-            add(slottable);
+            s.updateSlotPositions(cellSize);
+            add(s);
         }
     }
 
-    public void add(Slottable item) {
+    public void add(T item) {
         int slotMinX = item.getSlotMinX();
         int slotMaxX = item.getSlotMaxX();
         int slotMinY = item.getSlotMinY();
@@ -60,14 +58,14 @@ public class CellSlotter<T> {
             maxY = slotMaxY;
 
         for(int x = slotMinX; x <= slotMaxX; x++) {
-            HashMap<Integer, LinkedList<Slottable>> column = cells.get(x);
+            HashMap<Integer, LinkedList<T>> column = cells.get(x);
             if(column == null) {
                 column = new HashMap<>();
                 cells.put(x, column);
             }
 
             for(int y = slotMinY; y <= slotMaxY; y++) {
-                LinkedList<Slottable> cell = column.get(y);
+                LinkedList<T> cell = column.get(y);
                 if(cell == null) {
                     cell = new LinkedList<>();
                     column.put(y, cell);
@@ -94,7 +92,7 @@ public class CellSlotter<T> {
         return maxY;
     }
 
-    public HashMap<Integer, HashMap<Integer, LinkedList<Slottable>>> getCells() {
+    public HashMap<Integer, HashMap<Integer, LinkedList<T>>> getCells() {
         return cells;
     }
 }

@@ -1,18 +1,18 @@
 #version 430
 
 in vec2 worldPosition;
-in float scale;
+in vec2 size;
 in float rotation;
 in float imageIndex;
 
-out float pass_scale;
+out vec2 pass_size;
 out float pass_rotation;
 out float pass_imageIndex;
 
 void main(void) {
     gl_Position = vec4(worldPosition.xy, 0.0, 1.0);
 
-    pass_scale = scale;
+    pass_size = size;
     pass_rotation = rotation;
     pass_imageIndex = imageIndex;
 }

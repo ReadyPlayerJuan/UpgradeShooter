@@ -8,17 +8,18 @@ public abstract class ButtonUI extends UI {
     private Sprite sprite;
 
     private int hoverWidth, hoverHeight;
-    private boolean hovering;
-    private boolean clicked;
+    private boolean hovering, clicked;
 
-    public ButtonUI(UI parent, SpriteData spriteData, float relativeX, float relativeY, int size, int hoverWidth, int hoverHeight) {
-        super(parent, relativeX, relativeY, size, size);
-
-        this.hoverWidth = hoverWidth;
-        this.hoverHeight = hoverHeight;
+    public ButtonUI(UI parent, SpriteData spriteData, float relativeX, float relativeY, float scale) {
+        super(parent, relativeX, relativeY, 0, 0);
 
         sprite = new Sprite(spriteData);
-        sprite.setScale(size/2);
+        sprite.setScale(scale);
+
+        this.width = (int)sprite.getWidth();
+        this.height = (int)sprite.getHeight();
+        this.hoverWidth = width;
+        this.hoverHeight = height;
     }
 
     public abstract void buttonAction();

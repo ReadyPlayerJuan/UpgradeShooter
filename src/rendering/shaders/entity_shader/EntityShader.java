@@ -12,7 +12,7 @@ public class EntityShader extends ShaderProgram {
 
     private int location_camera_position;
     private int location_view_size;
-    private int location_num_rows;
+    private int location_texture_div;
     private int location_texture;
 
     public EntityShader() {
@@ -26,7 +26,7 @@ public class EntityShader extends ShaderProgram {
     protected void getAllUniformLocations() {
         location_camera_position = super.getUniformLocation("cameraPosition");
         location_view_size = super.getUniformLocation("viewSize");
-        location_num_rows = super.getUniformLocation("numRows");
+        location_texture_div = super.getUniformLocation("textureDiv");
         location_texture = super.getUniformLocation("texture");
     }
 
@@ -43,9 +43,8 @@ public class EntityShader extends ShaderProgram {
         super.loadVector(location_camera_position, (float)camera.getCenterX(), (float)camera.getCenterY());
     }
 
-    public void setNumTextureRows(int numRows) {
-        super.loadInt(location_num_rows, numRows);
-        //bind texture
+    public void setTextureDivisions(int numRows, int numCols) {
+        super.loadVector(location_texture_div, numRows, numCols);
     }
 
     protected void connectTextureUnits() {
@@ -55,7 +54,7 @@ public class EntityShader extends ShaderProgram {
     @Override
     protected void bindAttributes() {
         super.bindAttribute(0, "worldPosition");
-        super.bindAttribute(1, "scale");
+        super.bindAttribute(1, "size");
         super.bindAttribute(2, "rotation");
         super.bindAttribute(3, "imageIndex");
     }

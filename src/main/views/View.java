@@ -62,12 +62,9 @@ public abstract class View {
         }
     }
 
-    protected void setFocusedSubView(View view) {
+    protected void unfocusAllSubViews() {
         for(View v: subViews) {
-            if(v.equals(view))
-                v.setFocused(true);
-            else
-                v.setFocused(false);
+            v.setFocused(false);
         }
     }
 

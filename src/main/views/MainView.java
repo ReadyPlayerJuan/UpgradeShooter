@@ -27,7 +27,8 @@ public class MainView extends View {
         mainMenuView = new MainMenuView(this, width, height);
         addSubView(mainMenuView);
 
-        setFocusedSubView(mainMenuView);
+        unfocusAllSubViews();
+        mainMenuView.setFocused(true);
     }
 
     @Override
@@ -62,7 +63,8 @@ public class MainView extends View {
     @Override
     public void processViewAction(String action) {
         if(action.equals("main menu - start game")) {
-            setFocusedSubView(gameView);
+            unfocusAllSubViews();
+            gameView.setFocused(true);
         } else {
             System.out.println("UNKNOWN VIEW ACTION: " + action);
             System.exit(1);

@@ -13,7 +13,7 @@ import java.util.LinkedList;
 
 public class EntityRenderer {
     private final int MAX_SPRITES = 10000;
-    private final int SPRITE_DATA_LENGTH = 5; //number of floats per sprite
+    private final int SPRITE_DATA_LENGTH = 6; //number of floats per sprite
 
     private final FloatBuffer spriteDataBuffer = BufferUtils.createFloatBuffer(MAX_SPRITES * SPRITE_DATA_LENGTH);
     private float[] spriteData;
@@ -33,9 +33,9 @@ public class EntityRenderer {
         GL15.glBufferData(GL15.GL_ARRAY_BUFFER, MAX_SPRITES * SPRITE_DATA_LENGTH * 4, GL15.GL_STREAM_DRAW);
 
         GL20.glVertexAttribPointer(0, 2, GL11.GL_FLOAT, false, SPRITE_DATA_LENGTH * 4, 0 * 4);
-        GL20.glVertexAttribPointer(1, 1, GL11.GL_FLOAT, false, SPRITE_DATA_LENGTH * 4, 2 * 4);
-        GL20.glVertexAttribPointer(2, 1, GL11.GL_FLOAT, false, SPRITE_DATA_LENGTH * 4, 3 * 4);
-        GL20.glVertexAttribPointer(3, 1, GL11.GL_FLOAT, false, SPRITE_DATA_LENGTH * 4, 4 * 4);
+        GL20.glVertexAttribPointer(1, 2, GL11.GL_FLOAT, false, SPRITE_DATA_LENGTH * 4, 2 * 4);
+        GL20.glVertexAttribPointer(2, 1, GL11.GL_FLOAT, false, SPRITE_DATA_LENGTH * 4, 4 * 4);
+        GL20.glVertexAttribPointer(3, 1, GL11.GL_FLOAT, false, SPRITE_DATA_LENGTH * 4, 5 * 4);
 
         GL15.glBindBuffer(GL15.GL_ARRAY_BUFFER, 0);
         GL30.glBindVertexArray(0);
@@ -99,7 +99,7 @@ public class EntityRenderer {
 
             GL13.glActiveTexture(GL13.GL_TEXTURE0);
             GL11.glBindTexture(GL11.GL_TEXTURE_2D, texture.getTextureID());
-            Graphics.entityShader.setNumTextureRows(texture.getNumRows());
+            Graphics.entityShader.setTextureDivisions(texture.getNumRows(), texture.getNumCols());
 
             if(texture.hasTransparency()) {
                 GL11.glEnable(GL11.GL_BLEND);
@@ -129,7 +129,8 @@ public class EntityRenderer {
         for(Sprite s: spriteList) {
             spriteData[spriteDataPointer++] = (float)s.getX();//x
             spriteData[spriteDataPointer++] = (float)s.getY();//y
-            spriteData[spriteDataPointer++] = (float)s.getScale();//scale
+            spriteData[spriteDataPointer++] = (float)s.getWidth();//width
+            spriteData[spriteDataPointer++] = (float)s.getHeight();//height
             spriteData[spriteDataPointer++] = (float)s.getRotation();//rotation
             spriteData[spriteDataPointer++] = (float)s.getImageIndex();//image index
         }
