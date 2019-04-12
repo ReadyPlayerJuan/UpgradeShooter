@@ -6,11 +6,11 @@ import static org.lwjgl.opengl.GL11.*;
 import static org.lwjgl.opengl.GL11.GL_TEXTURE_2D;
 
 public class Sprite {
-    private SpriteTexture texture;
-    private float x, y;
-    private float rotation;
-    private float width, height;
-    private int imageIndex;
+    protected SpriteTexture texture;
+    protected float x, y;
+    protected float rotation;
+    protected float width, height;
+    protected int imageIndex;
 
     public Sprite(SpriteData spriteData, float x, float y, float width, float height, float rotation, int imageIndex) {
         this.texture = spriteData.getTexture();
@@ -130,10 +130,10 @@ public class Sprite {
 
         glColor3f(1, 1, 1);
         glBegin(GL_QUADS);
-        vertex(1, -1);
-        vertex(-1, -1);
-        vertex(-1, 1);
-        vertex(1, 1);
+        drawTexCoord(1, 0); drawVertex(width/2, -height/2);
+        drawTexCoord(0, 0); drawVertex(-width/2, -height/2);
+        drawTexCoord(0, 1); drawVertex(-width/2, height/2);
+        drawTexCoord(1, 1); drawVertex(width/2, height/2);
         glEnd();
 
         if(texture.hasTransparency()) {
@@ -144,18 +144,17 @@ public class Sprite {
         glDisable(GL_TEXTURE_2D);
     }
 
-    private void vertex(int offX, int offY) {
+    protected void drawTexCoord(float offX, float offY) {
         int numRows = texture.getNumRows();
         int numCols = texture.getNumCols();
         float imageOffX = imageIndex % numCols;
         float imageOffY = imageIndex / numCols;
-        glTexCoord2f((offX * 0.5f + 0.5f + imageOffX) / numCols, (offY * -0.5f + 0.5f + imageOffY) / numRows);
-        //System.out.println(((offX * 0.5f + 0.5f + imageOffX) / numCols) + " " + ((offY * -0.5f + 0.5f + imageOffY) / numRows));
+        glTexCoord2f((offX + imageOffX) / numCols, (offY + imageOffY) / numRows);
+    }
 
-        float offW = width * 0.5f;
-        float offH = height * 0.5f;
-        float offPosX = (offX * offW * (float)Math.cos(rotation) - offY * offH * (float)Math.sin(rotation));
-        float offPosY = (offX * offW * (float)Math.sin(rotation) + offY * offH * (float)Math.cos(rotation));
+    protected void drawVertex(float offW, float offH) {
+        float offPosX = (offW * (float)Math.cos(rotation) - offH * (float)Math.sin(rotation));
+        float offPosY = (offW * (float)Math.sin(rotation) + offH * (float)Math.cos(rotation));
         glVertex2d(x + offPosX, y + offPosY);
     }
 }

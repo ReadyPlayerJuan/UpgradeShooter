@@ -20,7 +20,7 @@ public class MainMenuView extends View {
         title.setTextAlign(TextField.CENTER, TextField.TOP);
 
         mainUI = new FrameUI(null, 0, 0, width, height);
-        startButton = new ButtonUI(mainUI, SpriteData.BUTTON, 200, height/2, 2) {
+        startButton = new ButtonUI(mainUI, SpriteData.BUTTON_9S, 200, height/2, 300, 80, 30) {
             @Override
             public void buttonAction() {
                 sendViewAction("main menu - start game");

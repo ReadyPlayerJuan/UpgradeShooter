@@ -2,7 +2,8 @@ package rendering.textures;
 
 public enum SpriteData {
     PLAYER ("test_sprite_1",    2, 2, true),
-    BUTTON ("button",           2, 2, true);
+    BUTTON ("button",           2, 2, false),
+    BUTTON_9S ("button_9s",     2, 2, false);
 
 
     private String fileName;
