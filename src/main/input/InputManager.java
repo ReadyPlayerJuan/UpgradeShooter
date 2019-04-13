@@ -57,8 +57,24 @@ public class InputManager {
         glfwPollEvents();
     }
 
+    public static boolean keyPressed(int key) {
+        for(Double[] d: pressedActionKeys) {
+            if(d[0] == key)
+                return true;
+        }
+        return false;
+    }
+
     public static boolean keyHeld(int key) {
         for(Double[] d: heldActionKeys) {
+            if(d[0] == key)
+                return true;
+        }
+        return false;
+    }
+
+    public static boolean keyReleased(int key) {
+        for(Double[] d: releasedActionKeys) {
             if(d[0] == key)
                 return true;
         }

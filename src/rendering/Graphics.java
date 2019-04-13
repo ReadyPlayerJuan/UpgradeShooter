@@ -86,6 +86,24 @@ public class Graphics {
         frameBuffers.add(frameBuffer);
     }
 
+    public static void setColor(float r, float g, float b, float a) {
+        GL11.glColor4f(r, g, b, a);
+    }
+
+    public static void clear(float r, float g, float b, float a) {
+        GL11.glClearColor(r, g, b, a);
+        GL11.glClear(GL11.GL_COLOR_BUFFER_BIT);
+    }
+
+    public static void enableBlend() {
+        GL11.glEnable(GL11.GL_BLEND);
+        GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
+    }
+
+    public static void disableBlend() {
+        GL11.glDisable(GL11.GL_BLEND);
+    }
+
     public static void cleanUp() {
         for(int vao: vaos) {
             GL30.glDeleteVertexArrays(vao);

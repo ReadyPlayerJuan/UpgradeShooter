@@ -1,8 +1,7 @@
 package main.views;
 
 import main.menus.ButtonUI;
-import main.menus.FrameUI;
-import main.menus.UI;
+import main.menus.BlankUI;
 import org.lwjgl.opengl.GL11;
 import rendering.Graphics;
 import rendering.fonts.TextField;
@@ -10,7 +9,7 @@ import rendering.textures.SpriteData;
 
 public class MainMenuView extends View {
     private TextField title;
-    private FrameUI mainUI;
+    private BlankUI mainUI;
     private ButtonUI startButton;
 
     public MainMenuView(View parentView, int width, int height) {
@@ -19,7 +18,7 @@ public class MainMenuView extends View {
         title = new TextField(Graphics.titleFont, width, 1);
         title.setTextAlign(TextField.CENTER, TextField.TOP);
 
-        mainUI = new FrameUI(null, 0, 0, width, height);
+        mainUI = new BlankUI(null, 0, 0, width, height);
         startButton = new ButtonUI(mainUI, SpriteData.BUTTON_9S, 200, height/2, 300, 80, 30) {
             @Override
             public void buttonAction() {
@@ -37,13 +36,12 @@ public class MainMenuView extends View {
     @Override
     public void drawSelf() {
         mainFrameBuffer.bindFrameBuffer();
-        GL11.glClearColor(0.8f, 0.8f, 0.8f, 1);
-        GL11.glClear(GL11.GL_COLOR_BUFFER_BIT);
+        Graphics.clear(0.8f, 0.8f, 0.8f, 1);
 
-        GL11.glColor3f(0, 0, 0);
+        Graphics.setColor(0, 0, 0, 1);
         title.drawText((int)(width*0.5), (int)(height*0.8));
 
-        GL11.glColor3f(1, 1, 1);
+        Graphics.setColor(1, 1, 1, 1);
         mainUI.draw();
 
         mainFrameBuffer.unbindFrameBuffer();

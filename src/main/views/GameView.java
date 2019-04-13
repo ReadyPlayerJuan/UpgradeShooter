@@ -6,17 +6,26 @@ import main.game.boards.Camera;
 import main.game.entities.EntityManager;
 import main.game.entities.Player;
 import main.game.entities.enemies.Dummy;
+import main.input.ControlMapping;
+import main.input.InputManager;
 import main.util.EfficiencyMetricType;
 import main.util.EfficiencyMetrics;
-import org.lwjgl.opengl.GL11;
+import rendering.Graphics;
 
 public class GameView extends View {
     private EntityManager entityManager;
     private Board board;
     private Camera camera;
 
+    private boolean paused = false;
+    private PauseMenuView pauseMenuView;
+
     public GameView(View parentView, int width, int height) {
         super(parentView, width, height);
+
+        pauseMenuView = new PauseMenuView(this, width, height);
+        pauseMenuView.setFocused(false);
+        addSubView(pauseMenuView);
 
         entityManager = new EntityManager();
         board = new BoardPreset1(this);
@@ -37,18 +46,29 @@ public class GameView extends View {
     public void updateSelf(double delta) {
         board.update(delta);
 
+        if(InputManager.keyReleased(ControlMapping.PAUSE_GAME.keyCode)) {
+            if(paused) {
+                paused = false;
+                pauseMenuView.setFocused(false);
+            } else {
+                paused = true;
+                pauseMenuView.setFocused(true);
+                pauseMenuView.processViewAction("reset pause menu");
+            }
+        }
         EfficiencyMetrics.startTimer(EfficiencyMetricType.UPDATE_ENTITIES);
-        entityManager.updateEntities(delta, board);
+        if(!paused)
+            entityManager.updateEntities(delta, board);
         EfficiencyMetrics.stopTimer(EfficiencyMetricType.UPDATE_ENTITIES);
 
-        camera.update(delta);
+        if(!paused)
+            camera.update(delta);
     }
 
     @Override
     public void drawSelf() {
         mainFrameBuffer.bindFrameBuffer();
-        GL11.glClearColor(1, 1, 1, 1);
-        GL11.glClear(GL11.GL_COLOR_BUFFER_BIT);
+        Graphics.clear(1, 1, 1, 1);
 
         EfficiencyMetrics.startTimer(EfficiencyMetricType.DRAW_WALLS);
         board.render(camera);
@@ -57,6 +77,13 @@ public class GameView extends View {
         EfficiencyMetrics.startTimer(EfficiencyMetricType.DRAW_ENTITIES);
         entityManager.render(camera);
         EfficiencyMetrics.stopTimer(EfficiencyMetricType.DRAW_ENTITIES);
+
+        if(paused) {
+            Graphics.setColor(1, 1, 1, 1);
+            Graphics.enableBlend();
+            pauseMenuView.getMainFrameBuffer().draw(width/2, height/2);
+            Graphics.disableBlend();
+        }
 
         mainFrameBuffer.unbindFrameBuffer();
     }

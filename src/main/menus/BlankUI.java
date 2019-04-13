@@ -1,7 +1,7 @@
 package main.menus;
 
-public class FrameUI extends UI {
-    public FrameUI(UI parent, float relativeX, float relativeY, int width, int height) {
+public class BlankUI extends UI {
+    public BlankUI(UI parent, float relativeX, float relativeY, int width, int height) {
         super(parent, relativeX, relativeY, width, height);
     }
 
