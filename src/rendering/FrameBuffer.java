@@ -60,10 +60,10 @@ public class FrameBuffer {
         glBindTexture(GL_TEXTURE_2D, getTexture());
 
         glBegin(GL_QUADS);
-        glTexCoord2f(0, 0); glVertex2d(x - w*0.5, y - h*0.5);
-        glTexCoord2f(1, 0); glVertex2d(x + w*0.5, y - h*0.5);
-        glTexCoord2f(1, 1); glVertex2d(x + w*0.5, y + h*0.5);
-        glTexCoord2f(0, 1); glVertex2d(x - w*0.5, y + h*0.5);
+        glTexCoord2f(0, 1); glVertex2d(x - w*0.5, y - h*0.5);
+        glTexCoord2f(1, 1); glVertex2d(x + w*0.5, y - h*0.5);
+        glTexCoord2f(1, 0); glVertex2d(x + w*0.5, y + h*0.5);
+        glTexCoord2f(0, 0); glVertex2d(x - w*0.5, y + h*0.5);
         glEnd();
 
         glBindTexture(GL_TEXTURE_2D, 0);
@@ -79,7 +79,7 @@ public class FrameBuffer {
         glMatrixMode(GL_PROJECTION);
         glLoadIdentity();
         if(automaticOrtho)
-            glOrtho(0, width, 0, height, 0, 1);
+            glOrtho(0, width, height, 0, 0, 1);
         glBindFramebufferEXT(GL_FRAMEBUFFER_EXT, fboID);
     }
 

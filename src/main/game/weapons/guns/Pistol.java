@@ -5,6 +5,7 @@ import main.game.entities.projectiles.TestProjectile;
 import main.game.weapons.Weapon;
 import main.game.weapons.WeaponController;
 import main.game.weapons.WeaponType;
+import main.game.weapons.stats.WeaponStat;
 import main.game.weapons.stats.WeaponStatType;
 import rendering.textures.SpriteData;
 
@@ -17,23 +18,21 @@ public class Pistol extends Weapon {
             0.0, //LIGHTNING
             0.0, //FROST
     };
-    private static final WeaponStatType[] availableStats = new WeaponStatType[] {
-            WeaponStatType.BULLET_DAMAGE,
-            WeaponStatType.BULLET_SPEED,
-            WeaponStatType.BULLET_SIZE,
-            WeaponStatType.BULLET_KNOCKBACK,
-            WeaponStatType.WEAPON_SPREAD,
-            WeaponStatType.WEAPON_ACCURACY,
-            WeaponStatType.WEAPON_FIRE_RATE,
-            WeaponStatType.WEAPON_KICK,
+    private static final WeaponStat[] availableStats = new WeaponStat[] {
+            WeaponStat.BULLET_DAMAGE,
+            WeaponStat.BULLET_SPEED,
+            WeaponStat.BULLET_SIZE,
+            WeaponStat.BULLET_KNOCKBACK,
+            WeaponStat.WEAPON_SPREAD,
+            WeaponStat.WEAPON_FIRE_RATE,
+            WeaponStat.WEAPON_KICK,
     };
     private static final double[][] defaultStats = new double[][] {
             {10.0, 15.0},   //DAMAGE
             {350, 450},     //BULLET SPEED
             {9.0, 13.0},    //BULLET SIZE
             {80, 120},      //BULLET KNOCKBACK
-            {10.0, 15.0},   //WEAPON SPREAD
-            {1.00, 1.75},   //WEAPON ACCURACY
+            {0.05, 0.15},   //WEAPON SPREAD
             {2.0, 2.5},     //WEAPON FIRE RATE
             {40.0, 60.0},   //WEAPON KICK
     };
@@ -57,7 +56,7 @@ public class Pistol extends Weapon {
 
         //System.out.println(fireTimer);
         if(firing) {
-            double fireTime = 1.0 / stats[6].getFinalValue();
+            double fireTime = 1.0 / stats[5][1];
 
             if(!prevFiring) {
                 fireTimer = fireTime;
@@ -75,15 +74,14 @@ public class Pistol extends Weapon {
 
     protected void fire(double delta, WeaponController controller) {
         double angle = Math.atan2(controller.getTargetY(), controller.getTargetX());
-        double skewPct = Math.pow(Math.random(), stats[5].getFinalValue()); //how much off to one side the shot is.
-        angle += Math.toRadians(stats[4].getFinalValue()) * skewPct * Math.signum(Math.random()-0.5); //add angle variation
+        angle += Math.toRadians(180) * stats[4][1] * Math.random() * Math.signum(Math.random()-0.5); //add angle variation
 
         new TestProjectile(controller, this, SpriteData.PLAYER,
                 controller.getX(), controller.getY(),
-                stats[0].getFinalValue(),   //damage
-                stats[1].getFinalValue(),   //speed
-                angle,                      //angle
-                stats[2].getFinalValue(),   //bullet radius
-                stats[3].getFinalValue());  //knockback
+                stats[0][1],   //damage
+                stats[1][1],   //speed
+                angle,         //angle
+                stats[2][1],   //bullet radius
+                stats[3][1]);  //knockback
     }
 }

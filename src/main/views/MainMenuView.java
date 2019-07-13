@@ -2,7 +2,6 @@ package main.views;
 
 import main.menus.ButtonUI;
 import main.menus.BlankUI;
-import org.lwjgl.opengl.GL11;
 import rendering.Graphics;
 import rendering.fonts.TextField;
 import rendering.textures.SpriteData;
@@ -16,6 +15,7 @@ public class MainMenuView extends View {
         super(parentView, width, height);
 
         title = new TextField(Graphics.titleFont, width, 1);
+        title.setBufferAlign(TextField.CENTER);
         title.setTextAlign(TextField.CENTER, TextField.TOP);
 
         mainUI = new BlankUI(null, 0, 0, width, height);
@@ -39,7 +39,7 @@ public class MainMenuView extends View {
         Graphics.clear(0.8f, 0.8f, 0.8f, 1);
 
         Graphics.setColor(0, 0, 0, 1);
-        title.drawText((int)(width*0.5), (int)(height*0.8));
+        title.drawText((int)(width*0.5), (int)(height*0.2));
 
         Graphics.setColor(1, 1, 1, 1);
         mainUI.draw();

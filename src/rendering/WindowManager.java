@@ -36,6 +36,7 @@ public class WindowManager {
         glfwDefaultWindowHints(); // optional, the current window hints are already the default
         glfwWindowHint(GLFW_VISIBLE, GLFW_FALSE); // the window will stay hidden after creation
         glfwWindowHint(GLFW_RESIZABLE, GLFW_FALSE); // the window will be resizable
+        glfwWindowHint(GLFW_SAMPLES, 4);
 
         // Create the window
         window = glfwCreateWindow(windowWidth, windowHeight, "GAME GAME", NULL, NULL);
@@ -83,9 +84,10 @@ public class WindowManager {
         if(currentFrameTime - lastFpsUpdateTime > 1) {
             fps = frameCount;
             frameCount = 0;
-            lastFpsUpdateTime = lastFrameTime;
+            lastFpsUpdateTime = currentFrameTime;
         }
         lastFrameTime = currentFrameTime;
+        //delta = 1.0 / 60;
     }
 
     public static void destroyWindow() {

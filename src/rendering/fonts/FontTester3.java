@@ -88,7 +88,7 @@ public class FontTester3 {
             glClear(GL_COLOR_BUFFER_BIT);
 
             glColor3f(255f / 255f, 0f / 255f, 0f / 255f); // Text color
-            truetype.drawText("WASSUP BOYYY", 4.0f, fontHeight * 0.5f + 4.0f);
+            //truetype.drawText("WASSUP BOYYY", 4.0f, fontHeight * 0.5f + 4.0f, 1);
 
             glfwSwapBuffers(window);
         }

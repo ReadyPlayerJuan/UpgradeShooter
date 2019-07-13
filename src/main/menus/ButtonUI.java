@@ -27,24 +27,22 @@ public abstract class ButtonUI extends UI {
     @Override
     public void updateSelf(double delta) {
         hovering = false;
-        if(InputManager.mouseX > worldX-hoverWidth/2 && InputManager.mouseX < worldX+hoverWidth/2 &&
-                InputManager.mouseY > worldY-hoverHeight/2 && InputManager.mouseY < worldY+hoverHeight/2) {
+        if(InputManager.mouseX > worldX+width/2-hoverWidth/2 && InputManager.mouseX < worldX+width/2+hoverWidth/2 &&
+                InputManager.mouseY > worldY+height/2-hoverHeight/2 && InputManager.mouseY < worldY+height/2+hoverHeight/2) {
             hovering = true;
 
-            if(InputManager.keyHeld(InputManager.LEFT_CLICK)) {
+            if(InputManager.keyPressed(InputManager.LEFT_CLICK)) {
+                clicked = true;
+                buttonAction();
+            } else if(InputManager.keyHeld(InputManager.LEFT_CLICK)) {
                 clicked = true;
             } else {
-                if(clicked) {
-                    //just released click on button
-                    buttonAction();
-                }
                 clicked = false;
             }
         } else {
             clicked = false;
         }
 
-        sprite.setPosition(worldX, worldY);
         if(clicked)
             sprite.setImageIndex(2);
         else if(hovering)
@@ -55,6 +53,7 @@ public abstract class ButtonUI extends UI {
 
     @Override
     public void drawSelf() {
+        sprite.setPosition(worldX + width/2, worldY + height/2);
         sprite.draw();
     }
 }

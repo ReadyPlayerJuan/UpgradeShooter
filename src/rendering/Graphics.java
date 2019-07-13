@@ -15,6 +15,8 @@ import rendering.shaders.wall_shader.WallShader;
 public class Graphics {
     public static TrueTypeFont debugFont; private static final int debugFontSize = 20;
     public static TrueTypeFont titleFont; private static final int titleFontSize = 48;
+    public static TrueTypeFont smallFont; private static final int smallFontSize = 26;
+    public static TrueTypeFont mediumFont; private static final int mediumFontSize = 40;
 
     public static WallShader wallShader;
     public static EntityShader entityShader;
@@ -33,6 +35,8 @@ public class Graphics {
         try {
             debugFont = new TrueTypeFont(debugFontSize);
             titleFont = new TrueTypeFont(titleFontSize);
+            smallFont = new TrueTypeFont(smallFontSize);
+            mediumFont = new TrueTypeFont(mediumFontSize);
         } catch (Throwable e) {
             System.out.println(e.getMessage());
         }

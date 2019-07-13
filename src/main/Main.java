@@ -39,6 +39,9 @@ public class Main {
             EfficiencyMetrics.frameStart();
             InputManager.update(WindowManager.getDelta());
 
+            if(WindowManager.getDelta() > (1.0 / 60) * 1.5)
+                System.out.println(WindowManager.getDelta());
+
             EfficiencyMetrics.startTimer(EfficiencyMetricType.ENTIRE_FRAME);
             EfficiencyMetrics.startTimer(EfficiencyMetricType.UPDATE_ALL);
             mainView.update(WindowManager.getDelta());
@@ -48,8 +51,7 @@ public class Main {
             EfficiencyMetrics.stopTimer(EfficiencyMetricType.DRAW_ALL);
             EfficiencyMetrics.stopTimer(EfficiencyMetricType.ENTIRE_FRAME);
 
-
-            glOrtho(-1, 1, -1, 1, 0, 1);
+            glOrtho(-1, 1, 1, -1, 0, 1);
             glColor4f(1, 1, 1, 1);
             mainView.getMainFrameBuffer().draw(0, 0, 2, 2);
 

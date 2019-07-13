@@ -1,11 +1,13 @@
 package main.views;
 
+import main.game.PlayerData;
 import main.game.boards.Board;
 import main.game.boards.BoardPreset1;
 import main.game.boards.Camera;
 import main.game.entities.EntityManager;
 import main.game.entities.Player;
 import main.game.entities.enemies.Dummy;
+import main.game.weapons.guns.Pistol;
 import main.input.ControlMapping;
 import main.input.InputManager;
 import main.util.EfficiencyMetricType;
@@ -22,6 +24,8 @@ public class GameView extends View {
 
     public GameView(View parentView, int width, int height) {
         super(parentView, width, height);
+
+        PlayerData.setEquippedWeapon(0, new Pistol());
 
         pauseMenuView = new PauseMenuView(this, width, height);
         pauseMenuView.setFocused(false);
@@ -46,7 +50,7 @@ public class GameView extends View {
     public void updateSelf(double delta) {
         board.update(delta);
 
-        if(InputManager.keyReleased(ControlMapping.PAUSE_GAME.keyCode)) {
+        if(InputManager.keyPressed(ControlMapping.PAUSE_GAME.keyCode)) {
             if(paused) {
                 paused = false;
                 pauseMenuView.setFocused(false);

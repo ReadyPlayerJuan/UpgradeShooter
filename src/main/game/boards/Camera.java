@@ -32,6 +32,7 @@ public class Camera {
     }
 
     public void update(double delta) {
+        //delta = 99;//1.0 / 60;
         if(following != null) {
             double targetX = following.getX();
             double targetY = following.getY();

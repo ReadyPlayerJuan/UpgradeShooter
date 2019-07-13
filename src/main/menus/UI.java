@@ -15,6 +15,8 @@ public abstract class UI {
     protected boolean shouldSortChildren = false;
     protected boolean shouldBeDestroyed = false;
 
+    protected boolean visible = true;
+
     public UI(UI parent, float relativeX, float relativeY, int width, int height) {
         this.parent = parent;
         this.relativeX = relativeX;
@@ -30,22 +32,26 @@ public abstract class UI {
     }
 
     public void update(double delta) {
-        updateSelf(delta);
+        if(visible) {
+            updateSelf(delta);
 
-        if(parent != null) {
-            worldX = relativeX + parent.getWorldX();
-            worldY = relativeY + parent.getWorldY();
-        } else {
-            worldX = relativeX;
-            worldY = relativeY;
+            if (parent != null) {
+                worldX = relativeX + parent.getWorldX();
+                worldY = relativeY + parent.getWorldY();
+            } else {
+                worldX = relativeX;
+                worldY = relativeY;
+            }
+
+            updateChildren(delta);
         }
-
-        updateChildren(delta);
     }
 
     public void draw() {
-        drawSelf();
-        drawChildren();
+        if(visible) {
+            drawSelf();
+            drawChildren();
+        }
     }
 
     public void addChild(UI ui) {
@@ -104,6 +110,14 @@ public abstract class UI {
     public void setSize(int width, int height) {
         this.width = width;
         this.height = height;
+    }
+
+    public boolean isVisible() {
+        return visible;
+    }
+
+    public void setVisible(boolean visible) {
+        this.visible = visible;
     }
 
     public boolean shouldBeDestroyed() {

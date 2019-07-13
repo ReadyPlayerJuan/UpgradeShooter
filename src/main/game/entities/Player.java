@@ -1,5 +1,6 @@
 package main.game.entities;
 
+import main.game.PlayerData;
 import main.game.boards.Camera;
 import main.game.entities.hitboxes.BodyHitbox;
 import main.game.Team;
@@ -28,14 +29,12 @@ public class Player extends Entity implements WeaponController {
     private double maxSpeed = 300;
 
     private Camera camera;
-    private Weapon weapon;
+    private int currentWeaponIndex = 0;
     private boolean firingWeapon = false, prevFiringWeapon = false;
     private double targetX = 0, targetY = 0;
 
     public Player() {
         super(Team.PLAYER);
-
-        weapon = new Pistol();
 
         terrainCollisionRadius = radius;
 
@@ -100,7 +99,7 @@ public class Player extends Entity implements WeaponController {
         x = nextX;
         y = nextY;
         sprite.setRotation(sprite.getRotation() + 0.01f);
-        sprite.setImageIndex((int)(WindowManager.getTime() * 1.0) % 4);
+        //sprite.setImageIndex((int)(WindowManager.getTime() * 1.0) % 4);
         sprite.setPosition((float)x, (float)y);
 
         hitbox.setPosition(x, y);
@@ -108,7 +107,7 @@ public class Player extends Entity implements WeaponController {
 
         targetX = InputManager.mouseX - camera.getViewWidth()/2 + camera.getCenterX() - x;
         targetY = -InputManager.mouseY + camera.getViewHeight()/2 + camera.getCenterY() - y;
-        weapon.update(delta, this);
+        PlayerData.getEquippedWeapon(currentWeaponIndex).update(delta, this);
         /*if(Math.floor(WindowManager.getTime()*1 - delta) < Math.floor(WindowManager.getTime()*1)) {
             new TestProjectile(this, null, SpriteData.PLAYER, x, y, 1, 300, 0, 10, 0);
         }*/

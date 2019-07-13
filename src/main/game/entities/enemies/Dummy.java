@@ -48,7 +48,7 @@ public class Dummy extends Entity {
         x = nextX;
         y = nextY;
         sprite.setRotation(sprite.getRotation() + 0.01f);
-        sprite.setImageIndex((int)(WindowManager.getTime() * 1.0) % 4);
+        //sprite.setImageIndex((int)(WindowManager.getTime() * 1.0) % 4);
         sprite.setPosition((float)x, (float)y);
 
         hitbox.setPosition(x, y);

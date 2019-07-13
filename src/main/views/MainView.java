@@ -4,8 +4,6 @@ import main.util.EfficiencyMetrics;
 import rendering.Graphics;
 import rendering.WindowManager;
 import rendering.fonts.TextField;
-import rendering.textures.Sprite;
-import rendering.textures.SpriteData;
 
 import static org.lwjgl.opengl.GL11.*;
 
@@ -55,7 +53,7 @@ public class MainView extends View {
             gameView.getMainFrameBuffer().draw(width/2, height/2);
 
         glColor3f(1f, 0f, 1f);
-        debugTextField.drawText(0, height);
+        debugTextField.drawText(0, 0);
 
         mainFrameBuffer.unbindFrameBuffer();
     }

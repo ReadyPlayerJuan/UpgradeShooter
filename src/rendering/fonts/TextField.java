@@ -17,7 +17,7 @@ public class TextField {
     private int width, height;
 
     private FrameBuffer frameBuffer;
-    private int bufferAlign = CENTER;
+    private int bufferAlign = TOP_LEFT;
     private int hAlign = LEFT;
     private int vAlign = TOP;
 
@@ -45,7 +45,7 @@ public class TextField {
         if(bufferAlign == CENTER) {
             frameBuffer.draw(x, y);
         } else if(bufferAlign == TOP_LEFT) {
-            frameBuffer.draw(x+width/2, y-height/2);
+            frameBuffer.draw(x+width/2, y+height/2);
         }
         GL11.glDisable(GL11.GL_BLEND);
     }
@@ -57,22 +57,26 @@ public class TextField {
         GL11.glColor3f(1, 1, 1);
 
         float textX = 0, textY = 0;
+        int xScale = 1;
 
         if(hAlign == LEFT)
             textX = 0;
         else if(hAlign == CENTER)
             textX = (width - font.getStringWidth(text))/2;
-        else if(hAlign == RIGHT)
-            textX = width - font.getStringWidth(text);
+        else if(hAlign == RIGHT) {
+            textX = width/2;// - font.getStringWidth(text);
+            xScale = -1;
+        }
+
 
         if(vAlign == TOP)
-            textY = height-font.getFontHeight();
+            textY = font.getFontHeight();
         else if(vAlign == MIDDLE)
-            textY = (height-font.getFontHeight())/2;
+            textY = (height+font.getFontHeight())/2;
         else if(vAlign == BOTTOM)
-            textY = 0;
+            textY = height;
 
-        font.drawText(text, textX, textY);
+        font.drawText(text, textX, textY, xScale);
         frameBuffer.unbindFrameBuffer();
     }
 

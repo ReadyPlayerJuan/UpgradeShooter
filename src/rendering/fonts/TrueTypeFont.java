@@ -103,10 +103,10 @@ public final class TrueTypeFont {
         this.cdata = cdata;
     }
 
-    public void drawText(String text, float x, float y) {
+    public void drawText(String text, float x, float y, int xScale) {
         float scale = stbtt_ScaleForPixelHeight(info, fontHeight);
 
-        y += (int)(fontHeight * 0.3);
+        y -= (int)(fontHeight * 0.3);
 
         try (MemoryStack stack = stackPush()) {
             IntBuffer pCodePoint = stack.mallocInt(1);
@@ -144,14 +144,14 @@ public final class TrueTypeFont {
                 fx.put(0, fx.get(0));
                 if (kerningEnabled && i < to) {
                     getCP(text, to, i, pCodePoint);
-                    fx.put(0, fx.get(0) + stbtt_GetCodepointKernAdvance(info, cp, pCodePoint.get(0)) * scale);
+                    fx.put(0, fx.get(0) + xScale * stbtt_GetCodepointKernAdvance(info, cp, pCodePoint.get(0)) * scale);
                 }
 
                 float
                         x0 = q.x0() + x,
                         x1 = q.x1() + x,
-                        y0 = -q.y0() + y,
-                        y1 = -q.y1() + y;
+                        y0 = q.y0() + y,
+                        y1 = q.y1() + y;
 
                 glTexCoord2f(q.s0(), q.t0());
                 glVertex2f(x0, y0);
